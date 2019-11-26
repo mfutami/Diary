@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		174DCD459BF63C1EC0EDB5DC /* Pods_DiaryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEBECFFC7174D39671973803 /* Pods_DiaryUITests.framework */; };
 		1B1054A8231D51E20067E7AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1054A7231D51E20067E7AF /* AppDelegate.swift */; };
 		1B1054AA231D51E20067E7AF /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1054A9231D51E20067E7AF /* DiaryViewController.swift */; };
 		1B1054AD231D51E20067E7AF /* Diary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B1054AB231D51E20067E7AF /* Diary.storyboard */; };
@@ -39,8 +38,13 @@
 		1B2FE998236C6CB000677ACA /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2FE996236C6CB000677ACA /* NewsTableViewCell.swift */; };
 		1B2FE999236C6CB000677ACA /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B2FE997236C6CB000677ACA /* NewsTableViewCell.xib */; };
 		1BC88DB8236EE69B00C63F30 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC88DB7236EE69B00C63F30 /* NewsViewModel.swift */; };
-		8614E1B8153CE381B50CA959 /* Pods_Diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83C97B0EFA05697C91051610 /* Pods_Diary.framework */; };
-		C0EF475C0A3A8B2F1824D703 /* Pods_DiaryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 618697B198313DB878253119 /* Pods_DiaryTests.framework */; };
+		1BDB90ED238D588F00B3E93C /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDB90EB238D588F00B3E93C /* WebViewController.swift */; };
+		1BDB90F0238D58B300B3E93C /* WebView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BDB90EF238D58B300B3E93C /* WebView.storyboard */; };
+		1BDB90F3238D5A5A00B3E93C /* Splash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDB90F2238D5A5A00B3E93C /* Splash.swift */; };
+		1BDB90F5238D5A9300B3E93C /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDB90F4238D5A9300B3E93C /* WebView.swift */; };
+		3D2CF5E6D928DEF30299F393 /* Pods_DiaryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34EB092FBDF8CD2000EA82FF /* Pods_DiaryUITests.framework */; };
+		D048A1D308CD74799B2F492A /* Pods_DiaryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FB10487A9E42CF83300A2D8 /* Pods_DiaryTests.framework */; };
+		ED31554994ED1DD582CCEA34 /* Pods_Diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79D43CAC148F6C26FAEB0836 /* Pods_Diary.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,13 +102,17 @@
 		1B2FE996236C6CB000677ACA /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		1B2FE997236C6CB000677ACA /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
 		1BC88DB7236EE69B00C63F30 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
+		1BDB90EB238D588F00B3E93C /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		1BDB90EF238D58B300B3E93C /* WebView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebView.storyboard; sourceTree = "<group>"; };
+		1BDB90F2238D5A5A00B3E93C /* Splash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Splash.swift; sourceTree = "<group>"; };
+		1BDB90F4238D5A9300B3E93C /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		34EB092FBDF8CD2000EA82FF /* Pods_DiaryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DiaryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		47C5D782031420684016F16A /* Pods-DiaryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiaryTests.debug.xcconfig"; path = "Target Support Files/Pods-DiaryTests/Pods-DiaryTests.debug.xcconfig"; sourceTree = "<group>"; };
-		618697B198313DB878253119 /* Pods_DiaryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DiaryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ED60B9A0A54110A3B9AB519 /* Pods-DiaryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiaryTests.release.xcconfig"; path = "Target Support Files/Pods-DiaryTests/Pods-DiaryTests.release.xcconfig"; sourceTree = "<group>"; };
-		83C97B0EFA05697C91051610 /* Pods_Diary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		79D43CAC148F6C26FAEB0836 /* Pods_Diary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FB10487A9E42CF83300A2D8 /* Pods_DiaryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DiaryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91CC099396B74D1953E6B3E2 /* Pods-Diary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diary.debug.xcconfig"; path = "Target Support Files/Pods-Diary/Pods-Diary.debug.xcconfig"; sourceTree = "<group>"; };
 		932471D4C67C3272795AF75F /* Pods-DiaryUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiaryUITests.release.xcconfig"; path = "Target Support Files/Pods-DiaryUITests/Pods-DiaryUITests.release.xcconfig"; sourceTree = "<group>"; };
-		AEBECFFC7174D39671973803 /* Pods_DiaryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DiaryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB20961A4E1716A85E7D23ED /* Pods-Diary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diary.release.xcconfig"; path = "Target Support Files/Pods-Diary/Pods-Diary.release.xcconfig"; sourceTree = "<group>"; };
 		D01F90511B8931DBBF1329FD /* Pods-DiaryUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiaryUITests.debug.xcconfig"; path = "Target Support Files/Pods-DiaryUITests/Pods-DiaryUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,7 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8614E1B8153CE381B50CA959 /* Pods_Diary.framework in Frameworks */,
+				ED31554994ED1DD582CCEA34 /* Pods_Diary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,7 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0EF475C0A3A8B2F1824D703 /* Pods_DiaryTests.framework in Frameworks */,
+				D048A1D308CD74799B2F492A /* Pods_DiaryTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,7 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				174DCD459BF63C1EC0EDB5DC /* Pods_DiaryUITests.framework in Frameworks */,
+				3D2CF5E6D928DEF30299F393 /* Pods_DiaryUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,10 +205,12 @@
 		1B1054D5231EA64B0067E7AF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1BDB90F1238D5A4C00B3E93C /* Splash */,
 				1B2A97E92371B04D00113C8E /* Image */,
 				1B2DC7AC23686F5800B9CB42 /* NavigationBar */,
 				1B2894EC232535460090A221 /* TabBar */,
 				1B2B939D2322AEF10015CB8A /* Strings */,
+				1BDB90F4238D5A9300B3E93C /* WebView.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -287,6 +297,8 @@
 				1B2894DD232523440090A221 /* Home */,
 				1B2F08B72321549D002BAF6E /* Memories */,
 				1B2F08B623215490002BAF6E /* Diary */,
+				1BDB90EB238D588F00B3E93C /* WebViewController.swift */,
+				1BDB90EF238D58B300B3E93C /* WebView.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -334,12 +346,20 @@
 			path = News;
 			sourceTree = "<group>";
 		};
+		1BDB90F1238D5A4C00B3E93C /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				1BDB90F2238D5A5A00B3E93C /* Splash.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
 		50E545926C9D892A0931BB40 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				83C97B0EFA05697C91051610 /* Pods_Diary.framework */,
-				618697B198313DB878253119 /* Pods_DiaryTests.framework */,
-				AEBECFFC7174D39671973803 /* Pods_DiaryUITests.framework */,
+				79D43CAC148F6C26FAEB0836 /* Pods_Diary.framework */,
+				7FB10487A9E42CF83300A2D8 /* Pods_DiaryTests.framework */,
+				34EB092FBDF8CD2000EA82FF /* Pods_DiaryUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -465,6 +485,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BDB90F0238D58B300B3E93C /* WebView.storyboard in Resources */,
 				1B1054B2231D51E40067E7AF /* LaunchScreen.storyboard in Resources */,
 				1B2894EB232531920090A221 /* Home.storyboard in Resources */,
 				1B1054AF231D51E40067E7AF /* Assets.xcassets in Resources */,
@@ -611,6 +632,7 @@
 			files = (
 				1B1054AA231D51E20067E7AF /* DiaryViewController.swift in Sources */,
 				1B2F08B323215470002BAF6E /* MemoriesViewController.swift in Sources */,
+				1BDB90F3238D5A5A00B3E93C /* Splash.swift in Sources */,
 				1B2FE998236C6CB000677ACA /* NewsTableViewCell.swift in Sources */,
 				1B2CAB7C232141C700590B47 /* TabBerModel.swift in Sources */,
 				1B1054A8231D51E20067E7AF /* AppDelegate.swift in Sources */,
@@ -619,9 +641,11 @@
 				1B2DC7AE23686FC600B9CB42 /* NavigationBar.swift in Sources */,
 				1B2894E1232531370090A221 /* NewsViewController.swift in Sources */,
 				1B2894E5232531570090A221 /* HomeViewController.swift in Sources */,
+				1BDB90F5238D5A9300B3E93C /* WebView.swift in Sources */,
 				1B2B939C2322AEED0015CB8A /* Strings.swift in Sources */,
 				1BC88DB8236EE69B00C63F30 /* NewsViewModel.swift in Sources */,
 				1B1054D7231EA6660067E7AF /* TabBer.swift in Sources */,
+				1BDB90ED238D588F00B3E93C /* WebViewController.swift in Sources */,
 				1B2894E32325314C0090A221 /* LocationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

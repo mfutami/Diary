@@ -22,9 +22,9 @@ class MemoriesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        NavigationBar.setupNavigation(.memories)
+        //        NavigationBar.setupNavigation(.memories)
         self.setupNavigation(.memories)
-//        self.title = NavigationBar.navigationController.title
+        //        self.title = NavigationBar.navigationController.title
         self.setupCaptureSession()
         self.setupDevice()
         self.setupInputOutput()
@@ -61,6 +61,7 @@ class MemoriesViewController: UIViewController {
     
     // プロパティ設定
     func setupDevice() {
+        // TODO: OSによってdevicesの中身が空の為
         let propertySettings = AVCaptureDevice.DiscoverySession(deviceTypes: [AVCaptureDevice.DeviceType.builtInDualCamera], mediaType: AVMediaType.video, position: AVCaptureDevice.Position.back)
         // TODO: 上記でposition設定している為カメラデバイスの取得はしなくて良いのでは、、、
         let devices = propertySettings.devices
@@ -128,8 +129,7 @@ extension MemoriesViewController: AVCapturePhotoCaptureDelegate {
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         if let imageData = photo.fileDataRepresentation() {
             // Data型をUIImageオブジェクトに変換
-            let uiImage = UIImage(data: imageData)
-            guard let image = uiImage else { return }
+            guard let image = UIImage(data: imageData) else { return }
             // imageViewに変更してセットする
             self.photoImageView.isHidden = false
             self.photoImageView.image = image

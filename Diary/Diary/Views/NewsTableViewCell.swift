@@ -18,7 +18,7 @@ class NewsTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-    func setupCell(title: String, imageUrl: String, link: String) {
+    func setupCell(title: String, imageUrl: String) {
         guard let image = UIImage.getImageByUrl(url: imageUrl) else { return }
         
         self.newsImage.image = image

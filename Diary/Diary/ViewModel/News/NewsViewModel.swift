@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+class NewsViewModel {
+    
+    let url = "https://toyokeizai.net/list/feed/rss"
+    
+    
+}
