@@ -18,8 +18,6 @@ class NewsViewController: UIViewController, XMLParserDelegate {
     private var newsArrey = [Any]()
     
     var viewModel = NewsViewModel()
-    var webView = WebViewController()
-    var wkWebView = WKWebView()
     
     var newsTitle = [String]()
     var newsLink = [String]()

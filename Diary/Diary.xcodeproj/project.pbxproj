@@ -42,9 +42,8 @@
 		1BDB90F0238D58B300B3E93C /* WebView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BDB90EF238D58B300B3E93C /* WebView.storyboard */; };
 		1BDB90F3238D5A5A00B3E93C /* Splash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDB90F2238D5A5A00B3E93C /* Splash.swift */; };
 		1BDB90F5238D5A9300B3E93C /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDB90F4238D5A9300B3E93C /* WebView.swift */; };
-		3D2CF5E6D928DEF30299F393 /* Pods_DiaryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34EB092FBDF8CD2000EA82FF /* Pods_DiaryUITests.framework */; };
-		D048A1D308CD74799B2F492A /* Pods_DiaryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FB10487A9E42CF83300A2D8 /* Pods_DiaryTests.framework */; };
-		ED31554994ED1DD582CCEA34 /* Pods_Diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79D43CAC148F6C26FAEB0836 /* Pods_Diary.framework */; };
+		1BE01D3B239A8C4800CF9BF2 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BE01D3A239A8C4800CF9BF2 /* RxCocoa.framework */; };
+		1BE01D3D239A8C5300CF9BF2 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BE01D3C239A8C5300CF9BF2 /* RxSwift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,9 +105,8 @@
 		1BDB90EF238D58B300B3E93C /* WebView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebView.storyboard; sourceTree = "<group>"; };
 		1BDB90F2238D5A5A00B3E93C /* Splash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Splash.swift; sourceTree = "<group>"; };
 		1BDB90F4238D5A9300B3E93C /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
-		34EB092FBDF8CD2000EA82FF /* Pods_DiaryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DiaryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		79D43CAC148F6C26FAEB0836 /* Pods_Diary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7FB10487A9E42CF83300A2D8 /* Pods_DiaryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DiaryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BE01D3A239A8C4800CF9BF2 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		1BE01D3C239A8C5300CF9BF2 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +114,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED31554994ED1DD582CCEA34 /* Pods_Diary.framework in Frameworks */,
+				1BE01D3D239A8C5300CF9BF2 /* RxSwift.framework in Frameworks */,
+				1BE01D3B239A8C4800CF9BF2 /* RxCocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,7 +123,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D048A1D308CD74799B2F492A /* Pods_DiaryTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,7 +130,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D2CF5E6D928DEF30299F393 /* Pods_DiaryUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,9 +348,8 @@
 		50E545926C9D892A0931BB40 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				79D43CAC148F6C26FAEB0836 /* Pods_Diary.framework */,
-				7FB10487A9E42CF83300A2D8 /* Pods_DiaryTests.framework */,
-				34EB092FBDF8CD2000EA82FF /* Pods_DiaryUITests.framework */,
+				1BE01D3C239A8C5300CF9BF2 /* RxSwift.framework */,
+				1BE01D3A239A8C4800CF9BF2 /* RxCocoa.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -751,6 +747,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DH8AS82JB4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Diary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -769,6 +769,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DH8AS82JB4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Diary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
