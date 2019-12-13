@@ -7,14 +7,17 @@
 //
 
 import UIKit
-import Alamofire
 import SWXMLHash
+import RxSwift
+import RxCocoa
 
 class NewsViewController: UIViewController, XMLParserDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     
     let url = "https://toyokeizai.net/list/feed/rss"
+    private let backgroundScheduler = ConcurrentDispatchQueueScheduler(qos: .background)
+    private let disposeBag = DisposeBag()
     
     var newsTitle = [String]()
     var newsLink = [String]()

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		174DCD459BF63C1EC0EDB5DC /* Pods_DiaryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEBECFFC7174D39671973803 /* Pods_DiaryUITests.framework */; };
 		1B1054A8231D51E20067E7AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1054A7231D51E20067E7AF /* AppDelegate.swift */; };
 		1B1054AA231D51E20067E7AF /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1054A9231D51E20067E7AF /* DiaryViewController.swift */; };
 		1B1054AD231D51E20067E7AF /* Diary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B1054AB231D51E20067E7AF /* Diary.storyboard */; };
@@ -38,9 +37,11 @@
 		1B2F08B923215A07002BAF6E /* Memories.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B2F08B823215A07002BAF6E /* Memories.storyboard */; };
 		1B2FE998236C6CB000677ACA /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2FE996236C6CB000677ACA /* NewsTableViewCell.swift */; };
 		1B2FE999236C6CB000677ACA /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B2FE997236C6CB000677ACA /* NewsTableViewCell.xib */; };
+		1B88336523A3D78300F6F73F /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B88336423A3D78200F6F73F /* RxSwift.framework */; };
+		1B88336723A3D78F00F6F73F /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B88336623A3D78F00F6F73F /* RxCocoa.framework */; };
+		1B88336923A3D79D00F6F73F /* JBDatePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B88336823A3D79D00F6F73F /* JBDatePicker.framework */; };
+		1B88336B23A3D7A800F6F73F /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B88336A23A3D7A800F6F73F /* SWXMLHash.framework */; };
 		1BC88DB8236EE69B00C63F30 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC88DB7236EE69B00C63F30 /* NewsViewModel.swift */; };
-		8614E1B8153CE381B50CA959 /* Pods_Diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83C97B0EFA05697C91051610 /* Pods_Diary.framework */; };
-		C0EF475C0A3A8B2F1824D703 /* Pods_DiaryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 618697B198313DB878253119 /* Pods_DiaryTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,16 +98,11 @@
 		1B2F08B823215A07002BAF6E /* Memories.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Memories.storyboard; sourceTree = "<group>"; };
 		1B2FE996236C6CB000677ACA /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		1B2FE997236C6CB000677ACA /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
+		1B88336423A3D78200F6F73F /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		1B88336623A3D78F00F6F73F /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		1B88336823A3D79D00F6F73F /* JBDatePicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JBDatePicker.framework; path = Carthage/Build/iOS/JBDatePicker.framework; sourceTree = "<group>"; };
+		1B88336A23A3D7A800F6F73F /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = Carthage/Build/iOS/SWXMLHash.framework; sourceTree = "<group>"; };
 		1BC88DB7236EE69B00C63F30 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
-		47C5D782031420684016F16A /* Pods-DiaryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiaryTests.debug.xcconfig"; path = "Target Support Files/Pods-DiaryTests/Pods-DiaryTests.debug.xcconfig"; sourceTree = "<group>"; };
-		618697B198313DB878253119 /* Pods_DiaryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DiaryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6ED60B9A0A54110A3B9AB519 /* Pods-DiaryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiaryTests.release.xcconfig"; path = "Target Support Files/Pods-DiaryTests/Pods-DiaryTests.release.xcconfig"; sourceTree = "<group>"; };
-		83C97B0EFA05697C91051610 /* Pods_Diary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		91CC099396B74D1953E6B3E2 /* Pods-Diary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diary.debug.xcconfig"; path = "Target Support Files/Pods-Diary/Pods-Diary.debug.xcconfig"; sourceTree = "<group>"; };
-		932471D4C67C3272795AF75F /* Pods-DiaryUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiaryUITests.release.xcconfig"; path = "Target Support Files/Pods-DiaryUITests/Pods-DiaryUITests.release.xcconfig"; sourceTree = "<group>"; };
-		AEBECFFC7174D39671973803 /* Pods_DiaryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DiaryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BB20961A4E1716A85E7D23ED /* Pods-Diary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diary.release.xcconfig"; path = "Target Support Files/Pods-Diary/Pods-Diary.release.xcconfig"; sourceTree = "<group>"; };
-		D01F90511B8931DBBF1329FD /* Pods-DiaryUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiaryUITests.debug.xcconfig"; path = "Target Support Files/Pods-DiaryUITests/Pods-DiaryUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +110,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8614E1B8153CE381B50CA959 /* Pods_Diary.framework in Frameworks */,
+				1B88336B23A3D7A800F6F73F /* SWXMLHash.framework in Frameworks */,
+				1B88336923A3D79D00F6F73F /* JBDatePicker.framework in Frameworks */,
+				1B88336723A3D78F00F6F73F /* RxCocoa.framework in Frameworks */,
+				1B88336523A3D78300F6F73F /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,7 +121,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0EF475C0A3A8B2F1824D703 /* Pods_DiaryTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,7 +128,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				174DCD459BF63C1EC0EDB5DC /* Pods_DiaryUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,9 +334,10 @@
 		50E545926C9D892A0931BB40 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				83C97B0EFA05697C91051610 /* Pods_Diary.framework */,
-				618697B198313DB878253119 /* Pods_DiaryTests.framework */,
-				AEBECFFC7174D39671973803 /* Pods_DiaryUITests.framework */,
+				1B88336A23A3D7A800F6F73F /* SWXMLHash.framework */,
+				1B88336823A3D79D00F6F73F /* JBDatePicker.framework */,
+				1B88336623A3D78F00F6F73F /* RxCocoa.framework */,
+				1B88336423A3D78200F6F73F /* RxSwift.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -347,12 +345,6 @@
 		7C9BFF792C5B4A2BE4D7426B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				91CC099396B74D1953E6B3E2 /* Pods-Diary.debug.xcconfig */,
-				BB20961A4E1716A85E7D23ED /* Pods-Diary.release.xcconfig */,
-				47C5D782031420684016F16A /* Pods-DiaryTests.debug.xcconfig */,
-				6ED60B9A0A54110A3B9AB519 /* Pods-DiaryTests.release.xcconfig */,
-				D01F90511B8931DBBF1329FD /* Pods-DiaryUITests.debug.xcconfig */,
-				932471D4C67C3272795AF75F /* Pods-DiaryUITests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -364,11 +356,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1B1054CC231D51E40067E7AF /* Build configuration list for PBXNativeTarget "Diary" */;
 			buildPhases = (
-				4490218AC7E05C1A2F8BEA8A /* [CP] Check Pods Manifest.lock */,
 				1B1054A0231D51E20067E7AF /* Sources */,
 				1B1054A1231D51E20067E7AF /* Frameworks */,
 				1B1054A2231D51E20067E7AF /* Resources */,
-				FE91E9C633ABC37C20E33B2E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -542,64 +532,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4490218AC7E05C1A2F8BEA8A /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Diary-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FE91E9C633ABC37C20E33B2E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Diary/Pods-Diary-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/JBDatePicker/JBDatePicker.framework",
-				"${BUILT_PRODUCTS_DIR}/RAMAnimatedTabBarController/RAMAnimatedTabBarController.framework",
-				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SWXMLHash/SWXMLHash.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JBDatePicker.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RAMAnimatedTabBarController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWXMLHash.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Diary/Pods-Diary-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -795,11 +727,14 @@
 		};
 		1B1054CD231D51E40067E7AF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 91CC099396B74D1953E6B3E2 /* Pods-Diary.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DH8AS82JB4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Diary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -814,11 +749,14 @@
 		};
 		1B1054CE231D51E40067E7AF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB20961A4E1716A85E7D23ED /* Pods-Diary.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DH8AS82JB4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Diary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -833,7 +771,6 @@
 		};
 		1B1054D0231D51E40067E7AF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 47C5D782031420684016F16A /* Pods-DiaryTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -855,7 +792,6 @@
 		};
 		1B1054D1231D51E40067E7AF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6ED60B9A0A54110A3B9AB519 /* Pods-DiaryTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -877,7 +813,6 @@
 		};
 		1B1054D3231D51E40067E7AF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D01F90511B8931DBBF1329FD /* Pods-DiaryUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -898,7 +833,6 @@
 		};
 		1B1054D4231D51E40067E7AF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 932471D4C67C3272795AF75F /* Pods-DiaryUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

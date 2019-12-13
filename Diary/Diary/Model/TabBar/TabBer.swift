@@ -6,9 +6,9 @@
 //  Copyright © 2019年 futami. All rights reserved.
 //
 
-typealias Footer = RamBounceAnimation.StoryBoard
+typealias Footer = TabBer.StoryBoard
 
-class RamBounceAnimation {
+class TabBer {
     enum StoryBoard: CaseIterable {
         case diary
         case memories
