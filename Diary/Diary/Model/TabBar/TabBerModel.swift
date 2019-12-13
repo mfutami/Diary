@@ -5,19 +5,10 @@
 //  Created by futami on 2019/09/05.
 //  Copyright © 2019年 futami. All rights reserved.
 //
-
-import RAMAnimatedTabBarController
-
-protocol TabBarProtocol: RAMItemAnimationProtocol {
-    func playAnimation(_ icon: UIImageView, textLabel: UILabel)
-    func deselectAnimation(_ icon: UIImageView, textLabel: UILabel, defaultTextColor: UIColor, defaultIconColor: UIColor)
-    func selectedState(_ icon: UIImageView, textLabel: UILabel)
-}
+import UIKit
 
 // MARK - UITabBarController
 class TabBerModel: UITabBarController {
-    private var ramAnimation = RAMItemAnimation()
-    private var ramBounceAnimation = RAMBounceAnimation()
     
     var footerTabBer: [UIViewController] = []
     // タブバーの設定を各画面ごとに設定
