@@ -57,7 +57,6 @@ opt_in_rules:
 file_name:
   excluded:
     - LinuxShims.swift
-    - shim.swift
 
 excluded:
   - Carthage

@@ -7,21 +7,29 @@
 //
 
 import UIKit
-import SWXMLHash
 import RxSwift
 import RxCocoa
+import SWXMLHash
 
 class NewsViewController: UIViewController, XMLParserDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     
-    let url = "https://toyokeizai.net/list/feed/rss"
+    private var newsArrey = [Any]()
+    
+    var viewModel = NewsViewModel()
+
     private let backgroundScheduler = ConcurrentDispatchQueueScheduler(qos: .background)
     private let disposeBag = DisposeBag()
     
     var newsTitle = [String]()
     var newsLink = [String]()
     var newsImage = [String]()
+    
+    var topPadding: CGFloat = 0
+    
+    var urlString: String?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +39,13 @@ class NewsViewController: UIViewController, XMLParserDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.xmlPaser()
+        self.xmlPaserRx()
+    }
+    
+    deinit {
+        self.newsTitle = [""]
+        self.newsImage = [""]
+        self.newsLink = [""]
     }
     // Navugation Bar
     func setupNavigation(_ setTitle: navigationTitle) {
@@ -41,20 +55,24 @@ class NewsViewController: UIViewController, XMLParserDelegate {
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
     }
     
-    func xmlPaser() {
-        Alamofire.request(self.url,method: .get, parameters: nil).response { response in
-            guard let date = response.data else { return }
-            let xml = SWXMLHash.parse(date)
-            for xmls in xml["rss"]["channel"]["item"].all {
-                guard let title = xmls["title"].element?.text,
-                    let link = xmls["link"].element?.text,
-                let image = xmls["enclosure"].element?.attribute(by: "url")?.text else { return }
-                self.newsTitle.append(title)
-                self.newsLink.append(link)
-                self.newsImage.append(image)
-            }
-            self.tableView.reloadData()
-        }
+    func xmlPaserRx() {
+        self.viewModel.xmlPaserRxSwift()
+            .subscribeOn(backgroundScheduler)
+            .observeOn(MainScheduler.instance)
+            .subscribe (onNext:{[weak self] date in
+                guard let wself = self else { return }
+                let xml = SWXMLHash.parse(date)
+                for xmls in xml["rss"]["channel"]["item"].all {
+                    guard let title = xmls["title"].element?.text,
+                        let link = xmls["link"].element?.text,
+                        let image = xmls["enclosure"].element?.attribute(by: "url")?.text else { return }
+                    wself.newsTitle.append(title)
+                    wself.newsLink.append(link)
+                    wself.newsImage.append(image)
+                }
+                wself.tableView.reloadData()
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -68,14 +86,9 @@ extension NewsViewController {
         self.tableView.backgroundColor = .clear
         
         self.tableView.dataSource = self
-        self.tableViewHight()
-    }
-    
-    func tableViewHight() {
-        self.tableViewHeight.constant = self.tableView.contentSize.height
+        self.tableView.delegate = self
     }
 }
-
 extension NewsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.newsTitle.count
@@ -87,11 +100,18 @@ extension NewsViewController: UITableViewDataSource {
         cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         if let newsCell = cell as? NewsTableViewCell {
             let newsTitle = self.newsTitle[indexPath.row]
-            let newsLink = self.newsLink[indexPath.row]
             let newsImage = self.newsImage[indexPath.row]
-            newsCell.setupCell(title: newsTitle, imageUrl: newsImage, link: newsLink)
+            newsCell.setupCell(title: newsTitle, imageUrl: newsImage)
         }
         return cell
     }
 }
-
+extension NewsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.urlString = self.newsLink[indexPath.row]
+        guard let viewController = WebView.presentWebView(self.urlString) else { return }
+        self.present(viewController, animated: true, completion: nil)
+        // cell選択状態解除
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}

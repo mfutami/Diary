@@ -1,3 +1,3 @@
 github "ReactiveX/RxSwift" "4.5.0"
 github "Tuslareb/JBDatePicker" "1.2.5"
-github "drmohundro/SWXMLHash" "5.0.1"
+github "drmohundro/SWXMLHash" "4.9.0"
