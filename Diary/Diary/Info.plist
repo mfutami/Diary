@@ -20,8 +20,12 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppleEventsUsageDescription</key>
+	<string></string>
 	<key>NSCameraUsageDescription</key>
 	<string>問題等ありませんでしたらOKボタンを押してください</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>位置情報を取得します。</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>問題等ありませんでしたらOKボタンを押してください</string>
 	<key>UIAppFonts</key>

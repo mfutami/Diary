@@ -22,6 +22,8 @@ class NewsViewController: UIViewController, XMLParserDelegate {
     private let backgroundScheduler = ConcurrentDispatchQueueScheduler(qos: .background)
     private let disposeBag = DisposeBag()
     
+    private let indicator = Indicator()
+    
     var newsTitle = [String]()
     var newsLink = [String]()
     var newsImage = [String]()
@@ -29,24 +31,40 @@ class NewsViewController: UIViewController, XMLParserDelegate {
     var topPadding: CGFloat = 0
     
     var urlString: String?
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupNavigation(.news)
         self.setupTableView()
+        self.indicator.indicatorSetup(self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        let notification = NotificationCenter.default
+        notification.addObserver(self,
+                                 selector: #selector(self.willEnterForeground(_:)),
+                                 name: UIApplication.willEnterForegroundNotification,
+                                 object: nil)
+        notification.addObserver(self,
+                                 selector: #selector(self.didEnterBackground(_:)),
+                                 name: UIApplication.didEnterBackgroundNotification,
+                                 object: nil)
         self.xmlPaserRx()
     }
     
-    deinit {
-        self.newsTitle = [""]
-        self.newsImage = [""]
-        self.newsLink = [""]
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.removeDate()
     }
+    
+    func removeDate() {
+        self.newsTitle.removeAll()
+        self.newsLink.removeAll()
+        self.newsImage.removeAll()
+        self.tableView.reloadData()
+    }
+    
     // Navugation Bar
     func setupNavigation(_ setTitle: navigationTitle) {
         self.title = setTitle.title
@@ -56,6 +74,7 @@ class NewsViewController: UIViewController, XMLParserDelegate {
     }
     
     func xmlPaserRx() {
+        self.indicator.start()
         self.viewModel.xmlPaserRxSwift()
             .subscribeOn(backgroundScheduler)
             .observeOn(MainScheduler.instance)
@@ -70,9 +89,18 @@ class NewsViewController: UIViewController, XMLParserDelegate {
                     wself.newsLink.append(link)
                     wself.newsImage.append(image)
                 }
+                wself.indicator.stop()
                 wself.tableView.reloadData()
             })
             .disposed(by: disposeBag)
+    }
+    
+    @objc func didEnterBackground(_ notification: Notification?) {
+        self.removeDate()
+    }
+    
+    @objc func willEnterForeground(_ notification: Notification?) {
+        self.xmlPaserRx()
     }
 }
 
@@ -84,11 +112,13 @@ extension NewsViewController {
         self.tableView.separatorStyle = .singleLine
         self.tableView.allowsSelection = true
         self.tableView.backgroundColor = .clear
+        self.tableView.separatorStyle = .none
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
     }
 }
+// MARK: - UITableViewDataSource
 extension NewsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.newsTitle.count
@@ -106,6 +136,7 @@ extension NewsViewController: UITableViewDataSource {
         return cell
     }
 }
+// MARK: - UITableViewDelegate
 extension NewsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.urlString = self.newsLink[indexPath.row]

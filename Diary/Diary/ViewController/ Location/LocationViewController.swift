@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
 class LocationViewController: UIViewController {
+    
+    private var location = CLLocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupNavigation(.location)
+        self.location.delegate = self
     }
     // Navugation Bar
     func setupNavigation(_ setTitle: navigationTitle) {
@@ -22,15 +27,9 @@ class LocationViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+}
+extension LocationViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("きたよ")
     }
-    */
-
 }

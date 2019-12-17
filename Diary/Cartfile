@@ -1,3 +1,4 @@
 github "drmohundro/SWXMLHash" ~> 4.0
 github "ReactiveX/RxSwift" ~> 4.0
 github "Tuslareb/JBDatePicker"
+github "ninjaprox/NVActivityIndicatorView"
