@@ -50,7 +50,7 @@ class MemoriesViewController: UIViewController {
     func setupPhotoIageView() {
         self.photoImageView.layer.cornerRadius = 15
         self.photoImageView.clipsToBounds = true
-        self.photoImageView.layer.borderWidth = 1
+        self.photoImageView.layer.borderWidth = 2
         self.photoImageView.layer.borderColor = UIColor.white.cgColor
     }
     

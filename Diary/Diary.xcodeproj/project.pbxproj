@@ -40,6 +40,8 @@
 		1B2F08B923215A07002BAF6E /* Memories.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B2F08B823215A07002BAF6E /* Memories.storyboard */; };
 		1B2FE998236C6CB000677ACA /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2FE996236C6CB000677ACA /* NewsTableViewCell.swift */; };
 		1B2FE999236C6CB000677ACA /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B2FE997236C6CB000677ACA /* NewsTableViewCell.xib */; };
+		1B55E7C623AA601A00D8402C /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B55E7C523AA601A00D8402C /* LocationViewModel.swift */; };
+		1B55E7C823AA608900D8402C /* Location.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B55E7C723AA608900D8402C /* Location.strings */; };
 		1B5698F123A66E560095C7D3 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5698F023A66E560095C7D3 /* NVActivityIndicatorView.framework */; };
 		1B5698F323A66F7B0095C7D3 /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5698F223A66F7B0095C7D3 /* Indicator.swift */; };
 		1BAF7B4823A3DD30003C8A59 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAF7B4723A3DD30003C8A59 /* WebViewController.swift */; };
@@ -103,6 +105,8 @@
 		1B2F08B823215A07002BAF6E /* Memories.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Memories.storyboard; sourceTree = "<group>"; };
 		1B2FE996236C6CB000677ACA /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		1B2FE997236C6CB000677ACA /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
+		1B55E7C523AA601A00D8402C /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
+		1B55E7C723AA608900D8402C /* Location.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Location.strings; sourceTree = "<group>"; };
 		1B5698F023A66E560095C7D3 /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorView.framework; path = Carthage/Build/iOS/NVActivityIndicatorView.framework; sourceTree = "<group>"; };
 		1B5698F223A66F7B0095C7D3 /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
 		1B6229BF23A514D500C15278 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -338,6 +342,7 @@
 			isa = PBXGroup;
 			children = (
 				1BC88DBA236EE6AF00C63F30 /* News */,
+				1B55E7C523AA601A00D8402C /* LocationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -346,6 +351,7 @@
 			isa = PBXGroup;
 			children = (
 				1BC88DB7236EE69B00C63F30 /* NewsViewModel.swift */,
+				1B55E7C723AA608900D8402C /* Location.strings */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -500,6 +506,7 @@
 				1B2894E9232531860090A221 /* Location.storyboard in Resources */,
 				1B28CF302369CFF300C756B0 /* home@2x.png in Resources */,
 				1B28CF322369D07000C756B0 /* news@2x.png in Resources */,
+				1B55E7C823AA608900D8402C /* Location.strings in Resources */,
 				1B28CF3A2369D59C00C756B0 /* ChalkboardSE.ttc in Resources */,
 				1B1054AD231D51E20067E7AF /* Diary.storyboard in Resources */,
 				1B2B939F2322AF710015CB8A /* TabBar.strings in Resources */,
@@ -600,6 +607,7 @@
 				1B1054AA231D51E20067E7AF /* DiaryViewController.swift in Sources */,
 				1BAF7B4C23A3DDF6003C8A59 /* WebView.swift in Sources */,
 				1B2F08B323215470002BAF6E /* MemoriesViewController.swift in Sources */,
+				1B55E7C623AA601A00D8402C /* LocationViewModel.swift in Sources */,
 				1B2FE998236C6CB000677ACA /* NewsTableViewCell.swift in Sources */,
 				1B2CAB7C232141C700590B47 /* TabBerModel.swift in Sources */,
 				1B1054A8231D51E20067E7AF /* AppDelegate.swift in Sources */,

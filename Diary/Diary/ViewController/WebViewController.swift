@@ -15,18 +15,9 @@ class WebViewController: UIViewController {
     var topPadding: CGFloat = 0
     var urlString: String?
     
-    //    var getUrlString: String? {
-    //        get {
-    //            return self.urlString
-    //        }
-    //        set {
-    //            self.urlString = newValue
-    //        }
-    //    }
     deinit {
         self.urlString = nil
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

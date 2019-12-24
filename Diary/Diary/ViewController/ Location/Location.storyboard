@@ -33,6 +33,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="rlT-n3-cvH"/>
                     <connections>
+                        <outlet property="mapView" destination="6VG-EK-f11" id="EcE-dL-2jP"/>
                         <outlet property="view" destination="6VG-EK-f11" id="auv-uG-X9F"/>
                     </connections>
                 </viewController>

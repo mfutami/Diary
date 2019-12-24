@@ -15,7 +15,7 @@ class DiaryViewController: UIViewController {
     // 時刻取得
     var dateFormatter: DateFormatter = {
         var formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd"
+        formatter.dateFormat = "yyyy/MM"
         return formatter
     }()
     
@@ -26,7 +26,8 @@ class DiaryViewController: UIViewController {
     }
     // Navugation Bar
     func setupNavigation(_ setTitle: navigationTitle) {
-        self.title = setTitle.title
+        // TODO: 前の月に移動した際にタイトルもその月になるようにする
+        self.title = setTitle.title + "~" + self.dateFormatter.string(from: Date())
         self.navigationController?.navigationBar.barTintColor = UIColor.white
         self.navigationController?.navigationBar.tintColor = UIColor.black
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
@@ -39,4 +40,10 @@ extension DiaryViewController: JBDatePickerViewDelegate {
         guard let dayView = dayView.date else { return }
         print("day selected:\(self.dateFormatter.string(from: dayView))")
     }
+    // 今日以外の選択中のボタンの色
+    var colorForSelectionCircleForOtherDate: UIColor { return .lightGray }
+    // 曜日欄の色をblack
+    var colorForWeekDaysViewBackground: UIColor { return .lightGray }
+    // 日にちのサイズ
+    var fontForDayLabel: JBFont { return JBFont(name: "Avenir", size: .small) }
 }
