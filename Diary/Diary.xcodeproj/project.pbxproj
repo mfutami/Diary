@@ -15,10 +15,6 @@
 		1B1054BD231D51E40067E7AF /* DiaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1054BC231D51E40067E7AF /* DiaryTests.swift */; };
 		1B1054C8231D51E40067E7AF /* DiaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1054C7231D51E40067E7AF /* DiaryUITests.swift */; };
 		1B1054D7231EA6660067E7AF /* TabBer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1054D6231EA6660067E7AF /* TabBer.swift */; };
-		1B17FC2223A5BECE00100198 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B88336A23A3D7A800F6F73F /* SWXMLHash.framework */; };
-		1B17FC2323A5BED400100198 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B88336623A3D78F00F6F73F /* RxCocoa.framework */; };
-		1B17FC2423A5BED800100198 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B88336423A3D78200F6F73F /* RxSwift.framework */; };
-		1B17FC2523A5BEDE00100198 /* JBDatePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B88336823A3D79D00F6F73F /* JBDatePicker.framework */; };
 		1B2894E1232531370090A221 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2894E0232531370090A221 /* NewsViewController.swift */; };
 		1B2894E32325314C0090A221 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2894E22325314C0090A221 /* LocationViewController.swift */; };
 		1B2894E5232531570090A221 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2894E4232531570090A221 /* HomeViewController.swift */; };
@@ -40,9 +36,22 @@
 		1B2F08B923215A07002BAF6E /* Memories.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B2F08B823215A07002BAF6E /* Memories.storyboard */; };
 		1B2FE998236C6CB000677ACA /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2FE996236C6CB000677ACA /* NewsTableViewCell.swift */; };
 		1B2FE999236C6CB000677ACA /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B2FE997236C6CB000677ACA /* NewsTableViewCell.xib */; };
+		1B4409B423BE354D008BC07C /* JBDatePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B88336823A3D79D00F6F73F /* JBDatePicker.framework */; };
+		1B4409B523BE354D008BC07C /* JBDatePicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B88336823A3D79D00F6F73F /* JBDatePicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1B4409B723BE3564008BC07C /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5698F023A66E560095C7D3 /* NVActivityIndicatorView.framework */; };
+		1B4409B823BE3564008BC07C /* NVActivityIndicatorView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5698F023A66E560095C7D3 /* NVActivityIndicatorView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1B4409B923BE3581008BC07C /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B88336623A3D78F00F6F73F /* RxCocoa.framework */; };
+		1B4409BA23BE3581008BC07C /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B88336623A3D78F00F6F73F /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1B4409BB23BE3593008BC07C /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B88336423A3D78200F6F73F /* RxSwift.framework */; };
+		1B4409BC23BE3593008BC07C /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B88336423A3D78200F6F73F /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1B4409BD23BE35A2008BC07C /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B88336A23A3D7A800F6F73F /* SWXMLHash.framework */; };
+		1B4409BE23BE35A2008BC07C /* SWXMLHash.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B88336A23A3D7A800F6F73F /* SWXMLHash.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1B4409C023BE3623008BC07C /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B4409BF23BE3623008BC07C /* RxRelay.framework */; };
+		1B4409C123BE3623008BC07C /* RxRelay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B4409BF23BE3623008BC07C /* RxRelay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1B53D77523B39ED100DA6E91 /* create@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B53D77423B39ED100DA6E91 /* create@2x.png */; };
+		1B55298723B5D810000BF3C8 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B55298623B5D810000BF3C8 /* Splash.storyboard */; };
 		1B55E7C623AA601A00D8402C /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B55E7C523AA601A00D8402C /* LocationViewModel.swift */; };
 		1B55E7C823AA608900D8402C /* Location.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B55E7C723AA608900D8402C /* Location.strings */; };
-		1B5698F123A66E560095C7D3 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5698F023A66E560095C7D3 /* NVActivityIndicatorView.framework */; };
 		1B5698F323A66F7B0095C7D3 /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5698F223A66F7B0095C7D3 /* Indicator.swift */; };
 		1BAF7B4823A3DD30003C8A59 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAF7B4723A3DD30003C8A59 /* WebViewController.swift */; };
 		1BAF7B4A23A3DD7F003C8A59 /* WebView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BAF7B4923A3DD7F003C8A59 /* WebView.storyboard */; };
@@ -68,6 +77,25 @@
 			remoteInfo = Diary;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1B4409B623BE354D008BC07C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1B4409BC23BE3593008BC07C /* RxSwift.framework in Embed Frameworks */,
+				1B4409BA23BE3581008BC07C /* RxCocoa.framework in Embed Frameworks */,
+				1B4409C123BE3623008BC07C /* RxRelay.framework in Embed Frameworks */,
+				1B4409B823BE3564008BC07C /* NVActivityIndicatorView.framework in Embed Frameworks */,
+				1B4409B523BE354D008BC07C /* JBDatePicker.framework in Embed Frameworks */,
+				1B4409BE23BE35A2008BC07C /* SWXMLHash.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1B1054A4231D51E20067E7AF /* Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +133,9 @@
 		1B2F08B823215A07002BAF6E /* Memories.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Memories.storyboard; sourceTree = "<group>"; };
 		1B2FE996236C6CB000677ACA /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		1B2FE997236C6CB000677ACA /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
+		1B4409BF23BE3623008BC07C /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
+		1B53D77423B39ED100DA6E91 /* create@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "create@2x.png"; sourceTree = "<group>"; };
+		1B55298623B5D810000BF3C8 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		1B55E7C523AA601A00D8402C /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		1B55E7C723AA608900D8402C /* Location.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Location.strings; sourceTree = "<group>"; };
 		1B5698F023A66E560095C7D3 /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorView.framework; path = Carthage/Build/iOS/NVActivityIndicatorView.framework; sourceTree = "<group>"; };
@@ -127,11 +158,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B5698F123A66E560095C7D3 /* NVActivityIndicatorView.framework in Frameworks */,
-				1B17FC2523A5BEDE00100198 /* JBDatePicker.framework in Frameworks */,
-				1B17FC2223A5BECE00100198 /* SWXMLHash.framework in Frameworks */,
-				1B17FC2323A5BED400100198 /* RxCocoa.framework in Frameworks */,
-				1B17FC2423A5BED800100198 /* RxSwift.framework in Frameworks */,
+				1B4409BB23BE3593008BC07C /* RxSwift.framework in Frameworks */,
+				1B4409B923BE3581008BC07C /* RxCocoa.framework in Frameworks */,
+				1B4409C023BE3623008BC07C /* RxRelay.framework in Frameworks */,
+				1B4409B723BE3564008BC07C /* NVActivityIndicatorView.framework in Frameworks */,
+				1B4409B423BE354D008BC07C /* JBDatePicker.framework in Frameworks */,
+				1B4409BD23BE35A2008BC07C /* SWXMLHash.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +250,7 @@
 				1B2B939D2322AEF10015CB8A /* Strings */,
 				1BAF7B4B23A3DDF6003C8A59 /* WebView.swift */,
 				1BAF7B4D23A3DE6D003C8A59 /* Splash.swift */,
+				1B55298623B5D810000BF3C8 /* Splash.storyboard */,
 				1BAF7B4F23A3E564003C8A59 /* NewsStatus.swift */,
 			);
 			path = Model;
@@ -284,6 +317,7 @@
 				1B28CF332369D0CE00C756B0 /* camera@2x.png */,
 				1B28CF312369D07000C756B0 /* news@2x.png */,
 				1B28CF2F2369CFF200C756B0 /* home@2x.png */,
+				1B53D77423B39ED100DA6E91 /* create@2x.png */,
 			);
 			path = image;
 			sourceTree = "<group>";
@@ -359,6 +393,7 @@
 		50E545926C9D892A0931BB40 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1B4409BF23BE3623008BC07C /* RxRelay.framework */,
 				1B5698F023A66E560095C7D3 /* NVActivityIndicatorView.framework */,
 				1B6229BF23A514D500C15278 /* AVFoundation.framework */,
 				1B88336A23A3D7A800F6F73F /* SWXMLHash.framework */,
@@ -398,6 +433,7 @@
 				1B1054A1231D51E20067E7AF /* Frameworks */,
 				1B1054A2231D51E20067E7AF /* Resources */,
 				1B17FC2623A5C0C300100198 /* ShellScript */,
+				1B4409B623BE354D008BC07C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -496,6 +532,7 @@
 			files = (
 				1B1054B2231D51E40067E7AF /* LaunchScreen.storyboard in Resources */,
 				1B2894EB232531920090A221 /* Home.storyboard in Resources */,
+				1B55298723B5D810000BF3C8 /* Splash.storyboard in Resources */,
 				1BAF7B4A23A3DD7F003C8A59 /* WebView.storyboard in Resources */,
 				1B1054AF231D51E40067E7AF /* Assets.xcassets in Resources */,
 				1B28CF342369D0CE00C756B0 /* camera@2x.png in Resources */,
@@ -503,6 +540,7 @@
 				1B28CF382369D1A200C756B0 /* diary@2x.png in Resources */,
 				1B2894E7232531670090A221 /* News.storyboard in Resources */,
 				1B28CF362369D12C00C756B0 /* location@2x.png in Resources */,
+				1B53D77523B39ED100DA6E91 /* create@2x.png in Resources */,
 				1B2894E9232531860090A221 /* Location.storyboard in Resources */,
 				1B28CF302369CFF300C756B0 /* home@2x.png in Resources */,
 				1B28CF322369D07000C756B0 /* news@2x.png in Resources */,

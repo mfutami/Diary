@@ -22,6 +22,8 @@ class NewsViewController: UIViewController, XMLParserDelegate {
     private let backgroundScheduler = ConcurrentDispatchQueueScheduler(qos: .background)
     private let disposeBag = DisposeBag()
     
+    private let refreshControl = UIRefreshControl()
+    
     private let indicator = Indicator()
     
     var newsTitle = [String]()
@@ -37,6 +39,7 @@ class NewsViewController: UIViewController, XMLParserDelegate {
         self.setupNavigation(.news)
         self.setupTableView()
         self.indicator.indicatorSetup(self)
+        self.refreshControll()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,7 +53,10 @@ class NewsViewController: UIViewController, XMLParserDelegate {
                                  selector: #selector(self.didEnterBackground(_:)),
                                  name: UIApplication.didEnterBackgroundNotification,
                                  object: nil)
-        self.xmlPaserRx()
+        self.xmlPaserRx { [weak self] in
+            guard let wself = self else { return }
+            wself.tableView.reloadData()
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -65,6 +71,22 @@ class NewsViewController: UIViewController, XMLParserDelegate {
         self.tableView.reloadData()
     }
     
+    func refreshControll() {
+        self.refreshControl.addTarget(self, action: #selector(self.refresh(sender:)), for: .valueChanged)
+        self.tableView.addSubview(self.refreshControl)
+    }
+    
+    @objc func refresh(sender: UIRefreshControl) {
+        self.removeDate()
+        self.xmlPaserRx { [weak self] in
+            guard let wself = self else { return }
+            if wself.refreshControl.isRefreshing {
+                wself.tableView.reloadData()
+                wself.refreshControl.endRefreshing()
+            }
+        }
+    }
+    
     // Navugation Bar
     func setupNavigation(_ setTitle: navigationTitle) {
         self.title = setTitle.title
@@ -73,7 +95,7 @@ class NewsViewController: UIViewController, XMLParserDelegate {
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
     }
     
-    func xmlPaserRx() {
+    func xmlPaserRx(completion: (() -> Void)? = nil) {
         self.indicator.start()
         self.viewModel.xmlPaserRxSwift()
             .subscribeOn(backgroundScheduler)
@@ -90,7 +112,7 @@ class NewsViewController: UIViewController, XMLParserDelegate {
                     wself.newsImage.append(image)
                 }
                 wself.indicator.stop()
-                wself.tableView.reloadData()
+                completion?()
             })
             .disposed(by: disposeBag)
     }
@@ -100,7 +122,10 @@ class NewsViewController: UIViewController, XMLParserDelegate {
     }
     
     @objc func willEnterForeground(_ notification: Notification?) {
-        self.xmlPaserRx()
+        self.xmlPaserRx { [weak self] in
+            guard let wself = self else { return }
+            wself.tableView.reloadData()
+        }
     }
 }
 
@@ -113,6 +138,8 @@ extension NewsViewController {
         self.tableView.allowsSelection = true
         self.tableView.backgroundColor = .clear
         self.tableView.separatorStyle = .none
+        
+        self.tableView.alwaysBounceVertical = true
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -145,4 +172,5 @@ extension NewsViewController: UITableViewDelegate {
         // cell選択状態解除
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
 }

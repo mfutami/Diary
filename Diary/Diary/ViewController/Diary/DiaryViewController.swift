@@ -11,7 +11,10 @@ import JBDatePicker
 
 class DiaryViewController: UIViewController {
     
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var diaryView: JBDatePickerView!
+    @IBOutlet weak var createImage: UIImageView!
+    @IBOutlet weak var beaseView: UIView!
     // 時刻取得
     var dateFormatter: DateFormatter = {
         var formatter = DateFormatter()
@@ -23,14 +26,39 @@ class DiaryViewController: UIViewController {
         super.viewDidLoad()
         self.setupNavigation(.diary)
         self.diaryView.delegate = self
+        self.setupImage()
+        self.setupTableView()
     }
     // Navugation Bar
     func setupNavigation(_ setTitle: navigationTitle) {
         // TODO: 前の月に移動した際にタイトルもその月になるようにする
-        self.title = setTitle.title + "~" + self.dateFormatter.string(from: Date())
+        self.title = setTitle.title
         self.navigationController?.navigationBar.barTintColor = UIColor.white
         self.navigationController?.navigationBar.tintColor = UIColor.black
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
+    }
+}
+extension DiaryViewController {
+    func setupTableView() {
+        self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.separatorStyle = .singleLine
+        self.tableView.backgroundColor = .clear
+        self.tableView.separatorStyle = .none
+        self.tableView.layer.borderColor = UIColor.lightGray.cgColor
+        
+        self.tableView.allowsSelection = true
+        self.tableView.alwaysBounceVertical = true
+        
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+    }
+    
+    func setupImage() {
+        self.createImage.image = UIImage(named: "create")
+        self.createImage.tintColor = UIColor.lightGray
+        
+        self.beaseView.layer.borderColor = UIColor.lightGray.cgColor
+        self.beaseView.layer.borderWidth = 1
     }
 }
 
@@ -46,4 +74,20 @@ extension DiaryViewController: JBDatePickerViewDelegate {
     var colorForWeekDaysViewBackground: UIColor { return .lightGray }
     // 日にちのサイズ
     var fontForDayLabel: JBFont { return JBFont(name: "Avenir", size: .small) }
+}
+
+extension DiaryViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    
+    
+}
+
+extension DiaryViewController: UITableViewDelegate {
+    
 }

@@ -38,7 +38,20 @@ class Splash: UIViewController {
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.fromValue = 0.0
         animation.toValue = 1.0
-        animation.duration = 60.0
+        animation.duration = 3.0
         secondLayer.add(animation, forKey: "strokeCircle")
+        
+        // CADisplayLink設定
+        let displayLink = CADisplayLink(target: self, selector: #selector(update(_:)))
+        displayLink.preferredFramesPerSecond = 60   // FPS設定
+        displayLink.add(to: RunLoop.current, forMode: RunLoop.Mode.common)
+    }
+    
+    @objc func update(_ displayLink: CADisplayLink) {
+        // timeOffsetに現在時刻の秒数を設定
+        let time = Date().timeIntervalSince1970
+        let seconds = floor(time).truncatingRemainder(dividingBy: 60)
+        let milliseconds = time - floor(time)
+        secondLayer.timeOffset = seconds + milliseconds
     }
 }
