@@ -50,6 +50,8 @@
 		1B4409C123BE3623008BC07C /* RxRelay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B4409BF23BE3623008BC07C /* RxRelay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1B53D77523B39ED100DA6E91 /* create@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B53D77423B39ED100DA6E91 /* create@2x.png */; };
 		1B55298723B5D810000BF3C8 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B55298623B5D810000BF3C8 /* Splash.storyboard */; };
+		1B55B3E923BF8B5C005835E4 /* LTMorphingLabel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B55B3E823BF8B5B005835E4 /* LTMorphingLabel.framework */; };
+		1B55B3EA23BF8B5C005835E4 /* LTMorphingLabel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B55B3E823BF8B5B005835E4 /* LTMorphingLabel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1B55E7C623AA601A00D8402C /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B55E7C523AA601A00D8402C /* LocationViewModel.swift */; };
 		1B55E7C823AA608900D8402C /* Location.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B55E7C723AA608900D8402C /* Location.strings */; };
 		1B5698F323A66F7B0095C7D3 /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5698F223A66F7B0095C7D3 /* Indicator.swift */; };
@@ -86,6 +88,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				1B4409BC23BE3593008BC07C /* RxSwift.framework in Embed Frameworks */,
+				1B55B3EA23BF8B5C005835E4 /* LTMorphingLabel.framework in Embed Frameworks */,
 				1B4409BA23BE3581008BC07C /* RxCocoa.framework in Embed Frameworks */,
 				1B4409C123BE3623008BC07C /* RxRelay.framework in Embed Frameworks */,
 				1B4409B823BE3564008BC07C /* NVActivityIndicatorView.framework in Embed Frameworks */,
@@ -136,6 +139,7 @@
 		1B4409BF23BE3623008BC07C /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		1B53D77423B39ED100DA6E91 /* create@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "create@2x.png"; sourceTree = "<group>"; };
 		1B55298623B5D810000BF3C8 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
+		1B55B3E823BF8B5B005835E4 /* LTMorphingLabel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LTMorphingLabel.framework; path = Carthage/Build/iOS/LTMorphingLabel.framework; sourceTree = "<group>"; };
 		1B55E7C523AA601A00D8402C /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		1B55E7C723AA608900D8402C /* Location.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Location.strings; sourceTree = "<group>"; };
 		1B5698F023A66E560095C7D3 /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorView.framework; path = Carthage/Build/iOS/NVActivityIndicatorView.framework; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B4409BB23BE3593008BC07C /* RxSwift.framework in Frameworks */,
+				1B55B3E923BF8B5C005835E4 /* LTMorphingLabel.framework in Frameworks */,
 				1B4409B923BE3581008BC07C /* RxCocoa.framework in Frameworks */,
 				1B4409C023BE3623008BC07C /* RxRelay.framework in Frameworks */,
 				1B4409B723BE3564008BC07C /* NVActivityIndicatorView.framework in Frameworks */,
@@ -393,6 +398,7 @@
 		50E545926C9D892A0931BB40 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1B55B3E823BF8B5B005835E4 /* LTMorphingLabel.framework */,
 				1B4409BF23BE3623008BC07C /* RxRelay.framework */,
 				1B5698F023A66E560095C7D3 /* NVActivityIndicatorView.framework */,
 				1B6229BF23A514D500C15278 /* AVFoundation.framework */,

@@ -7,51 +7,68 @@
 //
 
 import UIKit
+import LTMorphingLabel
 
 class Splash: UIViewController {
-    private let secondLayer = CAShapeLayer()
+    @IBOutlet weak var ltmorphingLabel: LTMorphingLabel!
+    //表示制御用タイマー
+    private var timer: Timer?
+    //String配列のindex用
+    private var index: Int = 0
+    //表示するString配列
+    private let textList = ["Let's", "Let's remember today"]
+    let tabBarModel = TabBerModel()
+    
+    var window: UIWindow?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let frame = view.frame
-        let path = UIBezierPath()
-        // Double.pi → 円周率
-        /**
-         - parameter - withCenter: 円の中心点
-         - radius: 円の半径指定
-         - startAngle: 弧の開始角度を指定
-         - endAngle: 弧の終了角度を指定
-         - clockwise: 方向
-         */
-        path.addArc(withCenter: CGPoint(x: frame.midX, y: frame.midY),
-                    radius: frame.width / 2.0 - 20.0,
-                    startAngle: CGFloat(-Double.pi / 2),
-                    endAngle: CGFloat(Double.pi + Double.pi / 2),
-                    clockwise: true)
-        secondLayer.path = path.cgPath
-        secondLayer.strokeColor = UIColor.black.cgColor
-        secondLayer.fillColor = UIColor.clear.cgColor
-        secondLayer.speed = 0.0
-        view.layer.addSublayer(secondLayer)
+        let viewControllers: [UIViewController] = self.tabBarModel.setupTabBar()
         
+        let tabBarController = UITabBarController()
+        tabBarController.setViewControllers(viewControllers, animated: false)
         
-        // 円を描くアニメーション
-        let animation = CABasicAnimation(keyPath: "strokeEnd")
-        animation.fromValue = 0.0
-        animation.toValue = 1.0
-        animation.duration = 3.0
-        secondLayer.add(animation, forKey: "strokeCircle")
+        self.ltmorphingLabel.morphingEffect = .scale
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        //タイマーの追加
+        self.timer = Timer.scheduledTimer(timeInterval: 1.5,
+                                          target: self,
+                                          selector: #selector(update(timer:)), userInfo: nil,
+                                          repeats: true)
+        self.timer?.fire()
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         
-        // CADisplayLink設定
-        let displayLink = CADisplayLink(target: self, selector: #selector(update(_:)))
-        displayLink.preferredFramesPerSecond = 60   // FPS設定
-        displayLink.add(to: RunLoop.current, forMode: RunLoop.Mode.common)
+        self.timer?.invalidate()
     }
     
-    @objc func update(_ displayLink: CADisplayLink) {
-        // timeOffsetに現在時刻の秒数を設定
-        let time = Date().timeIntervalSince1970
-        let seconds = floor(time).truncatingRemainder(dividingBy: 60)
-        let milliseconds = time - floor(time)
-        secondLayer.timeOffset = seconds + milliseconds
+    @objc func update(timer: Timer) {
+        //ここでtextの更新
+        self.ltmorphingLabel.text = textList[self.index]
+        
+        self.index += 1
+        if self.index >= textList.count {
+            self.index = 0
+            self.timer?.invalidate()
+            // タイアー破棄後、2秒後にHOME画面表示
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [weak self] in
+                guard let viewControllers: [UIViewController] = self?.tabBarModel.setupTabBar() else { return }
+                
+                let tabBarController = UITabBarController()
+                tabBarController.setViewControllers(viewControllers, animated: false)
+                
+                self?.window = UIWindow(frame: UIScreen.main.bounds)
+                self?.window?.rootViewController = tabBarController
+                self?.window?.makeKeyAndVisible()
+                // 初期表示時homeタブが選択状態
+                if let tab = self?.window?.rootViewController as? UITabBarController  {
+                    tab.selectedIndex = 2
+                }
+            }
+            
+        }
     }
 }

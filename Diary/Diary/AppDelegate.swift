@@ -11,25 +11,7 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    var window: UIWindow?
-    
-    let tabBarModel = TabBerModel()
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Tab bar display
-//        let viewControllers: [UIViewController] = self.tabBarModel.setupTabBar()
-//
-//        let tabBarController = UITabBarController()
-//        tabBarController.setViewControllers(viewControllers, animated: false)
-//        
-//        window = UIWindow()
-//        window?.rootViewController = tabBarController
-//        window?.makeKeyAndVisible()
-//        // 初期表示時homeタブが選択状態
-//        if let tab = self.window?.rootViewController as? UITabBarController  {
-//            tab.selectedIndex = 2
-//        }
-        
         return true
     }
     

@@ -1,4 +1,5 @@
 github "ReactiveX/RxSwift" "5.0.1"
 github "Tuslareb/JBDatePicker" "1.2.5"
 github "drmohundro/SWXMLHash" "5.0.1"
+github "lexrus/LTMorphingLabel" "0.7.0"
 github "ninjaprox/NVActivityIndicatorView" "4.8.0"

@@ -1,0 +1,19 @@
+disabled_rules:
+  - todo
+  - force_cast
+  - trailing_whitespace
+  - colon
+  - identifier_name
+excluded:
+  - Carthage
+  - Pods
+line_length: 120
+function_body_length:
+  - 230
+  - 300
+type_body_length:
+  - 300
+  - 600
+file_length:
+  - 600
+  - 800

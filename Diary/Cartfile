@@ -2,4 +2,4 @@ github "drmohundro/SWXMLHash"
 github "ReactiveX/RxSwift"
 github "Tuslareb/JBDatePicker"
 github "ninjaprox/NVActivityIndicatorView"
-
+github "lexrus/LTMorphingLabel"
