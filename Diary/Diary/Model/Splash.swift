@@ -17,9 +17,10 @@ class Splash: UIViewController {
     private var index: Int = 0
     //表示するString配列
     private let textList = ["Let's", "Let's remember today"]
-    let tabBarModel = TabBerModel()
     
-    var window: UIWindow?
+    private let tabBarModel = TabBerModel()
+    
+    private var window: UIWindow?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,7 @@ class Splash: UIViewController {
         
         self.ltmorphingLabel.morphingEffect = .scale
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         //タイマーの追加
@@ -38,11 +40,6 @@ class Splash: UIViewController {
                                           selector: #selector(update(timer:)), userInfo: nil,
                                           repeats: true)
         self.timer?.fire()
-    }
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        self.timer?.invalidate()
     }
     
     @objc func update(timer: Timer) {
