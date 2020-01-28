@@ -24,10 +24,6 @@ class Splash: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let viewControllers: [UIViewController] = self.tabBarModel.setupTabBar()
-        
-        let tabBarController = UITabBarController()
-        tabBarController.setViewControllers(viewControllers, animated: false)
         
         self.ltmorphingLabel.morphingEffect = .scale
     }
