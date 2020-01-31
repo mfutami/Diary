@@ -29,14 +29,18 @@ class MemoriesViewController: UIViewController {
         self.setupDevice()
         self.setupInputOutput()
         self.setupPreviewLayer()
-        self.captureSession.startRunning()
         self.setupShutterButton()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.captureSession.startRunning()
         self.setupPhotoIageView()
         // 起動時は非表示
         self.photoImageView.isHidden = true
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.captureSession.stopRunning()
     }
     // Navugation Bar
     func setupNavigation(_ setTitle: navigationTitle) {
