@@ -9,3 +9,4 @@
 "errorDialogTitle" = "Error";
 "errorDialogMessage" = "位置情報サービスの使用を許可してください";
 "ok" = "OK";
+"cancel" = "キャンセル";

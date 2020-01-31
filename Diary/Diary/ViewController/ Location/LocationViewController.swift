@@ -74,12 +74,21 @@ class LocationViewController: UIViewController {
     }
     
     func setupErrorDialog() {
-        let dialog = UIAlertController(title: self.viewModel.errorDialogTitle , message: self.viewModel.errorDialogMessage, preferredStyle: .alert)
-        dialog.addAction(UIAlertAction(title: self.viewModel.okButtonTitle, style: .default, handler: { action in
-            self.onClickOkButton()
+        let dialog = UIAlertController(title: self.viewModel.errorDialogTitle,
+                                       message: self.viewModel.errorDialogMessage,
+                                       preferredStyle: .alert)
+        
+        dialog.addAction(UIAlertAction(title: self.viewModel.okButtonTitle, style: .default,
+                                       handler: { action in
+                                        self.onClickOkButton()
+        }))
+        dialog.addAction(UIAlertAction(title: self.viewModel.cancelButtonTitle, style: .cancel,
+                                       handler: { action in
+                                        self.dismiss(animated: true, completion: {
+                                            // TODO: キャンセルボタン押下後エラー画面を表示させる
+                                        })
         }))
         self.present(dialog, animated: true, completion: nil)
-        // TODO: キャンセルボタン押下時の挙動を考える
     }
     
     func onClickOkButton() {

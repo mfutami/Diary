@@ -16,4 +16,7 @@ class LocationViewModel {
     var okButtonTitle: String {
         return String.LocalizedString("ok", tableName: "Location")
     }
+    var cancelButtonTitle: String {
+        return String.LocalizedString("cancel", tableName: "Location")
+    }
 }
