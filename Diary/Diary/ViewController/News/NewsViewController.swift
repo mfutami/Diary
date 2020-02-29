@@ -168,6 +168,7 @@ extension NewsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.urlString = self.newsLink[indexPath.row]
         guard let viewController = WebView.presentWebView(self.urlString) else { return }
+        viewController.modalPresentationStyle = .fullScreen
         self.present(viewController, animated: true, completion: nil)
         // cell選択状態解除
         tableView.deselectRow(at: indexPath, animated: true)
