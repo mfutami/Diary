@@ -49,6 +49,8 @@
 		1B4409C023BE3623008BC07C /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B4409BF23BE3623008BC07C /* RxRelay.framework */; };
 		1B4409C123BE3623008BC07C /* RxRelay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B4409BF23BE3623008BC07C /* RxRelay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1B53D77523B39ED100DA6E91 /* create@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B53D77423B39ED100DA6E91 /* create@2x.png */; };
+		1B44980323E9AEDE002038EC /* MemoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B44980223E9AEDE002038EC /* MemoriesViewModel.swift */; };
+		1B51161523FEB31F0025AF32 /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B51161423FEB31F0025AF32 /* DrawView.swift */; };
 		1B55298723B5D810000BF3C8 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B55298623B5D810000BF3C8 /* Splash.storyboard */; };
 		1B55B3E923BF8B5C005835E4 /* LTMorphingLabel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B55B3E823BF8B5B005835E4 /* LTMorphingLabel.framework */; };
 		1B55B3EA23BF8B5C005835E4 /* LTMorphingLabel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B55B3E823BF8B5B005835E4 /* LTMorphingLabel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -138,6 +140,8 @@
 		1B2FE997236C6CB000677ACA /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
 		1B4409BF23BE3623008BC07C /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		1B53D77423B39ED100DA6E91 /* create@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "create@2x.png"; sourceTree = "<group>"; };
+		1B44980223E9AEDE002038EC /* MemoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoriesViewModel.swift; sourceTree = "<group>"; };
+		1B51161423FEB31F0025AF32 /* DrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
 		1B55298623B5D810000BF3C8 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		1B55B3E823BF8B5B005835E4 /* LTMorphingLabel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LTMorphingLabel.framework; path = Carthage/Build/iOS/LTMorphingLabel.framework; sourceTree = "<group>"; };
 		1B55E7C523AA601A00D8402C /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
@@ -373,13 +377,23 @@
 				1B2FE996236C6CB000677ACA /* NewsTableViewCell.swift */,
 				1B2FE997236C6CB000677ACA /* NewsTableViewCell.xib */,
 				1B5698F223A66F7B0095C7D3 /* Indicator.swift */,
+				1B51161423FEB31F0025AF32 /* DrawView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		1B44980123E9AEAC002038EC /* MemoriesViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1B44980223E9AEDE002038EC /* MemoriesViewModel.swift */,
+			);
+			path = MemoriesViewModel;
 			sourceTree = "<group>";
 		};
 		1BC88DB6236EE67500C63F30 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				1B44980123E9AEAC002038EC /* MemoriesViewModel */,
 				1BC88DBA236EE6AF00C63F30 /* News */,
 				1B55E7C523AA601A00D8402C /* LocationViewModel.swift */,
 			);
@@ -650,6 +664,7 @@
 			files = (
 				1B1054AA231D51E20067E7AF /* DiaryViewController.swift in Sources */,
 				1BAF7B4C23A3DDF6003C8A59 /* WebView.swift in Sources */,
+				1B51161523FEB31F0025AF32 /* DrawView.swift in Sources */,
 				1B2F08B323215470002BAF6E /* MemoriesViewController.swift in Sources */,
 				1B55E7C623AA601A00D8402C /* LocationViewModel.swift in Sources */,
 				1B2FE998236C6CB000677ACA /* NewsTableViewCell.swift in Sources */,
@@ -659,6 +674,7 @@
 				1B5698F323A66F7B0095C7D3 /* Indicator.swift in Sources */,
 				1BAF7B4823A3DD30003C8A59 /* WebViewController.swift in Sources */,
 				1B2DC7AE23686FC600B9CB42 /* NavigationBar.swift in Sources */,
+				1B44980323E9AEDE002038EC /* MemoriesViewModel.swift in Sources */,
 				1B2894E1232531370090A221 /* NewsViewController.swift in Sources */,
 				1B2894E5232531570090A221 /* HomeViewController.swift in Sources */,
 				1B2B939C2322AEED0015CB8A /* Strings.swift in Sources */,
