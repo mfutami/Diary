@@ -47,21 +47,21 @@ class Splash: UIViewController {
             self.index = 0
             self.timer?.invalidate()
             // タイアー破棄後、2秒後にHOME画面表示
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [weak self] in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
                 guard let viewControllers: [UIViewController] = self?.tabBarModel.setupTabBar() else { return }
-                
                 let tabBarController = UITabBarController()
                 tabBarController.setViewControllers(viewControllers, animated: false)
                 
                 self?.window = UIWindow(frame: UIScreen.main.bounds)
                 self?.window?.rootViewController = tabBarController
                 self?.window?.makeKeyAndVisible()
+                // animation削除
+                self?.ltmorphingLabel.text = nil
                 // 初期表示時homeタブが選択状態
                 if let tab = self?.window?.rootViewController as? UITabBarController  {
                     tab.selectedIndex = 2
                 }
             }
-            
         }
     }
 }

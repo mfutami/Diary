@@ -30,8 +30,13 @@ class WebViewController: UIViewController {
         self.navigationController?.navigationBar.barTintColor = UIColor.white
         self.navigationController?.navigationBar.tintColor = UIColor.black
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
-        let rightSearchBarButtonItem:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem:UIBarButtonItem.SystemItem.cancel, target: self, action: #selector(self.closeButtonAction))
-        self.navigationItem.setRightBarButtonItems([rightSearchBarButtonItem], animated: true)
+        
+        let rightSearchBarButtonItem:
+            UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "closeButton"),
+                                              style: .done,
+                                              target: self,
+                                              action: #selector(self.closeButtonAction))
+        self.navigationItem.rightBarButtonItem = rightSearchBarButtonItem
     }
     
     // webViewサイズ設定

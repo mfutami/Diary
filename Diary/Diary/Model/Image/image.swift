@@ -14,8 +14,7 @@ extension UIImage {
             let data = try Data(contentsOf: url)
             return UIImage(data: data)
         } catch {
-            
+            return nil
         }
-        return nil
     }
 }

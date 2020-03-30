@@ -14,15 +14,15 @@ import SWXMLHash
 class NewsViewController: UIViewController, XMLParserDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var collectionViewWidth: NSLayoutConstraint!
+    @IBOutlet weak var collectionView: UICollectionView!
     
-    private var newsArrey = [Any]()
+    private var layout = UICollectionViewFlowLayout()
     
     var viewModel = NewsViewModel()
-
+    
     private let backgroundScheduler = ConcurrentDispatchQueueScheduler(qos: .background)
     private let disposeBag = DisposeBag()
-    
-    private let refreshControl = UIRefreshControl()
     
     private let indicator = Indicator()
     
@@ -30,16 +30,18 @@ class NewsViewController: UIViewController, XMLParserDelegate {
     var newsLink = [String]()
     var newsImage = [String]()
     
-    var topPadding: CGFloat = 0
+    var titleString = [String]()
+    var link = [String]()
+    var image = [String]()
     
-    var urlString: String?
+    var fiveCount: Int = 5
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupNavigation(.news)
         self.setupTableView()
+        self.setupCollectionView()
         self.indicator.indicatorSetup(self)
-        self.refreshControll()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,9 +55,12 @@ class NewsViewController: UIViewController, XMLParserDelegate {
                                  selector: #selector(self.didEnterBackground(_:)),
                                  name: UIApplication.didEnterBackgroundNotification,
                                  object: nil)
+        self.tableViewHeight.constant = self.tableView.contentSize.height
+        self.collectionViewWidth.constant = self.collectionView.contentSize.width
         self.xmlPaserRx { [weak self] in
             guard let wself = self else { return }
             wself.tableView.reloadData()
+            wself.collectionView.reloadData()
         }
     }
     
@@ -68,23 +73,13 @@ class NewsViewController: UIViewController, XMLParserDelegate {
         self.newsTitle.removeAll()
         self.newsLink.removeAll()
         self.newsImage.removeAll()
+        
+        self.titleString.removeAll()
+        self.link.removeAll()
+        self.image.removeAll()
+        
         self.tableView.reloadData()
-    }
-    
-    func refreshControll() {
-        self.refreshControl.addTarget(self, action: #selector(self.refresh(sender:)), for: .valueChanged)
-        self.tableView.addSubview(self.refreshControl)
-    }
-    
-    @objc func refresh(sender: UIRefreshControl) {
-        self.removeDate()
-        self.xmlPaserRx { [weak self] in
-            guard let wself = self else { return }
-            if wself.refreshControl.isRefreshing {
-                wself.tableView.reloadData()
-                wself.refreshControl.endRefreshing()
-            }
-        }
+        self.collectionView.reloadData()
     }
     
     // Navugation Bar
@@ -103,13 +98,21 @@ class NewsViewController: UIViewController, XMLParserDelegate {
             .subscribe (onNext:{[weak self] date in
                 guard let wself = self else { return }
                 let xml = SWXMLHash.parse(date)
+                var counto: Int = .zero
                 for xmls in xml["rss"]["channel"]["item"].all {
                     guard let title = xmls["title"].element?.text,
                         let link = xmls["link"].element?.text,
                         let image = xmls["enclosure"].element?.attribute(by: "url")?.text else { return }
-                    wself.newsTitle.append(title)
-                    wself.newsLink.append(link)
-                    wself.newsImage.append(image)
+                    if counto < wself.fiveCount {
+                        wself.titleString.append(title)
+                        wself.link.append(link)
+                        wself.image.append(image)
+                        counto = counto + 1
+                    } else {
+                        wself.newsTitle.append(title)
+                        wself.newsLink.append(link)
+                        wself.newsImage.append(image)
+                    }
                 }
                 wself.indicator.stop()
                 completion?()
@@ -125,6 +128,7 @@ class NewsViewController: UIViewController, XMLParserDelegate {
         self.xmlPaserRx { [weak self] in
             guard let wself = self else { return }
             wself.tableView.reloadData()
+            wself.collectionView.reloadData()
         }
     }
 }
@@ -144,6 +148,19 @@ extension NewsViewController {
         self.tableView.dataSource = self
         self.tableView.delegate = self
     }
+    
+    func setupCollectionView() {
+        self.collectionView.register(UINib(nibName: NewsCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: NewsCollectionViewCell.identifier)
+        self.layout.itemSize = self.collectionView.bounds.size
+        self.layout.minimumInteritemSpacing = self.collectionView.bounds.height
+        self.layout.scrollDirection = .horizontal
+        self.layout.minimumInteritemSpacing = 20
+        
+        self.collectionView.collectionViewLayout = self.layout
+        
+        self.collectionView.dataSource = self
+        self.collectionView.delegate = self
+    }
 }
 // MARK: - UITableViewDataSource
 extension NewsViewController: UITableViewDataSource {
@@ -155,6 +172,7 @@ extension NewsViewController: UITableViewDataSource {
         var cell = UITableViewCell()
         let identifier = NewsTableViewCell.identifier
         cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+        cell.selectionStyle = .none
         if let newsCell = cell as? NewsTableViewCell {
             let newsTitle = self.newsTitle[indexPath.row]
             let newsImage = self.newsImage[indexPath.row]
@@ -166,12 +184,38 @@ extension NewsViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension NewsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.urlString = self.newsLink[indexPath.row]
-        guard let viewController = WebView.presentWebView(self.urlString) else { return }
+        guard let viewController = WebView.presentWebView(self.newsLink[indexPath.row]) else { return }
         viewController.modalPresentationStyle = .fullScreen
-        self.present(viewController, animated: true, completion: nil)
+        self.present(viewController, animated: true)
         // cell選択状態解除
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+}
+
+extension NewsViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.titleString.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        var cell = UICollectionViewCell()
+        let identifier = NewsCollectionViewCell.identifier
+        cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
+        if let collectionCell = cell as? NewsCollectionViewCell {
+            let newsTitle = self.titleString[indexPath.row]
+            let newsImage = self.image[indexPath.row]
+            collectionCell.setup(image: newsImage, text: newsTitle)
+        }
+        return cell
+    }
+}
+
+extension NewsViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let viewController = WebView.presentWebView(self.link[indexPath.row]) else { return }
+        viewController.modalPresentationStyle = .fullScreen
+        self.present(viewController, animated: true)
+        collectionView.deselectItem(at: indexPath, animated: true)
+    }
 }

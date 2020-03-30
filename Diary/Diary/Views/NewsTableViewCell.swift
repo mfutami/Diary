@@ -13,19 +13,29 @@ class NewsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var newsImage: UIImageView!
     @IBOutlet weak var newsTitle: UILabel!
+    @IBOutlet weak var baseView: UIView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
     func setupCell(title: String, imageUrl: String) {
         guard let image = UIImage.getImageByUrl(url: imageUrl) else { return }
         
         self.newsImage.image = image
-        self.newsImage.contentMode = .scaleAspectFit
+        self.newsImage.contentMode = .scaleToFill
+        self.newsImage.layer.cornerRadius = 10
+        self.newsImage.clipsToBounds = true
         
         self.newsTitle.text = title
         self.newsTitle.font = UIFont.systemFont(ofSize: 15)
+        self.newsTitle.numberOfLines = 0
+        
+        self.baseView.layer.cornerRadius = 10
+        // 影の方向（width=右方向、height=下方向、CGSize.zero=方向指定なし）
+        self.baseView.layer.shadowOffset = CGSize(width: 0.5, height: 1.0)
+        // 影の色
+        self.baseView.layer.shadowColor = UIColor.lightGray.cgColor
+        // 影の濃さ
+        self.baseView.layer.shadowOpacity = 0.5
+        // 影をぼかし
+        self.baseView.layer.shadowRadius = 2
         
     }
 }
