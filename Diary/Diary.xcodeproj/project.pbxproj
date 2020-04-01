@@ -51,13 +51,14 @@
 		1B44980323E9AEDE002038EC /* MemoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B44980223E9AEDE002038EC /* MemoriesViewModel.swift */; };
 		1B4DF569242B943800679B26 /* closeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B4DF568242B943700679B26 /* closeButton@2x.png */; };
 		1B53D77523B39ED100DA6E91 /* create@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B53D77423B39ED100DA6E91 /* create@2x.png */; };
-		1B5511F7243226830046F6B4 /* diary.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 1B5511F6243226830046F6B4 /* diary.jpeg */; };
+		1B5511F7243226830046F6B4 /* diarySplash.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 1B5511F6243226830046F6B4 /* diarySplash.jpeg */; };
 		1B55298723B5D810000BF3C8 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B55298623B5D810000BF3C8 /* Splash.storyboard */; };
-		1B55B3E923BF8B5C005835E4 /* LTMorphingLabel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B55B3E823BF8B5B005835E4 /* LTMorphingLabel.framework */; };
 		1B55B3EA23BF8B5C005835E4 /* LTMorphingLabel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B55B3E823BF8B5B005835E4 /* LTMorphingLabel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1B55E7C623AA601A00D8402C /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B55E7C523AA601A00D8402C /* LocationViewModel.swift */; };
 		1B55E7C823AA608900D8402C /* Location.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B55E7C723AA608900D8402C /* Location.strings */; };
 		1B5698F323A66F7B0095C7D3 /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5698F223A66F7B0095C7D3 /* Indicator.swift */; };
+		1B630A97243470E7007D22D0 /* ScheduleCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B630A96243470E7007D22D0 /* ScheduleCreationViewController.swift */; };
+		1B630A99243470FF007D22D0 /* ScheduleCreation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B630A98243470FF007D22D0 /* ScheduleCreation.storyboard */; };
 		1B73AA7D2430300B008C02A4 /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B73AA7B2430300B008C02A4 /* NewsCollectionViewCell.swift */; };
 		1B73AA7E2430300B008C02A4 /* NewsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B73AA7C2430300B008C02A4 /* NewsCollectionViewCell.xib */; };
 		1BAF7B4823A3DD30003C8A59 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAF7B4723A3DD30003C8A59 /* WebViewController.swift */; };
@@ -144,7 +145,7 @@
 		1B44980223E9AEDE002038EC /* MemoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoriesViewModel.swift; sourceTree = "<group>"; };
 		1B4DF568242B943700679B26 /* closeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closeButton@2x.png"; sourceTree = "<group>"; };
 		1B53D77423B39ED100DA6E91 /* create@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "create@2x.png"; sourceTree = "<group>"; };
-		1B5511F6243226830046F6B4 /* diary.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = diary.jpeg; sourceTree = "<group>"; };
+		1B5511F6243226830046F6B4 /* diarySplash.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = diarySplash.jpeg; sourceTree = "<group>"; };
 		1B55298623B5D810000BF3C8 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		1B55B3E823BF8B5B005835E4 /* LTMorphingLabel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LTMorphingLabel.framework; path = Carthage/Build/iOS/LTMorphingLabel.framework; sourceTree = "<group>"; };
 		1B55E7C523AA601A00D8402C /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
@@ -152,6 +153,8 @@
 		1B5698F023A66E560095C7D3 /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorView.framework; path = Carthage/Build/iOS/NVActivityIndicatorView.framework; sourceTree = "<group>"; };
 		1B5698F223A66F7B0095C7D3 /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
 		1B6229BF23A514D500C15278 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		1B630A96243470E7007D22D0 /* ScheduleCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCreationViewController.swift; sourceTree = "<group>"; };
+		1B630A98243470FF007D22D0 /* ScheduleCreation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScheduleCreation.storyboard; sourceTree = "<group>"; };
 		1B73AA7B2430300B008C02A4 /* NewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCell.swift; sourceTree = "<group>"; };
 		1B73AA7C2430300B008C02A4 /* NewsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCollectionViewCell.xib; sourceTree = "<group>"; };
 		1B88336423A3D78200F6F73F /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
@@ -171,7 +174,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B4409BB23BE3593008BC07C /* RxSwift.framework in Frameworks */,
-				1B55B3E923BF8B5C005835E4 /* LTMorphingLabel.framework in Frameworks */,
 				1B4409B923BE3581008BC07C /* RxCocoa.framework in Frameworks */,
 				1B4409C023BE3623008BC07C /* RxRelay.framework in Frameworks */,
 				1B4409B723BE3564008BC07C /* NVActivityIndicatorView.framework in Frameworks */,
@@ -205,7 +207,6 @@
 				1B1054BB231D51E40067E7AF /* DiaryTests */,
 				1B1054C6231D51E40067E7AF /* DiaryUITests */,
 				1B1054A5231D51E20067E7AF /* Products */,
-				7C9BFF792C5B4A2BE4D7426B /* Pods */,
 				50E545926C9D892A0931BB40 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -291,6 +292,7 @@
 			children = (
 				1B2894E0232531370090A221 /* NewsViewController.swift */,
 				1B2894E6232531670090A221 /* News.storyboard */,
+				1B630A95243470B8007D22D0 /* ScheduleCreation */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -331,7 +333,7 @@
 				1B28CF2F2369CFF200C756B0 /* home@2x.png */,
 				1B53D77423B39ED100DA6E91 /* create@2x.png */,
 				1B4DF568242B943700679B26 /* closeButton@2x.png */,
-				1B5511F6243226830046F6B4 /* diary.jpeg */,
+				1B5511F6243226830046F6B4 /* diarySplash.jpeg */,
 			);
 			path = image;
 			sourceTree = "<group>";
@@ -396,6 +398,15 @@
 			path = MemoriesViewModel;
 			sourceTree = "<group>";
 		};
+		1B630A95243470B8007D22D0 /* ScheduleCreation */ = {
+			isa = PBXGroup;
+			children = (
+				1B630A96243470E7007D22D0 /* ScheduleCreationViewController.swift */,
+				1B630A98243470FF007D22D0 /* ScheduleCreation.storyboard */,
+			);
+			path = ScheduleCreation;
+			sourceTree = "<group>";
+		};
 		1BC88DB6236EE67500C63F30 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -428,13 +439,6 @@
 				1B88336423A3D78200F6F73F /* RxSwift.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		7C9BFF792C5B4A2BE4D7426B /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -561,6 +565,7 @@
 				1B55298723B5D810000BF3C8 /* Splash.storyboard in Resources */,
 				1BAF7B4A23A3DD7F003C8A59 /* WebView.storyboard in Resources */,
 				1B1054AF231D51E40067E7AF /* Assets.xcassets in Resources */,
+				1B630A99243470FF007D22D0 /* ScheduleCreation.storyboard in Resources */,
 				1B28CF342369D0CE00C756B0 /* camera@2x.png in Resources */,
 				1B2FE999236C6CB000677ACA /* NewsTableViewCell.xib in Resources */,
 				1B28CF382369D1A200C756B0 /* diary@2x.png in Resources */,
@@ -568,7 +573,7 @@
 				1B28CF362369D12C00C756B0 /* location@2x.png in Resources */,
 				1B53D77523B39ED100DA6E91 /* create@2x.png in Resources */,
 				1B2894E9232531860090A221 /* Location.storyboard in Resources */,
-				1B5511F7243226830046F6B4 /* diary.jpeg in Resources */,
+				1B5511F7243226830046F6B4 /* diarySplash.jpeg in Resources */,
 				1B4DF569242B943800679B26 /* closeButton@2x.png in Resources */,
 				1B28CF302369CFF300C756B0 /* home@2x.png in Resources */,
 				1B73AA7E2430300B008C02A4 /* NewsCollectionViewCell.xib in Resources */,
@@ -689,6 +694,7 @@
 				1BC88DB8236EE69B00C63F30 /* NewsViewModel.swift in Sources */,
 				1B1054D7231EA6660067E7AF /* TabBer.swift in Sources */,
 				1B2894E32325314C0090A221 /* LocationViewController.swift in Sources */,
+				1B630A97243470E7007D22D0 /* ScheduleCreationViewController.swift in Sources */,
 				1BAF7B4E23A3DE6D003C8A59 /* Splash.swift in Sources */,
 				1B73AA7D2430300B008C02A4 /* NewsCollectionViewCell.swift in Sources */,
 			);

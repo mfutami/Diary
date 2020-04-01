@@ -7,16 +7,9 @@
 //
 
 import UIKit
-import LTMorphingLabel
 
 class Splash: UIViewController {
-    @IBOutlet weak var ltmorphingLabel: LTMorphingLabel!
-    //表示制御用タイマー
-    private var timer: Timer?
-    //String配列のindex用
-    private var index: Int = 0
-    //表示するString配列
-    private let textList = ["Let's", "Let's remember today"]
+    @IBOutlet weak var diaryImage: UIImageView!
     
     private let tabBarModel = TabBerModel()
     
@@ -24,44 +17,28 @@ class Splash: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.ltmorphingLabel.morphingEffect = .scale
+        self.diaryImage.image = UIImage(named: "diarySplash")
+        self.splashImages()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        //タイマーの追加
-        self.timer = Timer.scheduledTimer(timeInterval: 1.5,
-                                          target: self,
-                                          selector: #selector(update(timer:)), userInfo: nil,
-                                          repeats: true)
-        self.timer?.fire()
-    }
-    
-    @objc func update(timer: Timer) {
-        //ここでtextの更新
-        self.ltmorphingLabel.text = textList[self.index]
-        
-        self.index += 1
-        if self.index >= textList.count {
-            self.index = 0
-            self.timer?.invalidate()
-            // タイアー破棄後、2秒後にHOME画面表示
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
-                guard let viewControllers: [UIViewController] = self?.tabBarModel.setupTabBar() else { return }
+    func splashImages() {
+        self.diaryImage.alpha = 0
+        UIView.animate(withDuration: 2.0, delay: 1.0, options: [.curveEaseIn], animations: {
+            self.diaryImage.alpha = 1
+        }, completion: { _ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                let viewControllers: [UIViewController] = self.tabBarModel.setupTabBar()
                 let tabBarController = UITabBarController()
                 tabBarController.setViewControllers(viewControllers, animated: false)
                 
-                self?.window = UIWindow(frame: UIScreen.main.bounds)
-                self?.window?.rootViewController = tabBarController
-                self?.window?.makeKeyAndVisible()
-                // animation削除
-                self?.ltmorphingLabel.text = nil
+                self.window = UIWindow(frame: UIScreen.main.bounds)
+                self.window?.rootViewController = tabBarController
+                self.window?.makeKeyAndVisible()
                 // 初期表示時homeタブが選択状態
-                if let tab = self?.window?.rootViewController as? UITabBarController  {
+                if let tab = self.window?.rootViewController as? UITabBarController  {
                     tab.selectedIndex = 2
                 }
             }
-        }
+        })
     }
 }

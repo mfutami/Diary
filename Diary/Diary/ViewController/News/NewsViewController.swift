@@ -138,7 +138,6 @@ extension NewsViewController {
         self.tableView.register(UINib(nibName: NewsTableViewCell.identifier, bundle: nil),
                                 forCellReuseIdentifier: NewsTableViewCell.identifier)
         self.tableView.rowHeight = UITableView.automaticDimension
-        self.tableView.separatorStyle = .singleLine
         self.tableView.allowsSelection = true
         self.tableView.backgroundColor = .clear
         self.tableView.separatorStyle = .none

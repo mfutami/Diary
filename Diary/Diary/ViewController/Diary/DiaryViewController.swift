@@ -13,8 +13,8 @@ class DiaryViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var diaryView: JBDatePickerView!
-    @IBOutlet weak var createImage: UIImageView!
     @IBOutlet weak var beaseView: UIView!
+    @IBOutlet weak var plusButton: UIButton!
     // 時刻取得
     var dateFormatter: DateFormatter = {
         var formatter = DateFormatter()
@@ -40,22 +40,16 @@ class DiaryViewController: UIViewController {
 }
 extension DiaryViewController {
     func setupTableView() {
-        self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.separatorStyle = .singleLine
         self.tableView.backgroundColor = .clear
-        self.tableView.separatorStyle = .none
         self.tableView.layer.borderColor = UIColor.lightGray.cgColor
-        
-        self.tableView.allowsSelection = true
-        self.tableView.alwaysBounceVertical = true
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
     }
     
     func setupImage() {
-        self.createImage.image = UIImage(named: "create")
-        self.createImage.tintColor = UIColor.lightGray
+        self.plusButton.tintColor = .lightGray
         
         self.beaseView.layer.borderColor = UIColor.lightGray.cgColor
         self.beaseView.layer.borderWidth = 1
@@ -73,7 +67,7 @@ extension DiaryViewController: JBDatePickerViewDelegate {
     // 曜日欄の色をblack
     var colorForWeekDaysViewBackground: UIColor { return .lightGray }
     // 日にちのサイズ
-    var fontForDayLabel: JBFont { return JBFont(name: "Avenir", size: .small) }
+    var fontForDayLabel: JBFont { return JBFont(name: "ChalkboardSE-Light", size: .small) }
 }
 
 extension DiaryViewController: UITableViewDataSource {
@@ -82,7 +76,9 @@ extension DiaryViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        var cell = UITableViewCell()
+        cell.selectionStyle = .none
+        return cell
     }
     
     

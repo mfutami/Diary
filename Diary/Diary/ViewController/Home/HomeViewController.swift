@@ -68,7 +68,7 @@ class HomeViewController: UIViewController {
         daysLabel.text = "\(self.nowDate)\n\(self.nowTimer)"
         daysLabel.textColor = .black
         daysLabel.textAlignment = .center
-        daysLabel.font = UIFont(name: "Avenir Next", size: 25)
+        daysLabel.font = UIFont(name: "Avenir", size: 25)
         
         daysLabel.layer.cornerRadius = 10
         daysLabel.layer.borderWidth = 1
