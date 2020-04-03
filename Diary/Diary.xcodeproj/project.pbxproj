@@ -49,6 +49,9 @@
 		1B4409C023BE3623008BC07C /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B4409BF23BE3623008BC07C /* RxRelay.framework */; };
 		1B4409C123BE3623008BC07C /* RxRelay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B4409BF23BE3623008BC07C /* RxRelay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1B44980323E9AEDE002038EC /* MemoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B44980223E9AEDE002038EC /* MemoriesViewModel.swift */; };
+		1B4B8E6824360B3300D37E51 /* DiaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4B8E6724360B3300D37E51 /* DiaryViewModel.swift */; };
+		1B4B8E6D24361C7600D37E51 /* DiaryPlusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4B8E6B24361C7600D37E51 /* DiaryPlusCell.swift */; };
+		1B4B8E6E24361C7600D37E51 /* DiaryPlusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B4B8E6C24361C7600D37E51 /* DiaryPlusCell.xib */; };
 		1B4DF569242B943800679B26 /* closeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B4DF568242B943700679B26 /* closeButton@2x.png */; };
 		1B53D77523B39ED100DA6E91 /* create@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B53D77423B39ED100DA6E91 /* create@2x.png */; };
 		1B5511F7243226830046F6B4 /* diarySplash.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 1B5511F6243226830046F6B4 /* diarySplash.jpeg */; };
@@ -143,6 +146,9 @@
 		1B2FE997236C6CB000677ACA /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
 		1B4409BF23BE3623008BC07C /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		1B44980223E9AEDE002038EC /* MemoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoriesViewModel.swift; sourceTree = "<group>"; };
+		1B4B8E6724360B3300D37E51 /* DiaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewModel.swift; sourceTree = "<group>"; };
+		1B4B8E6B24361C7600D37E51 /* DiaryPlusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryPlusCell.swift; sourceTree = "<group>"; };
+		1B4B8E6C24361C7600D37E51 /* DiaryPlusCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiaryPlusCell.xib; sourceTree = "<group>"; };
 		1B4DF568242B943700679B26 /* closeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closeButton@2x.png"; sourceTree = "<group>"; };
 		1B53D77423B39ED100DA6E91 /* create@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "create@2x.png"; sourceTree = "<group>"; };
 		1B5511F6243226830046F6B4 /* diarySplash.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = diarySplash.jpeg; sourceTree = "<group>"; };
@@ -386,6 +392,8 @@
 				1B73AA7B2430300B008C02A4 /* NewsCollectionViewCell.swift */,
 				1B73AA7C2430300B008C02A4 /* NewsCollectionViewCell.xib */,
 				1B5698F223A66F7B0095C7D3 /* Indicator.swift */,
+				1B4B8E6B24361C7600D37E51 /* DiaryPlusCell.swift */,
+				1B4B8E6C24361C7600D37E51 /* DiaryPlusCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -396,6 +404,14 @@
 				1B44980223E9AEDE002038EC /* MemoriesViewModel.swift */,
 			);
 			path = MemoriesViewModel;
+			sourceTree = "<group>";
+		};
+		1B4B8E6624360B1200D37E51 /* Diary */ = {
+			isa = PBXGroup;
+			children = (
+				1B4B8E6724360B3300D37E51 /* DiaryViewModel.swift */,
+			);
+			path = Diary;
 			sourceTree = "<group>";
 		};
 		1B630A95243470B8007D22D0 /* ScheduleCreation */ = {
@@ -410,6 +426,7 @@
 		1BC88DB6236EE67500C63F30 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				1B4B8E6624360B1200D37E51 /* Diary */,
 				1B44980123E9AEAC002038EC /* MemoriesViewModel */,
 				1BC88DBA236EE6AF00C63F30 /* News */,
 				1B55E7C523AA601A00D8402C /* LocationViewModel.swift */,
@@ -567,6 +584,7 @@
 				1B1054AF231D51E40067E7AF /* Assets.xcassets in Resources */,
 				1B630A99243470FF007D22D0 /* ScheduleCreation.storyboard in Resources */,
 				1B28CF342369D0CE00C756B0 /* camera@2x.png in Resources */,
+				1B4B8E6E24361C7600D37E51 /* DiaryPlusCell.xib in Resources */,
 				1B2FE999236C6CB000677ACA /* NewsTableViewCell.xib in Resources */,
 				1B28CF382369D1A200C756B0 /* diary@2x.png in Resources */,
 				1B2894E7232531670090A221 /* News.storyboard in Resources */,
@@ -680,6 +698,7 @@
 				1BAF7B4C23A3DDF6003C8A59 /* WebView.swift in Sources */,
 				1B2F08B323215470002BAF6E /* MemoriesViewController.swift in Sources */,
 				1B55E7C623AA601A00D8402C /* LocationViewModel.swift in Sources */,
+				1B4B8E6824360B3300D37E51 /* DiaryViewModel.swift in Sources */,
 				1B2FE998236C6CB000677ACA /* NewsTableViewCell.swift in Sources */,
 				1B2CAB7C232141C700590B47 /* TabBerModel.swift in Sources */,
 				1B1054A8231D51E20067E7AF /* AppDelegate.swift in Sources */,
@@ -695,6 +714,7 @@
 				1B1054D7231EA6660067E7AF /* TabBer.swift in Sources */,
 				1B2894E32325314C0090A221 /* LocationViewController.swift in Sources */,
 				1B630A97243470E7007D22D0 /* ScheduleCreationViewController.swift in Sources */,
+				1B4B8E6D24361C7600D37E51 /* DiaryPlusCell.swift in Sources */,
 				1BAF7B4E23A3DE6D003C8A59 /* Splash.swift in Sources */,
 				1B73AA7D2430300B008C02A4 /* NewsCollectionViewCell.swift in Sources */,
 			);

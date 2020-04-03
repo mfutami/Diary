@@ -15,6 +15,8 @@ class DiaryViewController: UIViewController {
     @IBOutlet weak var diaryView: JBDatePickerView!
     @IBOutlet weak var beaseView: UIView!
     @IBOutlet weak var plusButton: UIButton!
+    
+    var viewModel = DiaryViewModel()
     // 時刻取得
     var dateFormatter: DateFormatter = {
         var formatter = DateFormatter()
@@ -28,6 +30,7 @@ class DiaryViewController: UIViewController {
         self.diaryView.delegate = self
         self.setupImage()
         self.setupTableView()
+        self.reloadTableView()
     }
     // Navugation Bar
     func setupNavigation(_ setTitle: navigationTitle) {
@@ -40,7 +43,8 @@ class DiaryViewController: UIViewController {
 }
 extension DiaryViewController {
     func setupTableView() {
-        self.tableView.separatorStyle = .singleLine
+        self.tableView.register(UINib(nibName: DiaryPlusCell.identifier, bundle: nil), forCellReuseIdentifier: DiaryPlusCell.identifier)
+        self.tableView.separatorStyle = .none
         self.tableView.backgroundColor = .clear
         self.tableView.layer.borderColor = UIColor.lightGray.cgColor
         
@@ -53,6 +57,11 @@ extension DiaryViewController {
         
         self.beaseView.layer.borderColor = UIColor.lightGray.cgColor
         self.beaseView.layer.borderWidth = 1
+    }
+    
+    func reloadTableView() {
+        self.viewModel.setupCellType()
+        self.tableView.reloadData()
     }
 }
 
@@ -72,12 +81,16 @@ extension DiaryViewController: JBDatePickerViewDelegate {
 
 extension DiaryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return self.viewModel.displayCellType.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
+        cell = tableView.dequeueReusableCell(withIdentifier: self.viewModel.displayCellType[indexPath.row], for: indexPath)
         cell.selectionStyle = .none
+        if let diaryPlus = cell as? DiaryPlusCell {
+            diaryPlus.setup()
+        }
         return cell
     }
     
