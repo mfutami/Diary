@@ -82,7 +82,8 @@ class NewsViewController: UIViewController, XMLParserDelegate {
         self.collectionView.reloadData()
     }
     
-    // Navugation Bar
+    // MARK: - Navugation Bar
+    
     func setupNavigation(_ setTitle: navigationTitle) {
         self.title = setTitle.title
         self.navigationController?.navigationBar.barTintColor = UIColor.white
@@ -132,7 +133,7 @@ class NewsViewController: UIViewController, XMLParserDelegate {
         }
     }
 }
-
+// MARK: - NewsViewController
 extension NewsViewController {
     func setupTableView() {
         self.tableView.register(UINib(nibName: NewsTableViewCell.identifier, bundle: nil),
@@ -156,6 +157,7 @@ extension NewsViewController {
         self.layout.minimumInteritemSpacing = 20
         
         self.collectionView.collectionViewLayout = self.layout
+        self.collectionView.showsHorizontalScrollIndicator = false
         
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
@@ -191,7 +193,7 @@ extension NewsViewController: UITableViewDelegate {
     }
     
 }
-
+// MARK: - UICollectionViewDataSource
 extension NewsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.titleString.count
@@ -209,7 +211,7 @@ extension NewsViewController: UICollectionViewDataSource {
         return cell
     }
 }
-
+// MARK: - UICollectionViewDelegate
 extension NewsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let viewController = WebView.presentWebView(self.link[indexPath.row]) else { return }

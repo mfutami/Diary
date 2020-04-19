@@ -36,18 +36,6 @@
 		1B2F08B923215A07002BAF6E /* Memories.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B2F08B823215A07002BAF6E /* Memories.storyboard */; };
 		1B2FE998236C6CB000677ACA /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2FE996236C6CB000677ACA /* NewsTableViewCell.swift */; };
 		1B2FE999236C6CB000677ACA /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B2FE997236C6CB000677ACA /* NewsTableViewCell.xib */; };
-		1B4409B423BE354D008BC07C /* JBDatePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B88336823A3D79D00F6F73F /* JBDatePicker.framework */; };
-		1B4409B523BE354D008BC07C /* JBDatePicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B88336823A3D79D00F6F73F /* JBDatePicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		1B4409B723BE3564008BC07C /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5698F023A66E560095C7D3 /* NVActivityIndicatorView.framework */; };
-		1B4409B823BE3564008BC07C /* NVActivityIndicatorView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5698F023A66E560095C7D3 /* NVActivityIndicatorView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		1B4409B923BE3581008BC07C /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B88336623A3D78F00F6F73F /* RxCocoa.framework */; };
-		1B4409BA23BE3581008BC07C /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B88336623A3D78F00F6F73F /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		1B4409BB23BE3593008BC07C /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B88336423A3D78200F6F73F /* RxSwift.framework */; };
-		1B4409BC23BE3593008BC07C /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B88336423A3D78200F6F73F /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		1B4409BD23BE35A2008BC07C /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B88336A23A3D7A800F6F73F /* SWXMLHash.framework */; };
-		1B4409BE23BE35A2008BC07C /* SWXMLHash.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B88336A23A3D7A800F6F73F /* SWXMLHash.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		1B4409C023BE3623008BC07C /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B4409BF23BE3623008BC07C /* RxRelay.framework */; };
-		1B4409C123BE3623008BC07C /* RxRelay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B4409BF23BE3623008BC07C /* RxRelay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1B44980323E9AEDE002038EC /* MemoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B44980223E9AEDE002038EC /* MemoriesViewModel.swift */; };
 		1B4B8E6824360B3300D37E51 /* DiaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4B8E6724360B3300D37E51 /* DiaryViewModel.swift */; };
 		1B4B8E6D24361C7600D37E51 /* DiaryPlusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4B8E6B24361C7600D37E51 /* DiaryPlusCell.swift */; };
@@ -56,7 +44,6 @@
 		1B53D77523B39ED100DA6E91 /* create@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B53D77423B39ED100DA6E91 /* create@2x.png */; };
 		1B5511F7243226830046F6B4 /* diarySplash.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 1B5511F6243226830046F6B4 /* diarySplash.jpeg */; };
 		1B55298723B5D810000BF3C8 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B55298623B5D810000BF3C8 /* Splash.storyboard */; };
-		1B55B3EA23BF8B5C005835E4 /* LTMorphingLabel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B55B3E823BF8B5B005835E4 /* LTMorphingLabel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1B55E7C623AA601A00D8402C /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B55E7C523AA601A00D8402C /* LocationViewModel.swift */; };
 		1B55E7C823AA608900D8402C /* Location.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B55E7C723AA608900D8402C /* Location.strings */; };
 		1B5698F323A66F7B0095C7D3 /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5698F223A66F7B0095C7D3 /* Indicator.swift */; };
@@ -64,6 +51,20 @@
 		1B630A99243470FF007D22D0 /* ScheduleCreation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B630A98243470FF007D22D0 /* ScheduleCreation.storyboard */; };
 		1B73AA7D2430300B008C02A4 /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B73AA7B2430300B008C02A4 /* NewsCollectionViewCell.swift */; };
 		1B73AA7E2430300B008C02A4 /* NewsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B73AA7C2430300B008C02A4 /* NewsCollectionViewCell.xib */; };
+		1B87B771244C264300488631 /* JBDatePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87B770244C264300488631 /* JBDatePicker.framework */; };
+		1B87B772244C264300488631 /* JBDatePicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87B770244C264300488631 /* JBDatePicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1B87B774244C265000488631 /* LTMorphingLabel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87B773244C265000488631 /* LTMorphingLabel.framework */; };
+		1B87B775244C265000488631 /* LTMorphingLabel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87B773244C265000488631 /* LTMorphingLabel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1B87B777244C265E00488631 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87B776244C265E00488631 /* NVActivityIndicatorView.framework */; };
+		1B87B778244C265E00488631 /* NVActivityIndicatorView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87B776244C265E00488631 /* NVActivityIndicatorView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1B87B77A244C266B00488631 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87B779244C266B00488631 /* RxCocoa.framework */; };
+		1B87B77B244C266B00488631 /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87B779244C266B00488631 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1B87B77D244C267900488631 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87B77C244C267900488631 /* RxSwift.framework */; };
+		1B87B77E244C267900488631 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87B77C244C267900488631 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1B87B780244C268300488631 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87B77F244C268300488631 /* SWXMLHash.framework */; };
+		1B87B781244C268300488631 /* SWXMLHash.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87B77F244C268300488631 /* SWXMLHash.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1B87B783244C278A00488631 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87B782244C278A00488631 /* RxRelay.framework */; };
+		1B87B784244C278A00488631 /* RxRelay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87B782244C278A00488631 /* RxRelay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1BAF7B4823A3DD30003C8A59 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAF7B4723A3DD30003C8A59 /* WebViewController.swift */; };
 		1BAF7B4A23A3DD7F003C8A59 /* WebView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BAF7B4923A3DD7F003C8A59 /* WebView.storyboard */; };
 		1BAF7B4C23A3DDF6003C8A59 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAF7B4B23A3DDF6003C8A59 /* WebView.swift */; };
@@ -95,13 +96,13 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1B4409BC23BE3593008BC07C /* RxSwift.framework in Embed Frameworks */,
-				1B55B3EA23BF8B5C005835E4 /* LTMorphingLabel.framework in Embed Frameworks */,
-				1B4409BA23BE3581008BC07C /* RxCocoa.framework in Embed Frameworks */,
-				1B4409C123BE3623008BC07C /* RxRelay.framework in Embed Frameworks */,
-				1B4409B823BE3564008BC07C /* NVActivityIndicatorView.framework in Embed Frameworks */,
-				1B4409B523BE354D008BC07C /* JBDatePicker.framework in Embed Frameworks */,
-				1B4409BE23BE35A2008BC07C /* SWXMLHash.framework in Embed Frameworks */,
+				1B87B77E244C267900488631 /* RxSwift.framework in Embed Frameworks */,
+				1B87B77B244C266B00488631 /* RxCocoa.framework in Embed Frameworks */,
+				1B87B781244C268300488631 /* SWXMLHash.framework in Embed Frameworks */,
+				1B87B772244C264300488631 /* JBDatePicker.framework in Embed Frameworks */,
+				1B87B784244C278A00488631 /* RxRelay.framework in Embed Frameworks */,
+				1B87B775244C265000488631 /* LTMorphingLabel.framework in Embed Frameworks */,
+				1B87B778244C265E00488631 /* NVActivityIndicatorView.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,7 +145,6 @@
 		1B2F08B823215A07002BAF6E /* Memories.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Memories.storyboard; sourceTree = "<group>"; };
 		1B2FE996236C6CB000677ACA /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		1B2FE997236C6CB000677ACA /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
-		1B4409BF23BE3623008BC07C /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		1B44980223E9AEDE002038EC /* MemoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoriesViewModel.swift; sourceTree = "<group>"; };
 		1B4B8E6724360B3300D37E51 /* DiaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewModel.swift; sourceTree = "<group>"; };
 		1B4B8E6B24361C7600D37E51 /* DiaryPlusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryPlusCell.swift; sourceTree = "<group>"; };
@@ -153,20 +153,20 @@
 		1B53D77423B39ED100DA6E91 /* create@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "create@2x.png"; sourceTree = "<group>"; };
 		1B5511F6243226830046F6B4 /* diarySplash.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = diarySplash.jpeg; sourceTree = "<group>"; };
 		1B55298623B5D810000BF3C8 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
-		1B55B3E823BF8B5B005835E4 /* LTMorphingLabel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LTMorphingLabel.framework; path = Carthage/Build/iOS/LTMorphingLabel.framework; sourceTree = "<group>"; };
 		1B55E7C523AA601A00D8402C /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		1B55E7C723AA608900D8402C /* Location.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Location.strings; sourceTree = "<group>"; };
-		1B5698F023A66E560095C7D3 /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorView.framework; path = Carthage/Build/iOS/NVActivityIndicatorView.framework; sourceTree = "<group>"; };
 		1B5698F223A66F7B0095C7D3 /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
-		1B6229BF23A514D500C15278 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		1B630A96243470E7007D22D0 /* ScheduleCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCreationViewController.swift; sourceTree = "<group>"; };
 		1B630A98243470FF007D22D0 /* ScheduleCreation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScheduleCreation.storyboard; sourceTree = "<group>"; };
 		1B73AA7B2430300B008C02A4 /* NewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCell.swift; sourceTree = "<group>"; };
 		1B73AA7C2430300B008C02A4 /* NewsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCollectionViewCell.xib; sourceTree = "<group>"; };
-		1B88336423A3D78200F6F73F /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
-		1B88336623A3D78F00F6F73F /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
-		1B88336823A3D79D00F6F73F /* JBDatePicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JBDatePicker.framework; path = Carthage/Build/iOS/JBDatePicker.framework; sourceTree = "<group>"; };
-		1B88336A23A3D7A800F6F73F /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = Carthage/Build/iOS/SWXMLHash.framework; sourceTree = "<group>"; };
+		1B87B770244C264300488631 /* JBDatePicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JBDatePicker.framework; path = Carthage/Build/iOS/JBDatePicker.framework; sourceTree = "<group>"; };
+		1B87B773244C265000488631 /* LTMorphingLabel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LTMorphingLabel.framework; path = Carthage/Build/iOS/LTMorphingLabel.framework; sourceTree = "<group>"; };
+		1B87B776244C265E00488631 /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorView.framework; path = Carthage/Build/iOS/NVActivityIndicatorView.framework; sourceTree = "<group>"; };
+		1B87B779244C266B00488631 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		1B87B77C244C267900488631 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		1B87B77F244C268300488631 /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = Carthage/Build/iOS/SWXMLHash.framework; sourceTree = "<group>"; };
+		1B87B782244C278A00488631 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		1BAF7B4723A3DD30003C8A59 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		1BAF7B4923A3DD7F003C8A59 /* WebView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebView.storyboard; sourceTree = "<group>"; };
 		1BAF7B4B23A3DDF6003C8A59 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
@@ -179,12 +179,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B4409BB23BE3593008BC07C /* RxSwift.framework in Frameworks */,
-				1B4409B923BE3581008BC07C /* RxCocoa.framework in Frameworks */,
-				1B4409C023BE3623008BC07C /* RxRelay.framework in Frameworks */,
-				1B4409B723BE3564008BC07C /* NVActivityIndicatorView.framework in Frameworks */,
-				1B4409B423BE354D008BC07C /* JBDatePicker.framework in Frameworks */,
-				1B4409BD23BE35A2008BC07C /* SWXMLHash.framework in Frameworks */,
+				1B87B77D244C267900488631 /* RxSwift.framework in Frameworks */,
+				1B87B77A244C266B00488631 /* RxCocoa.framework in Frameworks */,
+				1B87B780244C268300488631 /* SWXMLHash.framework in Frameworks */,
+				1B87B771244C264300488631 /* JBDatePicker.framework in Frameworks */,
+				1B87B783244C278A00488631 /* RxRelay.framework in Frameworks */,
+				1B87B774244C265000488631 /* LTMorphingLabel.framework in Frameworks */,
+				1B87B777244C265E00488631 /* NVActivityIndicatorView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,14 +447,13 @@
 		50E545926C9D892A0931BB40 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1B55B3E823BF8B5B005835E4 /* LTMorphingLabel.framework */,
-				1B4409BF23BE3623008BC07C /* RxRelay.framework */,
-				1B5698F023A66E560095C7D3 /* NVActivityIndicatorView.framework */,
-				1B6229BF23A514D500C15278 /* AVFoundation.framework */,
-				1B88336A23A3D7A800F6F73F /* SWXMLHash.framework */,
-				1B88336823A3D79D00F6F73F /* JBDatePicker.framework */,
-				1B88336623A3D78F00F6F73F /* RxCocoa.framework */,
-				1B88336423A3D78200F6F73F /* RxSwift.framework */,
+				1B87B782244C278A00488631 /* RxRelay.framework */,
+				1B87B77F244C268300488631 /* SWXMLHash.framework */,
+				1B87B77C244C267900488631 /* RxSwift.framework */,
+				1B87B779244C266B00488631 /* RxCocoa.framework */,
+				1B87B776244C265E00488631 /* NVActivityIndicatorView.framework */,
+				1B87B773244C265000488631 /* LTMorphingLabel.framework */,
+				1B87B770244C264300488631 /* JBDatePicker.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
