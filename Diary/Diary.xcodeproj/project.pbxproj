@@ -12,9 +12,10 @@
 		1B1054AD231D51E20067E7AF /* Diary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B1054AB231D51E20067E7AF /* Diary.storyboard */; };
 		1B1054AF231D51E40067E7AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B1054AE231D51E40067E7AF /* Assets.xcassets */; };
 		1B1054B2231D51E40067E7AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B1054B0231D51E40067E7AF /* LaunchScreen.storyboard */; };
-		1B1054BD231D51E40067E7AF /* DiaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1054BC231D51E40067E7AF /* DiaryTests.swift */; };
-		1B1054C8231D51E40067E7AF /* DiaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1054C7231D51E40067E7AF /* DiaryUITests.swift */; };
 		1B1054D7231EA6660067E7AF /* TabBer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1054D6231EA6660067E7AF /* TabBer.swift */; };
+		1B1C40E3245FED3800229040 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B1C40E0245FED3800229040 /* RxCocoa.framework */; };
+		1B1C40E4245FED3800229040 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B1C40E1245FED3800229040 /* RxRelay.framework */; };
+		1B1C40E5245FED3800229040 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B1C40E2245FED3800229040 /* RxSwift.framework */; };
 		1B2894E1232531370090A221 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2894E0232531370090A221 /* NewsViewController.swift */; };
 		1B2894E32325314C0090A221 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2894E22325314C0090A221 /* LocationViewController.swift */; };
 		1B2894E5232531570090A221 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2894E4232531570090A221 /* HomeViewController.swift */; };
@@ -57,14 +58,8 @@
 		1B87B775244C265000488631 /* LTMorphingLabel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87B773244C265000488631 /* LTMorphingLabel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1B87B777244C265E00488631 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87B776244C265E00488631 /* NVActivityIndicatorView.framework */; };
 		1B87B778244C265E00488631 /* NVActivityIndicatorView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87B776244C265E00488631 /* NVActivityIndicatorView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		1B87B77A244C266B00488631 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87B779244C266B00488631 /* RxCocoa.framework */; };
-		1B87B77B244C266B00488631 /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87B779244C266B00488631 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		1B87B77D244C267900488631 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87B77C244C267900488631 /* RxSwift.framework */; };
-		1B87B77E244C267900488631 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87B77C244C267900488631 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1B87B780244C268300488631 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87B77F244C268300488631 /* SWXMLHash.framework */; };
 		1B87B781244C268300488631 /* SWXMLHash.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87B77F244C268300488631 /* SWXMLHash.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		1B87B783244C278A00488631 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87B782244C278A00488631 /* RxRelay.framework */; };
-		1B87B784244C278A00488631 /* RxRelay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87B782244C278A00488631 /* RxRelay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1BAF7B4823A3DD30003C8A59 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAF7B4723A3DD30003C8A59 /* WebViewController.swift */; };
 		1BAF7B4A23A3DD7F003C8A59 /* WebView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BAF7B4923A3DD7F003C8A59 /* WebView.storyboard */; };
 		1BAF7B4C23A3DDF6003C8A59 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAF7B4B23A3DDF6003C8A59 /* WebView.swift */; };
@@ -96,11 +91,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1B87B77E244C267900488631 /* RxSwift.framework in Embed Frameworks */,
-				1B87B77B244C266B00488631 /* RxCocoa.framework in Embed Frameworks */,
 				1B87B781244C268300488631 /* SWXMLHash.framework in Embed Frameworks */,
 				1B87B772244C264300488631 /* JBDatePicker.framework in Embed Frameworks */,
-				1B87B784244C278A00488631 /* RxRelay.framework in Embed Frameworks */,
 				1B87B775244C265000488631 /* LTMorphingLabel.framework in Embed Frameworks */,
 				1B87B778244C265E00488631 /* NVActivityIndicatorView.framework in Embed Frameworks */,
 			);
@@ -118,12 +110,11 @@
 		1B1054B1231D51E40067E7AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1B1054B3231D51E40067E7AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1B1054B8231D51E40067E7AF /* DiaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiaryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1B1054BC231D51E40067E7AF /* DiaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTests.swift; sourceTree = "<group>"; };
-		1B1054BE231D51E40067E7AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1B1054C3231D51E40067E7AF /* DiaryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiaryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1B1054C7231D51E40067E7AF /* DiaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryUITests.swift; sourceTree = "<group>"; };
-		1B1054C9231D51E40067E7AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1B1054D6231EA6660067E7AF /* TabBer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBer.swift; sourceTree = "<group>"; };
+		1B1C40E0245FED3800229040 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		1B1C40E1245FED3800229040 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
+		1B1C40E2245FED3800229040 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		1B2894E0232531370090A221 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		1B2894E22325314C0090A221 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		1B2894E4232531570090A221 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -163,10 +154,7 @@
 		1B87B770244C264300488631 /* JBDatePicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JBDatePicker.framework; path = Carthage/Build/iOS/JBDatePicker.framework; sourceTree = "<group>"; };
 		1B87B773244C265000488631 /* LTMorphingLabel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LTMorphingLabel.framework; path = Carthage/Build/iOS/LTMorphingLabel.framework; sourceTree = "<group>"; };
 		1B87B776244C265E00488631 /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorView.framework; path = Carthage/Build/iOS/NVActivityIndicatorView.framework; sourceTree = "<group>"; };
-		1B87B779244C266B00488631 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
-		1B87B77C244C267900488631 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		1B87B77F244C268300488631 /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = Carthage/Build/iOS/SWXMLHash.framework; sourceTree = "<group>"; };
-		1B87B782244C278A00488631 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		1BAF7B4723A3DD30003C8A59 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		1BAF7B4923A3DD7F003C8A59 /* WebView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebView.storyboard; sourceTree = "<group>"; };
 		1BAF7B4B23A3DDF6003C8A59 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
@@ -179,12 +167,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B87B77D244C267900488631 /* RxSwift.framework in Frameworks */,
-				1B87B77A244C266B00488631 /* RxCocoa.framework in Frameworks */,
 				1B87B780244C268300488631 /* SWXMLHash.framework in Frameworks */,
 				1B87B771244C264300488631 /* JBDatePicker.framework in Frameworks */,
-				1B87B783244C278A00488631 /* RxRelay.framework in Frameworks */,
+				1B1C40E5245FED3800229040 /* RxSwift.framework in Frameworks */,
+				1B1C40E4245FED3800229040 /* RxRelay.framework in Frameworks */,
 				1B87B774244C265000488631 /* LTMorphingLabel.framework in Frameworks */,
+				1B1C40E3245FED3800229040 /* RxCocoa.framework in Frameworks */,
 				1B87B777244C265E00488631 /* NVActivityIndicatorView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -211,8 +199,6 @@
 			children = (
 				1B1054A6231D51E20067E7AF /* Diary */,
 				1B2CAB762321367E00590B47 /* image */,
-				1B1054BB231D51E40067E7AF /* DiaryTests */,
-				1B1054C6231D51E40067E7AF /* DiaryUITests */,
 				1B1054A5231D51E20067E7AF /* Products */,
 				50E545926C9D892A0931BB40 /* Frameworks */,
 			);
@@ -242,24 +228,6 @@
 				1B1054B3231D51E40067E7AF /* Info.plist */,
 			);
 			path = Diary;
-			sourceTree = "<group>";
-		};
-		1B1054BB231D51E40067E7AF /* DiaryTests */ = {
-			isa = PBXGroup;
-			children = (
-				1B1054BC231D51E40067E7AF /* DiaryTests.swift */,
-				1B1054BE231D51E40067E7AF /* Info.plist */,
-			);
-			path = DiaryTests;
-			sourceTree = "<group>";
-		};
-		1B1054C6231D51E40067E7AF /* DiaryUITests */ = {
-			isa = PBXGroup;
-			children = (
-				1B1054C7231D51E40067E7AF /* DiaryUITests.swift */,
-				1B1054C9231D51E40067E7AF /* Info.plist */,
-			);
-			path = DiaryUITests;
 			sourceTree = "<group>";
 		};
 		1B1054D5231EA64B0067E7AF /* Model */ = {
@@ -447,10 +415,10 @@
 		50E545926C9D892A0931BB40 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1B87B782244C278A00488631 /* RxRelay.framework */,
+				1B1C40E0245FED3800229040 /* RxCocoa.framework */,
+				1B1C40E1245FED3800229040 /* RxRelay.framework */,
+				1B1C40E2245FED3800229040 /* RxSwift.framework */,
 				1B87B77F244C268300488631 /* SWXMLHash.framework */,
-				1B87B77C244C267900488631 /* RxSwift.framework */,
-				1B87B779244C266B00488631 /* RxCocoa.framework */,
 				1B87B776244C265E00488631 /* NVActivityIndicatorView.framework */,
 				1B87B773244C265000488631 /* LTMorphingLabel.framework */,
 				1B87B770244C264300488631 /* JBDatePicker.framework */,
@@ -634,6 +602,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/JBDatePicker.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SWXMLHash.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/NVActivityIndicatorView.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/LTMorphingLabel.framework",
 			);
 			outputFileListPaths = (
 			);
@@ -724,7 +693,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B1054BD231D51E40067E7AF /* DiaryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -732,7 +700,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B1054C8231D51E40067E7AF /* DiaryUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
