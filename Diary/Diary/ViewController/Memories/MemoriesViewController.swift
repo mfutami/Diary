@@ -15,6 +15,7 @@ class MemoriesViewController: UIViewController {
     @IBOutlet weak var photographButton: UIButton!
     @IBOutlet weak var photoImageView: UIImageView!
     
+    @IBOutlet weak var baseView: UIView!
     private var captureSession = AVCaptureSession()
     private var mainCamera: AVCaptureDevice?
     private var photoOutput = AVCapturePhotoOutput()
@@ -106,7 +107,7 @@ class MemoriesViewController: UIViewController {
         let position: AVCaptureDevice.Position = change ? .back : .front
         // TODO: OSによってdevicesの中身が空の為
         let propertySettings = AVCaptureDevice.DiscoverySession(deviceTypes: [AVCaptureDevice.DeviceType.builtInDualCamera], mediaType: AVMediaType.video, position: position)
-        let media = AVMediaType.video
+//        let media = AVMediaType.video
         
         // TODO: 上記でposition設定している為カメラデバイスの取得はしなくて良いのでは、、、
         
@@ -154,9 +155,9 @@ class MemoriesViewController: UIViewController {
     
     // shutterButton layout
     func setupShutterButton() {
-        self.basePhotoGraphView.layer.borderWidth = 2
+        self.basePhotoGraphView.layer.borderWidth = 8
         self.basePhotoGraphView.layer.cornerRadius = 40
-        self.basePhotoGraphView.layer.borderColor = UIColor.white.cgColor
+        self.basePhotoGraphView.layer.borderColor = UIColor.lightGray.cgColor
         
         self.photographButton.layer.cornerRadius = 30
         self.photographButton.backgroundColor = UIColor.white
