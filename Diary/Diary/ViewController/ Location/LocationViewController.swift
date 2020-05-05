@@ -21,9 +21,8 @@ class LocationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupNavigation(.location)
-        self.initMap()
-        self.location.delegate = self
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let notification = NotificationCenter.default
@@ -35,26 +34,30 @@ class LocationViewController: UIViewController {
                                  selector: #selector(self.didEnterBackground(_:)),
                                  name: UIApplication.didEnterBackgroundNotification,
                                  object: nil)
+        
         self.requestWhenInUseAuthorization()
     }
     
     func requestWhenInUseAuthorization() {
-        self.location.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
             switch CLLocationManager.authorizationStatus() {
-            case .authorizedAlways:
-                break
-            case .authorizedWhenInUse:
+            case .notDetermined:
+                self.location.requestWhenInUseAuthorization()
+            case .authorizedAlways, .authorizedWhenInUse:
                 self.location.startUpdatingLocation()
+                self.setupMapView()
+                self.setupCompassButton()
             case .denied:
                 self.setupErrorDialog()
             default:
                 break
             }
+        } else {
+            self.setupErrorDialog()
         }
     }
     
-    func initMap() {
+    func setupMapView() {
         self.region = self.mapView.region
         self.region.span.latitudeDelta = 0.02
         self.region.span.longitudeDelta = 0.02
@@ -63,8 +66,23 @@ class LocationViewController: UIViewController {
         // 現在位置の有効化
         self.mapView.showsUserLocation = true
         // 現在位置設定
-        self.mapView.userTrackingMode = .follow
+        self.mapView.userTrackingMode = .followWithHeading
+        // 地図よりデータを優先
+        self.mapView.mapType = .standard
+        
+        self.location.delegate = self
     }
+    
+    func setupCompassButton() {
+        let compass = MKCompassButton(mapView: mapView)
+        compass.compassVisibility = .visible
+        let size = CGSize(width: 50, height: 50)
+        compass.frame = CGRect(origin: .zero, size: size)
+        self.mapView.addSubview(compass)
+        // デフォルトコンパスを非表示
+        self.mapView.showsCompass = false
+    }
+    
     // Navugation Bar
     func setupNavigation(_ setTitle: navigationTitle) {
         self.title = setTitle.title
@@ -111,6 +129,6 @@ class LocationViewController: UIViewController {
 }
 extension LocationViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        self.mapView.userTrackingMode = .follow
+        self.mapView.userTrackingMode = .followWithHeading
     }
 }
