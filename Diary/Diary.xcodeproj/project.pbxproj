@@ -38,6 +38,8 @@
 		1B2FE998236C6CB000677ACA /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2FE996236C6CB000677ACA /* NewsTableViewCell.swift */; };
 		1B2FE999236C6CB000677ACA /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B2FE997236C6CB000677ACA /* NewsTableViewCell.xib */; };
 		1B44980323E9AEDE002038EC /* MemoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B44980223E9AEDE002038EC /* MemoriesViewModel.swift */; };
+		1B493B6B246841480078004C /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B493B6A246841480078004C /* RealmSwift.framework */; };
+		1B493B6D246841580078004C /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B493B6C246841580078004C /* Realm.framework */; };
 		1B4DF569242B943800679B26 /* closeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B4DF568242B943700679B26 /* closeButton@2x.png */; };
 		1B53D77523B39ED100DA6E91 /* create@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B53D77423B39ED100DA6E91 /* create@2x.png */; };
 		1B5511F7243226830046F6B4 /* diarySplash.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 1B5511F6243226830046F6B4 /* diarySplash.jpeg */; };
@@ -62,6 +64,8 @@
 		1BAF7B4C23A3DDF6003C8A59 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAF7B4B23A3DDF6003C8A59 /* WebView.swift */; };
 		1BAF7B4E23A3DE6D003C8A59 /* Splash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAF7B4D23A3DE6D003C8A59 /* Splash.swift */; };
 		1BC88DB8236EE69B00C63F30 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC88DB7236EE69B00C63F30 /* NewsViewModel.swift */; };
+		1BD71D3024684A280092206E /* DataManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD71D2F24684A280092206E /* DataManagement.swift */; };
+		1BEE66512466FBDD00CAE5B3 /* NonDateLoggerLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEE66502466FBDD00CAE5B3 /* NonDateLoggerLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +138,8 @@
 		1B2FE996236C6CB000677ACA /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		1B2FE997236C6CB000677ACA /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
 		1B44980223E9AEDE002038EC /* MemoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoriesViewModel.swift; sourceTree = "<group>"; };
+		1B493B6A246841480078004C /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		1B493B6C246841580078004C /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		1B4DF568242B943700679B26 /* closeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closeButton@2x.png"; sourceTree = "<group>"; };
 		1B53D77423B39ED100DA6E91 /* create@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "create@2x.png"; sourceTree = "<group>"; };
 		1B5511F6243226830046F6B4 /* diarySplash.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = diarySplash.jpeg; sourceTree = "<group>"; };
@@ -154,6 +160,8 @@
 		1BAF7B4B23A3DDF6003C8A59 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		1BAF7B4D23A3DE6D003C8A59 /* Splash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Splash.swift; sourceTree = "<group>"; };
 		1BC88DB7236EE69B00C63F30 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
+		1BD71D2F24684A280092206E /* DataManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagement.swift; sourceTree = "<group>"; };
+		1BEE66502466FBDD00CAE5B3 /* NonDateLoggerLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonDateLoggerLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +169,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B493B6D246841580078004C /* Realm.framework in Frameworks */,
+				1B493B6B246841480078004C /* RealmSwift.framework in Frameworks */,
 				1B87B780244C268300488631 /* SWXMLHash.framework in Frameworks */,
 				1B87B771244C264300488631 /* JBDatePicker.framework in Frameworks */,
 				1B1C40E5245FED3800229040 /* RxSwift.framework in Frameworks */,
@@ -234,6 +244,7 @@
 				1BAF7B4B23A3DDF6003C8A59 /* WebView.swift */,
 				1BAF7B4D23A3DE6D003C8A59 /* Splash.swift */,
 				1B55298623B5D810000BF3C8 /* Splash.storyboard */,
+				1BD71D2F24684A280092206E /* DataManagement.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -355,8 +366,18 @@
 				1B73AA7B2430300B008C02A4 /* NewsCollectionViewCell.swift */,
 				1B73AA7C2430300B008C02A4 /* NewsCollectionViewCell.xib */,
 				1B5698F223A66F7B0095C7D3 /* Indicator.swift */,
+				1BEE66502466FBDD00CAE5B3 /* NonDateLoggerLabel.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		1B3C70702466EC7500805A79 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				1B55E7C523AA601A00D8402C /* LocationViewModel.swift */,
+				1B55E7C723AA608900D8402C /* Location.strings */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 		1B44980123E9AEAC002038EC /* MemoriesViewModel */ = {
@@ -386,10 +407,10 @@
 		1BC88DB6236EE67500C63F30 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				1B3C70702466EC7500805A79 /* Location */,
 				1B4B8E6624360B1200D37E51 /* Diary */,
 				1B44980123E9AEAC002038EC /* MemoriesViewModel */,
 				1BC88DBA236EE6AF00C63F30 /* News */,
-				1B55E7C523AA601A00D8402C /* LocationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -398,7 +419,6 @@
 			isa = PBXGroup;
 			children = (
 				1BC88DB7236EE69B00C63F30 /* NewsViewModel.swift */,
-				1B55E7C723AA608900D8402C /* Location.strings */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -406,6 +426,8 @@
 		50E545926C9D892A0931BB40 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1B493B6C246841580078004C /* Realm.framework */,
+				1B493B6A246841480078004C /* RealmSwift.framework */,
 				1B1C40E0245FED3800229040 /* RxCocoa.framework */,
 				1B1C40E1245FED3800229040 /* RxRelay.framework */,
 				1B1C40E2245FED3800229040 /* RxSwift.framework */,
@@ -594,6 +616,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/NVActivityIndicatorView.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/LTMorphingLabel.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 			);
 			outputFileListPaths = (
 			);
@@ -667,10 +691,12 @@
 				1B2DC7AE23686FC600B9CB42 /* NavigationBar.swift in Sources */,
 				1B44980323E9AEDE002038EC /* MemoriesViewModel.swift in Sources */,
 				1B2894E1232531370090A221 /* NewsViewController.swift in Sources */,
+				1BEE66512466FBDD00CAE5B3 /* NonDateLoggerLabel.swift in Sources */,
 				1B2894E5232531570090A221 /* HomeViewController.swift in Sources */,
 				1B2B939C2322AEED0015CB8A /* Strings.swift in Sources */,
 				1BC88DB8236EE69B00C63F30 /* NewsViewModel.swift in Sources */,
 				1B1054D7231EA6660067E7AF /* TabBer.swift in Sources */,
+				1BD71D3024684A280092206E /* DataManagement.swift in Sources */,
 				1B2894E32325314C0090A221 /* LocationViewController.swift in Sources */,
 				1B630A97243470E7007D22D0 /* ScheduleCreationViewController.swift in Sources */,
 				1BAF7B4E23A3DE6D003C8A59 /* Splash.swift in Sources */,
@@ -853,6 +879,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Diary/Info.plist;
 				INSTALL_PATH = "@executable_path /../ Frameworks";
@@ -878,6 +905,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Diary/Info.plist;
 				INSTALL_PATH = "@executable_path /../ Frameworks";
