@@ -17,6 +17,7 @@ class LocationViewController: UIViewController {
     @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
+    private let dataManagement = DataManagement()
     private var location = CLLocationManager()
     private var region = MKCoordinateRegion()
     // ジオコーディング, 逆ジオコーディング提供インスタンス
@@ -181,6 +182,7 @@ private extension LocationViewController {
                     return
             }
             let streetAddress = (administrativeArea + locality + thoroughfare + subThoroughfare)
+            self.dataManagement.addLocationData(address: streetAddress)
         }
     }
     

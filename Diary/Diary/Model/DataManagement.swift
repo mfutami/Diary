@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 
 class DataManagement {
+    // 現在位置情報保存
     func addLocationData(address: String) {
         let locationData = LocationData()
         locationData.streetAddress = address
