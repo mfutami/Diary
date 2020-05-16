@@ -175,9 +175,8 @@ extension NewsViewController: UITableViewDataSource {
         cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         cell.selectionStyle = .none
         if let newsCell = cell as? NewsTableViewCell {
-            let newsTitle = self.newsTitle[indexPath.row]
-            let newsImage = self.newsImage[indexPath.row]
-            newsCell.setupCell(title: newsTitle, imageUrl: newsImage)
+            newsCell.setupCell(title: self.newsTitle[indexPath.row],
+                               imageUrl: self.newsImage[indexPath.row])
         }
         return cell
     }

@@ -16,22 +16,28 @@ class LocationViewController: UIViewController {
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var errorTextLabel: UILabel!
     
     private let dataManagement = DataManagement()
     private var location = CLLocationManager()
     private var region = MKCoordinateRegion()
     // ジオコーディング, 逆ジオコーディング提供インスタンス
     private let geocoder = CLGeocoder()
-    // 緯度
-    private var latitude: CLLocationDegrees?
-    // 経度
-    private var longitude: CLLocationDegrees?
+    // 現在緯度
+    private var currentLatitude: CLLocationDegrees?
+    // 現在経度
+    private var currentLongitude: CLLocationDegrees?
+    
+    private var streetAddress: String?
+    
     
     var viewModel = LocationViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupNavigation(.location)
+        self.dataManagement.readInformation()
+        self.setupTableView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,9 +57,13 @@ class LocationViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        // TODO: cellにデータが存在しない場合viewを表示する予定 - 暫定でここに設定中
-        // tableViewが描画されてからじゃないと座標が取得できない為、描画されたタイミングでaddSubViewを行う
-        self.view.addSubview(NonDateLoggerLabel(frame: self.tableView.frame))
+        // 登録情報がない場合 - errorView表示
+        self.errorDisplayIfThereIsNoInformation()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.view.removeFromSuperview()
     }
 }
 // MARK: - LocationViewController
@@ -64,10 +74,21 @@ private extension LocationViewController {
         self.navigationController?.navigationBar.barTintColor = UIColor.white
         self.navigationController?.navigationBar.tintColor = UIColor.black
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
+        
+        guard let image = UIImage(named: "remove") else { return }
+        let button = UIButton(type: .system)
+        button.setImage(image, for: .normal)
+        button.addTarget(self,
+                         action: #selector(self.tapNavigationRightBar(_:)),
+                         for: .touchUpInside)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
     }
     
     func setupTableView() {
+        self.tableView.register(UINib(nibName: LocationDataCell.identifier, bundle: nil),
+                                forCellReuseIdentifier: LocationDataCell.identifier)
         self.tableView.backgroundColor = self.viewModel.backgroundColor
+        self.tableView.dataSource = self
     }
     
     func setupMapView() {
@@ -119,22 +140,58 @@ private extension LocationViewController {
         self.mapView.showsCompass = false
     }
     
+    func setupErrorTextLabel() {
+        self.tableView.isHidden = true
+        
+        self.errorTextLabel.isHidden = false
+        self.errorTextLabel.backgroundColor = .white
+        self.errorTextLabel.text = "表示する記録データがありません。\n現在位置を記録した場合に記録が表示されます。"
+        self.errorTextLabel.textColor = .red
+        self.errorTextLabel.textAlignment = .center
+        self.errorTextLabel.numberOfLines = .zero
+        self.errorTextLabel.font = .systemFont(ofSize: 15)
+    }
+    
     func setupErrorDialog() {
         let dialog = UIAlertController(title: self.viewModel.errorDialogTitle,
                                        message: self.viewModel.errorDialogMessage,
                                        preferredStyle: .alert)
         
-        dialog.addAction(UIAlertAction(title: self.viewModel.okButtonTitle, style: .default,
-                                       handler: { action in
-                                        self.onClickOkButton()
-        }))
-        dialog.addAction(UIAlertAction(title: self.viewModel.cancelButtonTitle, style: .cancel,
-                                       handler: { action in
-                                        self.dismiss(animated: true, completion: {
-                                            // TODO: キャンセルボタン押下後エラー画面を表示させる
-                                        })
-        }))
-        self.present(dialog, animated: true, completion: nil)
+        let okButton = UIAlertAction(title: self.viewModel.okButtonTitle, style: .default) { action in
+            self.onClickOkButton()
+        }
+        let cancelButton = UIAlertAction(title: self.viewModel.cancelButtonTitle, style: .cancel) { action in
+            self.dismiss(animated: true) {
+                // TODO: キャンセルボタン押下後エラー画面を表示させる
+            }
+        }
+        dialog.addAction(okButton)
+        dialog.addAction(cancelButton)
+        self.present(dialog, animated: true)
+    }
+    
+    func setupRemoveDialog() {
+        let removeDialog = UIAlertController(title: "削除してよろしいですか？",
+                                             message: "削除した記録は復元することができません。",
+                                             preferredStyle: .alert)
+        let notRemove = UIAlertAction(title: "いいえ", style: .cancel)
+        let remove = UIAlertAction(title: "はい", style: .default) { [weak self] _ in
+            self?.dataManagement.removeLocationData()
+            self?.tableView.reloadData()
+            self?.errorDisplayIfThereIsNoInformation()
+        }
+        removeDialog.addAction(notRemove)
+        removeDialog.addAction(remove)
+        self.present(removeDialog, animated: true)
+    }
+    
+    func errorDisplayIfThereIsNoInformation() {
+        // 保持データがからの場合 - エラー画面表示
+        guard !self.dataManagement.streetAddressData.isEmpty,
+            !self.dataManagement.distanceData.isEmpty else {
+                self.setupErrorTextLabel()
+                return
+        }
     }
     
     func requestWhenInUseAuthorization() {
@@ -147,7 +204,6 @@ private extension LocationViewController {
                 self.setupMapView()
                 self.setupCompassButton()
                 self.setupRecordArea()
-                self.setupTableView()
             case .denied:
                 self.setupErrorDialog()
             default:
@@ -167,27 +223,55 @@ private extension LocationViewController {
         }
     }
     
-    func getLocationData() {
-        guard let latitude = self.latitude,
-            let longitude = self.longitude else { return }
+    func getLocationData(closure: (() -> Void)?) {
+        guard let latitude = self.currentLatitude,
+            let longitude = self.currentLongitude else { return }
         let location = CLLocation(latitude: latitude, longitude: longitude)
         self.geocoder.reverseGeocodeLocation(location) { getReverseGeocode, error in
             guard let reverseGeocode = getReverseGeocode?.first,
                 let administrativeArea = reverseGeocode.administrativeArea,
                 let locality = reverseGeocode.locality,
-                let thoroughfare = reverseGeocode.thoroughfare,
-                let subThoroughfare = reverseGeocode.subLocality,
+                let name = reverseGeocode.name,
                 error == nil else {
                     // エラーダイアログを設定
                     return
             }
-            let streetAddress = (administrativeArea + locality + thoroughfare + subThoroughfare)
-            self.dataManagement.addLocationData(address: streetAddress)
+            // thoroughfare + subThoroughfare（丁目,番地が左記にて取得できるはずなのだが番地が丁目になることがある為暫定としてnameでまとめて取得する
+            // 懸念点: nameは地名を表示させる為、丁目,番地ではなく駅にいたら〜駅と表示されてしまう為注意が必要
+            self.streetAddress = (administrativeArea + locality + name)
+            closure?()
+        }
+    }
+    
+    func getDistanceFromCurrentPosition(geocodeAddress: String?) {
+        guard let address = geocodeAddress else { return }
+        self.geocoder.geocodeAddressString(address) { placemarks, error in
+            guard let latitude = placemarks?.first?.location?.coordinate.latitude,
+                let longitude = placemarks?.first?.location?.coordinate.longitude,
+                let currentLatitude = self.currentLatitude,
+                let currentLongitude = self.currentLongitude else{ return }
+            let presentLocation = CLLocation(latitude: currentLatitude, longitude: currentLongitude)
+            let registrationPosition = CLLocation(latitude: latitude, longitude: longitude)
+            let distance = registrationPosition.distance(from: presentLocation)
+            // 四捨五入
+            var getFloor = distance.binade
+            getFloor.round(.up)
+            self.dataManagement.addLocationData(address: self.streetAddress, distance: getFloor.description)
+            self.dataManagement.readInformation()
+            self.tableView.reloadData()
         }
     }
     
     @objc func tapRecordButton(_ sender: UIButton) {
-        self.getLocationData()
+        self.errorTextLabel.isHidden = true
+        self.tableView.isHidden = false
+        self.getLocationData() {
+            self.getDistanceFromCurrentPosition(geocodeAddress: self.streetAddress)
+        }
+    }
+    
+    @objc func tapNavigationRightBar(_ sender: UIButton) {
+        self.setupRemoveDialog()
     }
     
     @objc func didEnterBackground(_ notification: Notification?) {
@@ -195,22 +279,41 @@ private extension LocationViewController {
     }
     
     @objc func willEnterForeground(_ notification: Notification?) {
-        // TODO: エラーViewあを表示して画面タップ時に設定画面に遷移させるでも良い
+        // TODO: エラーViewを表示して画面タップ時に設定画面に遷移させるでも良い
         self.requestWhenInUseAuthorization()
     }
     
 }
+// MARK: - UITableViewDataSource
+extension LocationViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.dataManagement.streetAddressData.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = UITableViewCell()
+        cell = tableView.dequeueReusableCell(withIdentifier: LocationDataCell.identifier,
+                                             for: indexPath)
+        cell.selectionStyle = .none
+        if let locationDataCell = cell as? LocationDataCell {
+            locationDataCell.setup(presentLocation: self.dataManagement.streetAddressData[indexPath.row],
+                                   distanceString: self.dataManagement.distanceData[indexPath.row])
+        }
+        return cell
+    }
+}
+
 // MARK: - CLLocationManagerDelegate
 extension LocationViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        self.mapView.userTrackingMode = .followWithHeading
         guard let location = locations.first else { return }
         // 現在位置情報を格納
-        self.latitude = location.coordinate.latitude
-        self.longitude = location.coordinate.longitude
+        self.currentLatitude = location.coordinate.latitude
+        self.currentLongitude = location.coordinate.longitude
     }
 }
 
 class LocationData: Object {
     @objc dynamic var streetAddress = ""
+    @objc dynamic var distance = ""
 }

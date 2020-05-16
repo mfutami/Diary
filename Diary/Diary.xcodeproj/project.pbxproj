@@ -41,12 +41,15 @@
 		1B493B6B246841480078004C /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B493B6A246841480078004C /* RealmSwift.framework */; };
 		1B493B6D246841580078004C /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B493B6C246841580078004C /* Realm.framework */; };
 		1B4DF569242B943800679B26 /* closeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B4DF568242B943700679B26 /* closeButton@2x.png */; };
+		1B50A1EB246AD34500F08485 /* LocationDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B50A1E9246AD34500F08485 /* LocationDataCell.swift */; };
+		1B50A1EC246AD34500F08485 /* LocationDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B50A1EA246AD34500F08485 /* LocationDataCell.xib */; };
 		1B53D77523B39ED100DA6E91 /* create@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B53D77423B39ED100DA6E91 /* create@2x.png */; };
 		1B5511F7243226830046F6B4 /* diarySplash.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 1B5511F6243226830046F6B4 /* diarySplash.jpeg */; };
 		1B55298723B5D810000BF3C8 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B55298623B5D810000BF3C8 /* Splash.storyboard */; };
 		1B55E7C623AA601A00D8402C /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B55E7C523AA601A00D8402C /* LocationViewModel.swift */; };
 		1B55E7C823AA608900D8402C /* Location.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B55E7C723AA608900D8402C /* Location.strings */; };
 		1B5698F323A66F7B0095C7D3 /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5698F223A66F7B0095C7D3 /* Indicator.swift */; };
+		1B5A258D2470204400485B56 /* remove@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B5A258C2470204400485B56 /* remove@2x.png */; };
 		1B630A97243470E7007D22D0 /* ScheduleCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B630A96243470E7007D22D0 /* ScheduleCreationViewController.swift */; };
 		1B630A99243470FF007D22D0 /* ScheduleCreation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B630A98243470FF007D22D0 /* ScheduleCreation.storyboard */; };
 		1B73AA7D2430300B008C02A4 /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B73AA7B2430300B008C02A4 /* NewsCollectionViewCell.swift */; };
@@ -65,7 +68,6 @@
 		1BAF7B4E23A3DE6D003C8A59 /* Splash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAF7B4D23A3DE6D003C8A59 /* Splash.swift */; };
 		1BC88DB8236EE69B00C63F30 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC88DB7236EE69B00C63F30 /* NewsViewModel.swift */; };
 		1BD71D3024684A280092206E /* DataManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD71D2F24684A280092206E /* DataManagement.swift */; };
-		1BEE66512466FBDD00CAE5B3 /* NonDateLoggerLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEE66502466FBDD00CAE5B3 /* NonDateLoggerLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,12 +143,15 @@
 		1B493B6A246841480078004C /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		1B493B6C246841580078004C /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		1B4DF568242B943700679B26 /* closeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closeButton@2x.png"; sourceTree = "<group>"; };
+		1B50A1E9246AD34500F08485 /* LocationDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDataCell.swift; sourceTree = "<group>"; };
+		1B50A1EA246AD34500F08485 /* LocationDataCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationDataCell.xib; sourceTree = "<group>"; };
 		1B53D77423B39ED100DA6E91 /* create@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "create@2x.png"; sourceTree = "<group>"; };
 		1B5511F6243226830046F6B4 /* diarySplash.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = diarySplash.jpeg; sourceTree = "<group>"; };
 		1B55298623B5D810000BF3C8 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		1B55E7C523AA601A00D8402C /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		1B55E7C723AA608900D8402C /* Location.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Location.strings; sourceTree = "<group>"; };
 		1B5698F223A66F7B0095C7D3 /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
+		1B5A258C2470204400485B56 /* remove@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "remove@2x.png"; sourceTree = "<group>"; };
 		1B630A96243470E7007D22D0 /* ScheduleCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCreationViewController.swift; sourceTree = "<group>"; };
 		1B630A98243470FF007D22D0 /* ScheduleCreation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScheduleCreation.storyboard; sourceTree = "<group>"; };
 		1B73AA7B2430300B008C02A4 /* NewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -161,7 +166,6 @@
 		1BAF7B4D23A3DE6D003C8A59 /* Splash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Splash.swift; sourceTree = "<group>"; };
 		1BC88DB7236EE69B00C63F30 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		1BD71D2F24684A280092206E /* DataManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagement.swift; sourceTree = "<group>"; };
-		1BEE66502466FBDD00CAE5B3 /* NonDateLoggerLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonDateLoggerLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -314,6 +318,7 @@
 				1B53D77423B39ED100DA6E91 /* create@2x.png */,
 				1B4DF568242B943700679B26 /* closeButton@2x.png */,
 				1B5511F6243226830046F6B4 /* diarySplash.jpeg */,
+				1B5A258C2470204400485B56 /* remove@2x.png */,
 			);
 			path = image;
 			sourceTree = "<group>";
@@ -366,7 +371,8 @@
 				1B73AA7B2430300B008C02A4 /* NewsCollectionViewCell.swift */,
 				1B73AA7C2430300B008C02A4 /* NewsCollectionViewCell.xib */,
 				1B5698F223A66F7B0095C7D3 /* Indicator.swift */,
-				1BEE66502466FBDD00CAE5B3 /* NonDateLoggerLabel.swift */,
+				1B50A1E9246AD34500F08485 /* LocationDataCell.swift */,
+				1B50A1EA246AD34500F08485 /* LocationDataCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -558,6 +564,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B50A1EC246AD34500F08485 /* LocationDataCell.xib in Resources */,
 				1B1054B2231D51E40067E7AF /* LaunchScreen.storyboard in Resources */,
 				1B2894EB232531920090A221 /* Home.storyboard in Resources */,
 				1B55298723B5D810000BF3C8 /* Splash.storyboard in Resources */,
@@ -576,6 +583,7 @@
 				1B28CF302369CFF300C756B0 /* home@2x.png in Resources */,
 				1B73AA7E2430300B008C02A4 /* NewsCollectionViewCell.xib in Resources */,
 				1B28CF322369D07000C756B0 /* news@2x.png in Resources */,
+				1B5A258D2470204400485B56 /* remove@2x.png in Resources */,
 				1B55E7C823AA608900D8402C /* Location.strings in Resources */,
 				1B28CF3A2369D59C00C756B0 /* ChalkboardSE.ttc in Resources */,
 				1B1054AD231D51E20067E7AF /* Diary.storyboard in Resources */,
@@ -691,13 +699,13 @@
 				1B2DC7AE23686FC600B9CB42 /* NavigationBar.swift in Sources */,
 				1B44980323E9AEDE002038EC /* MemoriesViewModel.swift in Sources */,
 				1B2894E1232531370090A221 /* NewsViewController.swift in Sources */,
-				1BEE66512466FBDD00CAE5B3 /* NonDateLoggerLabel.swift in Sources */,
 				1B2894E5232531570090A221 /* HomeViewController.swift in Sources */,
 				1B2B939C2322AEED0015CB8A /* Strings.swift in Sources */,
 				1BC88DB8236EE69B00C63F30 /* NewsViewModel.swift in Sources */,
 				1B1054D7231EA6660067E7AF /* TabBer.swift in Sources */,
 				1BD71D3024684A280092206E /* DataManagement.swift in Sources */,
 				1B2894E32325314C0090A221 /* LocationViewController.swift in Sources */,
+				1B50A1EB246AD34500F08485 /* LocationDataCell.swift in Sources */,
 				1B630A97243470E7007D22D0 /* ScheduleCreationViewController.swift in Sources */,
 				1BAF7B4E23A3DE6D003C8A59 /* Splash.swift in Sources */,
 				1B73AA7D2430300B008C02A4 /* NewsCollectionViewCell.swift in Sources */,
