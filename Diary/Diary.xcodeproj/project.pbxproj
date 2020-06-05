@@ -37,14 +37,18 @@
 		1B2F08B923215A07002BAF6E /* Memories.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B2F08B823215A07002BAF6E /* Memories.storyboard */; };
 		1B2FE998236C6CB000677ACA /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2FE996236C6CB000677ACA /* NewsTableViewCell.swift */; };
 		1B2FE999236C6CB000677ACA /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B2FE997236C6CB000677ACA /* NewsTableViewCell.xib */; };
-		1B44980323E9AEDE002038EC /* MemoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B44980223E9AEDE002038EC /* MemoriesViewModel.swift */; };
 		1B493B6B246841480078004C /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B493B6A246841480078004C /* RealmSwift.framework */; };
 		1B493B6D246841580078004C /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B493B6C246841580078004C /* Realm.framework */; };
+		1B4CB8662487CB40004E78A5 /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4CB8652487CB40004E78A5 /* PhotoLibraryViewController.swift */; };
+		1B4CB8682487CB55004E78A5 /* PhotoLibrary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B4CB8672487CB55004E78A5 /* PhotoLibrary.storyboard */; };
+		1B4CB86B2487D7CF004E78A5 /* PhotoImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4CB8692487D7CF004E78A5 /* PhotoImageCollectionViewCell.swift */; };
+		1B4CB86C2487D7CF004E78A5 /* PhotoImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B4CB86A2487D7CF004E78A5 /* PhotoImageCollectionViewCell.xib */; };
+		1B4CB86E2487DB0D004E78A5 /* delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B4CB86D2487DB0D004E78A5 /* delete@2x.png */; };
+		1B4D87FC247F73E400DDE78B /* return_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B4D87FB247F73E300DDE78B /* return_icon@2x.png */; };
 		1B4DF569242B943800679B26 /* closeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B4DF568242B943700679B26 /* closeButton@2x.png */; };
 		1B50A1EB246AD34500F08485 /* LocationDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B50A1E9246AD34500F08485 /* LocationDataCell.swift */; };
 		1B50A1EC246AD34500F08485 /* LocationDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B50A1EA246AD34500F08485 /* LocationDataCell.xib */; };
 		1B53D77523B39ED100DA6E91 /* create@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B53D77423B39ED100DA6E91 /* create@2x.png */; };
-		1B5511F7243226830046F6B4 /* diarySplash.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 1B5511F6243226830046F6B4 /* diarySplash.jpeg */; };
 		1B55298723B5D810000BF3C8 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B55298623B5D810000BF3C8 /* Splash.storyboard */; };
 		1B55E7C623AA601A00D8402C /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B55E7C523AA601A00D8402C /* LocationViewModel.swift */; };
 		1B55E7C823AA608900D8402C /* Location.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B55E7C723AA608900D8402C /* Location.strings */; };
@@ -68,6 +72,7 @@
 		1BAF7B4E23A3DE6D003C8A59 /* Splash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAF7B4D23A3DE6D003C8A59 /* Splash.swift */; };
 		1BC88DB8236EE69B00C63F30 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC88DB7236EE69B00C63F30 /* NewsViewModel.swift */; };
 		1BD71D3024684A280092206E /* DataManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD71D2F24684A280092206E /* DataManagement.swift */; };
+		1BEDF578248134540096CDEB /* SlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEDF577248134540096CDEB /* SlideView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,14 +144,18 @@
 		1B2F08B823215A07002BAF6E /* Memories.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Memories.storyboard; sourceTree = "<group>"; };
 		1B2FE996236C6CB000677ACA /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		1B2FE997236C6CB000677ACA /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
-		1B44980223E9AEDE002038EC /* MemoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoriesViewModel.swift; sourceTree = "<group>"; };
 		1B493B6A246841480078004C /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		1B493B6C246841580078004C /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		1B4CB8652487CB40004E78A5 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
+		1B4CB8672487CB55004E78A5 /* PhotoLibrary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PhotoLibrary.storyboard; sourceTree = "<group>"; };
+		1B4CB8692487D7CF004E78A5 /* PhotoImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		1B4CB86A2487D7CF004E78A5 /* PhotoImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		1B4CB86D2487DB0D004E78A5 /* delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@2x.png"; sourceTree = "<group>"; };
+		1B4D87FB247F73E300DDE78B /* return_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "return_icon@2x.png"; sourceTree = "<group>"; };
 		1B4DF568242B943700679B26 /* closeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closeButton@2x.png"; sourceTree = "<group>"; };
 		1B50A1E9246AD34500F08485 /* LocationDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDataCell.swift; sourceTree = "<group>"; };
 		1B50A1EA246AD34500F08485 /* LocationDataCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationDataCell.xib; sourceTree = "<group>"; };
 		1B53D77423B39ED100DA6E91 /* create@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "create@2x.png"; sourceTree = "<group>"; };
-		1B5511F6243226830046F6B4 /* diarySplash.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = diarySplash.jpeg; sourceTree = "<group>"; };
 		1B55298623B5D810000BF3C8 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		1B55E7C523AA601A00D8402C /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		1B55E7C723AA608900D8402C /* Location.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Location.strings; sourceTree = "<group>"; };
@@ -166,6 +175,7 @@
 		1BAF7B4D23A3DE6D003C8A59 /* Splash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Splash.swift; sourceTree = "<group>"; };
 		1BC88DB7236EE69B00C63F30 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		1BD71D2F24684A280092206E /* DataManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagement.swift; sourceTree = "<group>"; };
+		1BEDF577248134540096CDEB /* SlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -310,6 +320,8 @@
 		1B2CAB762321367E00590B47 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				1B4CB86D2487DB0D004E78A5 /* delete@2x.png */,
+				1B4D87FB247F73E300DDE78B /* return_icon@2x.png */,
 				1B28CF372369D1A200C756B0 /* diary@2x.png */,
 				1B28CF352369D12C00C756B0 /* location@2x.png */,
 				1B28CF332369D0CE00C756B0 /* camera@2x.png */,
@@ -317,7 +329,6 @@
 				1B28CF2F2369CFF200C756B0 /* home@2x.png */,
 				1B53D77423B39ED100DA6E91 /* create@2x.png */,
 				1B4DF568242B943700679B26 /* closeButton@2x.png */,
-				1B5511F6243226830046F6B4 /* diarySplash.jpeg */,
 				1B5A258C2470204400485B56 /* remove@2x.png */,
 			);
 			path = image;
@@ -336,7 +347,6 @@
 			children = (
 				1B2894DF232523E10090A221 /* News */,
 				1B2894DE2325234B0090A221 /*  Location */,
-				1B2894DD232523440090A221 /* Home */,
 				1B2F08B72321549D002BAF6E /* Memories */,
 				1B2F08B623215490002BAF6E /* Diary */,
 				1BAF7B4723A3DD30003C8A59 /* WebViewController.swift */,
@@ -357,6 +367,8 @@
 		1B2F08B72321549D002BAF6E /* Memories */ = {
 			isa = PBXGroup;
 			children = (
+				1B2894DD232523440090A221 /* Home */,
+				1B4CB8642487CAF0004E78A5 /* PhotoLibrary */,
 				1B2F08B123215470002BAF6E /* MemoriesViewController.swift */,
 				1B2F08B823215A07002BAF6E /* Memories.storyboard */,
 			);
@@ -373,6 +385,9 @@
 				1B5698F223A66F7B0095C7D3 /* Indicator.swift */,
 				1B50A1E9246AD34500F08485 /* LocationDataCell.swift */,
 				1B50A1EA246AD34500F08485 /* LocationDataCell.xib */,
+				1BEDF577248134540096CDEB /* SlideView.swift */,
+				1B4CB8692487D7CF004E78A5 /* PhotoImageCollectionViewCell.swift */,
+				1B4CB86A2487D7CF004E78A5 /* PhotoImageCollectionViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -386,19 +401,20 @@
 			path = Location;
 			sourceTree = "<group>";
 		};
-		1B44980123E9AEAC002038EC /* MemoriesViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				1B44980223E9AEDE002038EC /* MemoriesViewModel.swift */,
-			);
-			path = MemoriesViewModel;
-			sourceTree = "<group>";
-		};
 		1B4B8E6624360B1200D37E51 /* Diary */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Diary;
+			sourceTree = "<group>";
+		};
+		1B4CB8642487CAF0004E78A5 /* PhotoLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				1B4CB8652487CB40004E78A5 /* PhotoLibraryViewController.swift */,
+				1B4CB8672487CB55004E78A5 /* PhotoLibrary.storyboard */,
+			);
+			path = PhotoLibrary;
 			sourceTree = "<group>";
 		};
 		1B630A95243470B8007D22D0 /* ScheduleCreation */ = {
@@ -415,7 +431,6 @@
 			children = (
 				1B3C70702466EC7500805A79 /* Location */,
 				1B4B8E6624360B1200D37E51 /* Diary */,
-				1B44980123E9AEAC002038EC /* MemoriesViewModel */,
 				1BC88DBA236EE6AF00C63F30 /* News */,
 			);
 			path = ViewModel;
@@ -568,6 +583,7 @@
 				1B1054B2231D51E40067E7AF /* LaunchScreen.storyboard in Resources */,
 				1B2894EB232531920090A221 /* Home.storyboard in Resources */,
 				1B55298723B5D810000BF3C8 /* Splash.storyboard in Resources */,
+				1B4CB86E2487DB0D004E78A5 /* delete@2x.png in Resources */,
 				1BAF7B4A23A3DD7F003C8A59 /* WebView.storyboard in Resources */,
 				1B1054AF231D51E40067E7AF /* Assets.xcassets in Resources */,
 				1B630A99243470FF007D22D0 /* ScheduleCreation.storyboard in Resources */,
@@ -576,9 +592,11 @@
 				1B28CF382369D1A200C756B0 /* diary@2x.png in Resources */,
 				1B2894E7232531670090A221 /* News.storyboard in Resources */,
 				1B28CF362369D12C00C756B0 /* location@2x.png in Resources */,
+				1B4CB86C2487D7CF004E78A5 /* PhotoImageCollectionViewCell.xib in Resources */,
 				1B53D77523B39ED100DA6E91 /* create@2x.png in Resources */,
 				1B2894E9232531860090A221 /* Location.storyboard in Resources */,
-				1B5511F7243226830046F6B4 /* diarySplash.jpeg in Resources */,
+				1B4D87FC247F73E400DDE78B /* return_icon@2x.png in Resources */,
+				1B4CB8682487CB55004E78A5 /* PhotoLibrary.storyboard in Resources */,
 				1B4DF569242B943800679B26 /* closeButton@2x.png in Resources */,
 				1B28CF302369CFF300C756B0 /* home@2x.png in Resources */,
 				1B73AA7E2430300B008C02A4 /* NewsCollectionViewCell.xib in Resources */,
@@ -688,6 +706,7 @@
 			files = (
 				1B1054AA231D51E20067E7AF /* DiaryViewController.swift in Sources */,
 				1BAF7B4C23A3DDF6003C8A59 /* WebView.swift in Sources */,
+				1B4CB8662487CB40004E78A5 /* PhotoLibraryViewController.swift in Sources */,
 				1B2F08B323215470002BAF6E /* MemoriesViewController.swift in Sources */,
 				1B55E7C623AA601A00D8402C /* LocationViewModel.swift in Sources */,
 				1B2FE998236C6CB000677ACA /* NewsTableViewCell.swift in Sources */,
@@ -697,12 +716,13 @@
 				1B5698F323A66F7B0095C7D3 /* Indicator.swift in Sources */,
 				1BAF7B4823A3DD30003C8A59 /* WebViewController.swift in Sources */,
 				1B2DC7AE23686FC600B9CB42 /* NavigationBar.swift in Sources */,
-				1B44980323E9AEDE002038EC /* MemoriesViewModel.swift in Sources */,
 				1B2894E1232531370090A221 /* NewsViewController.swift in Sources */,
 				1B2894E5232531570090A221 /* HomeViewController.swift in Sources */,
 				1B2B939C2322AEED0015CB8A /* Strings.swift in Sources */,
+				1B4CB86B2487D7CF004E78A5 /* PhotoImageCollectionViewCell.swift in Sources */,
 				1BC88DB8236EE69B00C63F30 /* NewsViewModel.swift in Sources */,
 				1B1054D7231EA6660067E7AF /* TabBer.swift in Sources */,
+				1BEDF578248134540096CDEB /* SlideView.swift in Sources */,
 				1BD71D3024684A280092206E /* DataManagement.swift in Sources */,
 				1B2894E32325314C0090A221 /* LocationViewController.swift in Sources */,
 				1B50A1EB246AD34500F08485 /* LocationDataCell.swift in Sources */,

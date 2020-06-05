@@ -74,14 +74,16 @@ private extension LocationViewController {
         self.navigationController?.navigationBar.barTintColor = UIColor.white
         self.navigationController?.navigationBar.tintColor = UIColor.black
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
-        
-        guard let image = UIImage(named: "remove") else { return }
-        let button = UIButton(type: .system)
-        button.setImage(image, for: .normal)
-        button.addTarget(self,
-                         action: #selector(self.tapNavigationRightBar(_:)),
-                         for: .touchUpInside)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
+        self.setupNavigationRightItem()
+    }
+    
+    func setupNavigationRightItem() {
+        let rightSearchBarButtonItem:
+            UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "remove"),
+                                              style: .done,
+                                              target: self,
+                                              action: #selector(self.tapNavigationRightBar(_:)))
+        self.navigationItem.rightBarButtonItem = rightSearchBarButtonItem
     }
     
     func setupTableView() {
@@ -182,7 +184,7 @@ private extension LocationViewController {
         }
         removeDialog.addAction(notRemove)
         removeDialog.addAction(remove)
-        self.present(removeDialog, animated: true)
+        self.present(removeDialog, animated: false)
     }
     
     func errorDisplayIfThereIsNoInformation() {

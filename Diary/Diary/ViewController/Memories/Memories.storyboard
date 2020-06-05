@@ -24,14 +24,14 @@
                                 <rect key="frame" x="0.0" y="394" width="375" height="273"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hqq-zl-kv6">
-                                        <rect key="frame" x="8" y="106.5" width="60" height="60"/>
+                                        <rect key="frame" x="8" y="131.5" width="60" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="BM5-PU-rdK"/>
                                             <constraint firstAttribute="width" constant="60" id="TRO-f3-E1J"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mHm-vH-ykf">
-                                        <rect key="frame" x="147.5" y="96.5" width="80" height="80"/>
+                                        <rect key="frame" x="147.5" y="121.5" width="80" height="80"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LAT-BR-v9o">
                                                 <rect key="frame" x="10" y="10" width="60" height="60"/>
@@ -59,19 +59,19 @@
                                 <constraints>
                                     <constraint firstItem="mHm-vH-ykf" firstAttribute="centerX" secondItem="Gt9-bj-HjF" secondAttribute="centerX" id="RBD-uT-FAI"/>
                                     <constraint firstItem="hqq-zl-kv6" firstAttribute="leading" secondItem="Gt9-bj-HjF" secondAttribute="leading" constant="8" id="VZZ-3i-cRr"/>
-                                    <constraint firstItem="mHm-vH-ykf" firstAttribute="centerY" secondItem="Gt9-bj-HjF" secondAttribute="centerY" id="j6A-hU-Xnc"/>
-                                    <constraint firstItem="hqq-zl-kv6" firstAttribute="centerY" secondItem="Gt9-bj-HjF" secondAttribute="centerY" id="tx5-Uw-ech"/>
+                                    <constraint firstItem="mHm-vH-ykf" firstAttribute="centerY" secondItem="Gt9-bj-HjF" secondAttribute="centerY" constant="25" id="j6A-hU-Xnc"/>
+                                    <constraint firstItem="hqq-zl-kv6" firstAttribute="centerY" secondItem="Gt9-bj-HjF" secondAttribute="centerY" constant="25" id="tx5-Uw-ech"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Z2m-6d-fVS" firstAttribute="leading" secondItem="jeb-wf-uly" secondAttribute="leading" id="3wp-Og-8Pw"/>
-                            <constraint firstItem="Gt9-bj-HjF" firstAttribute="leading" secondItem="jeb-wf-uly" secondAttribute="leading" id="HcE-82-SpC"/>
                             <constraint firstItem="Gt9-bj-HjF" firstAttribute="bottom" secondItem="jeb-wf-uly" secondAttribute="bottom" id="Re6-1J-gx5"/>
-                            <constraint firstItem="Gt9-bj-HjF" firstAttribute="trailing" secondItem="jeb-wf-uly" secondAttribute="trailing" id="Vzv-ru-I5o"/>
                             <constraint firstItem="Gt9-bj-HjF" firstAttribute="top" secondItem="Z2m-6d-fVS" secondAttribute="bottom" id="Zkg-jE-Ye9"/>
+                            <constraint firstAttribute="trailing" secondItem="Gt9-bj-HjF" secondAttribute="trailing" id="dgP-qi-RWr"/>
                             <constraint firstItem="Z2m-6d-fVS" firstAttribute="centerY" secondItem="tzb-6F-kJn" secondAttribute="centerY" constant="-114.5" id="jhr-XL-lud"/>
+                            <constraint firstItem="Gt9-bj-HjF" firstAttribute="leading" secondItem="tzb-6F-kJn" secondAttribute="leading" id="k6o-6z-WAJ"/>
                             <constraint firstItem="Z2m-6d-fVS" firstAttribute="trailing" secondItem="jeb-wf-uly" secondAttribute="trailing" id="pLn-c7-hth"/>
                             <constraint firstItem="Z2m-6d-fVS" firstAttribute="top" secondItem="jeb-wf-uly" secondAttribute="top" id="pYc-NK-9jm"/>
                         </constraints>

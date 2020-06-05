@@ -86,7 +86,7 @@ extension DiaryViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = UITableViewCell()
+        let cell = UITableViewCell()
 //        cell = tableView.dequeueReusableCell(withIdentifier: self.viewModel.displayCellType[indexPath.row], for: indexPath)
         cell.selectionStyle = .none
         // TODO: ここに年月日ごとに取得した日記履歴を表示

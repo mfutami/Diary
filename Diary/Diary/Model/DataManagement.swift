@@ -14,6 +14,8 @@ class DataManagement {
     var streetAddressData = [String]()
     var distanceData = [String]()
     
+    var photoImageArreData = [Data]()
+    
     // 現在位置情報保存
     func addLocationData(address: String?, distance: String) {
         guard let address = address else { return }
@@ -23,6 +25,16 @@ class DataManagement {
         locationData.distance = distance
         try! realm.write {
             realm.add(locationData)
+        }
+    }
+    
+    // フォトイメージ保存
+    func addPhotoImage(data: Data) {
+        let realm = try! Realm()
+        let photoImageData = PhotoImageData()
+        photoImageData.photoImage = data
+        try! realm.write {
+            realm.add(photoImageData)
         }
     }
     
@@ -38,12 +50,31 @@ class DataManagement {
         }
     }
     
+    func readPhotoImage() {
+        self.photoImageArreData = []
+        let realm = try! Realm()
+        let photoImageData = realm.objects(PhotoImageData.self)
+        photoImageData.forEach {
+            self.photoImageArreData.append($0.photoImage)
+        }
+    }
+    
     func removeLocationData() {
         self.streetAddressData = []
         self.distanceData = []
         let realm = try! Realm()
+        let locationData = realm.objects(LocationData.self)
         try! realm.write {
-            realm.deleteAll()
+            realm.delete(locationData)
+        }
+    }
+    
+    func removePhotoImage() {
+        self.photoImageArreData = []
+        let realm = try! Realm()
+        let photoImageData = realm.objects(PhotoImageData.self)
+        try! realm.write {
+            realm.delete(photoImageData)
         }
     }
 }

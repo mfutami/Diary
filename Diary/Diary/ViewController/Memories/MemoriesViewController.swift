@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import RealmSwift
 
 class MemoriesViewController: UIViewController {
     @IBOutlet weak var cameaView: UIView!
@@ -17,32 +18,49 @@ class MemoriesViewController: UIViewController {
     
     @IBOutlet weak var baseView: UIView!
     private var captureSession = AVCaptureSession()
-    private var mainCamera: AVCaptureDevice?
-    private var photoOutput = AVCapturePhotoOutput()
+    private let photoOutput = AVCapturePhotoOutput()
     private var cameraPreviewLayer = AVCaptureVideoPreviewLayer()
-    
-    var viewModel = MemoriesViewModel()
     
     private var change: Bool = false
     private var isChangeCamera: Bool = true
     
+    private var getSlideView: UIView {
+        let slideView = SlideView(frame: CGRect(x: self.baseView.bounds.origin.x + 20,
+                                                y: self.baseView.bounds.origin.y + 10,
+                                                width: self.baseView.bounds.size.width,
+                                                height: 40))
+        slideView.delegate = self
+        return slideView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupNavigation(.memories)
-        self.setupCaptureSession()
-        self.setupDevice(change: self.isChangeCamera)
         self.setupShutterButton()
+        self.setupPhotoIageView()
+        self.setupSlideView()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.captureSession.startRunning()
-        self.setupPhotoIageView()
+        let notification = NotificationCenter.default
+        notification.addObserver(self,
+                                 selector: #selector(self.willEnterForeground(_:)),
+                                 name: UIApplication.willEnterForegroundNotification,
+                                 object: nil)
+        notification.addObserver(self,
+                                 selector: #selector(self.didEnterBackground(_:)),
+                                 name: UIApplication.didEnterBackgroundNotification,
+                                 object: nil)
+        self.setupDevice(change: self.isChangeCamera)
+        // TODO: 連打でクラッシュする可能性あり
+        self.authorization()
         // 起動時は非表示
         self.photoImageView.isHidden = true
     }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        self.captureSession.stopRunning()
+        self.removeCaptureSession()
     }
     // Navugation Bar
     func setupNavigation(_ setTitle: navigationTitle) {
@@ -50,33 +68,23 @@ class MemoriesViewController: UIViewController {
         self.navigationController?.navigationBar.barTintColor = UIColor.white
         self.navigationController?.navigationBar.tintColor = UIColor.black
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
-        self.setNavigationItem()
+        self.setupNavigationRightItem()
     }
     
-    func setNavigationItem(flash: Bool = false) {
-        self.change = flash
-        // インカメラ、アウトカメラに切り替え用
-        guard let cutBack = UIImage(named: "cutBack") else { return }
-        let cutBackButton = UIBarButtonItem(image: cutBack,
-                                            style: .plain,
-                                            target: self,
-                                            action: #selector(self.chengeCamera))
-        // フラッシュ切り替え用
-        guard let flashImage = self.viewModel.flashImage(flash: flash) else { return }
-        let flashButton = UIBarButtonItem(image: flashImage,
-                                          style: .plain,
-                                          target: self,
-                                          action: #selector(self.flashChange))
-        self.navigationItem.rightBarButtonItems = [flashButton, cutBackButton]
+    func setupNavigationRightItem() {
+        let rightSearchBarButtonItem:
+            UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "return_icon"),
+                                              style: .done,
+                                              target: self,
+                                              action: #selector(self.chengeCamera))
+        self.navigationItem.rightBarButtonItem = rightSearchBarButtonItem
     }
-    // タップされた際にアイコン切り替え
-    @objc func flashChange() {
-        // 前回保存状態がtrue -> false
-        // 前回保存状態がfalse -> true
-        let change = self.change ? false : true
-        self.setNavigationItem(flash: change)
+    
+    func setupSlideView() {
+        self.baseView.addSubview(self.getSlideView)
     }
-    @objc func chengeCamera() {
+    
+    func removeCaptureSession() {
         self.captureSession.stopRunning()
         self.captureSession.inputs.forEach { [weak self] input in
             self?.captureSession.removeInput(input)
@@ -84,9 +92,32 @@ class MemoriesViewController: UIViewController {
         self.captureSession.outputs.forEach { [weak self] output in
             self?.captureSession.removeOutput(output)
         }
+    }
+    
+    @objc func chengeCamera() {
+        self.removeCaptureSession()
         self.isChangeCamera = !self.isChangeCamera
         self.setupDevice(change: self.isChangeCamera)
         self.captureSession.startRunning()
+    }
+    
+    func authorization() {
+        let mediaType = AVMediaType.video
+        let status = AVCaptureDevice.authorizationStatus(for: mediaType)
+        switch status {
+        case .restricted, .denied:
+            self.setErrorDialog()
+        case .authorized:
+            self.captureSession.startRunning()
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(for: mediaType) { success in
+                if success {
+                    self.captureSession.startRunning()
+                } else {
+                    self.setErrorDialog()
+                }
+            }
+        }
     }
     
     // photoImageView
@@ -97,41 +128,23 @@ class MemoriesViewController: UIViewController {
         self.photoImageView.layer.borderColor = UIColor.white.cgColor
     }
     
-    // カメラ画質の設定（高解像度）
-    func setupCaptureSession() {
-        self.captureSession.sessionPreset = AVCaptureSession.Preset.photo
-    }
-    
     // プロパティ設定
     func setupDevice(change: Bool) {
+        // カメラ画質の設定（高解像度）
+        self.captureSession.sessionPreset = AVCaptureSession.Preset.photo
+        
         let position: AVCaptureDevice.Position = change ? .back : .front
-        // TODO: OSによってdevicesの中身が空の為
-        let propertySettings = AVCaptureDevice.DiscoverySession(deviceTypes: [AVCaptureDevice.DeviceType.builtInDualCamera], mediaType: AVMediaType.video, position: position)
-//        let media = AVMediaType.video
-        
-        // TODO: 上記でposition設定している為カメラデバイスの取得はしなくて良いのでは、、、
-        
-        // AVCaptureDevice.DiscoverySession がinitな為2回目呼び出すとAVCaptureDeviceが取得できない為for文がスルーされてしまう。
-        // なので2回目以降は別々で取得する必要がありそう、、リファレンス要確認
-        let devices = propertySettings.devices
-        for devices in devices {
-            if devices.position == position {
-                self.mainCamera = devices
-            }
-            self.setupInputOutput()
-        }
-    }
-    
-    // 入出力データ設定
-    func setupInputOutput() {
+        let mainCamera = AVCaptureDevice.default(AVCaptureDevice.DeviceType.builtInWideAngleCamera,
+                                                  for: AVMediaType.video,
+                                                  position: position)
         do {
-            guard let mainCameraInput = self.mainCamera else { return }
+            guard let mainCameraInput = mainCamera else { return }
             // 指定したデバイスを使用するために入力を初期化
             let captureDeviceInput = try AVCaptureDeviceInput(device: mainCameraInput)
             // 指定した入力をセッションに追加
             self.captureSession.addInput(captureDeviceInput)
             // 出力ファイルのフォーマットをJPEGに指定
-            self.photoOutput.setPreparedPhotoSettingsArray([AVCapturePhotoSettings(format: [AVVideoCodecKey : AVVideoCodecType.jpeg])], completionHandler: nil)
+            self.photoOutput.setPreparedPhotoSettingsArray([AVCapturePhotoSettings(format: [AVVideoCodecKey : AVVideoCodecType.jpeg])])
             self.captureSession.addOutput(self.photoOutput)
         } catch {
             // エラー処理なし
@@ -163,6 +176,23 @@ class MemoriesViewController: UIViewController {
         self.photographButton.backgroundColor = UIColor.white
     }
     
+    func openSettingScreen(_ url: URL? = URL(string: "App-Prefs:root=jp.co.sample.futami.Diary")) {
+        guard let url = url else { return }
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:])
+        } else {
+            UIApplication.shared.openURL(url)
+        }
+    }
+    
+    @objc func didEnterBackground(_ notification: Notification?) {
+        self.captureSession.stopRunning()
+    }
+    
+    @objc func willEnterForeground(_ notification: Notification?) {
+        self.authorization()
+    }
+    
     // MARK: - Action
     @IBAction func shutterButtonAction(_ sender: UIButton) {
         // TODO: メモ_AVCapturePhotoSettingsが2回目以降になると起動しない？的なこと書いてあったためメソッド内で設定したらいけた
@@ -172,6 +202,19 @@ class MemoriesViewController: UIViewController {
         // 手振れ補正
         settings.isAutoRedEyeReductionEnabled = true
         self.photoOutput.capturePhoto(with: settings, delegate: self)
+    }
+}
+// MARK: - dialog
+extension MemoriesViewController {
+    func setErrorDialog() {
+        let errorDialog = UIAlertController(title: "",
+                                             message: "カメラアクセスを許可してください",
+                                             preferredStyle: .alert)
+        let settingButton = UIAlertAction(title: "設定する", style: .default) { [weak self] _ in
+            self?.openSettingScreen()
+        }
+        errorDialog.addAction(settingButton)
+        self.present(errorDialog, animated: false)
     }
 }
 
@@ -186,6 +229,19 @@ extension MemoriesViewController: AVCapturePhotoCaptureDelegate {
             self.photoImageView.image = image
             // 写真ライブラリに画像を保存
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+            DataManagement().addPhotoImage(data: imageData)
         }
     }
+}
+
+extension MemoriesViewController: PhotoLibraryDelegate {
+    func showPhotoLibrary() {
+        let storyboard = UIStoryboard(name: "PhotoLibrary", bundle: nil)
+        guard let viewController = storyboard.instantiateInitialViewController() else { return }
+        self.present(viewController, animated: true)
+    }
+}
+
+class PhotoImageData: Object {
+    @objc dynamic var photoImage = Data()
 }
