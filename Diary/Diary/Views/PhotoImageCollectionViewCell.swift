@@ -15,7 +15,7 @@ class PhotoImageCollectionViewCell: UICollectionViewCell {
     
     func setup(data: Data) {
         self.photoImageView.image = UIImage(data: data)
-        self.photoImageView.contentMode = .scaleAspectFit
+        self.photoImageView.contentMode = .scaleToFill
         
         self.photoImageView.layer.cornerRadius = 5
     }

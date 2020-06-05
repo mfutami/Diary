@@ -45,7 +45,6 @@
 		1B4CB86C2487D7CF004E78A5 /* PhotoImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B4CB86A2487D7CF004E78A5 /* PhotoImageCollectionViewCell.xib */; };
 		1B4CB86E2487DB0D004E78A5 /* delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B4CB86D2487DB0D004E78A5 /* delete@2x.png */; };
 		1B4D87FC247F73E400DDE78B /* return_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B4D87FB247F73E300DDE78B /* return_icon@2x.png */; };
-		1B4DF569242B943800679B26 /* closeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B4DF568242B943700679B26 /* closeButton@2x.png */; };
 		1B50A1EB246AD34500F08485 /* LocationDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B50A1E9246AD34500F08485 /* LocationDataCell.swift */; };
 		1B50A1EC246AD34500F08485 /* LocationDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B50A1EA246AD34500F08485 /* LocationDataCell.xib */; };
 		1B53D77523B39ED100DA6E91 /* create@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B53D77423B39ED100DA6E91 /* create@2x.png */; };
@@ -66,6 +65,7 @@
 		1B87B778244C265E00488631 /* NVActivityIndicatorView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87B776244C265E00488631 /* NVActivityIndicatorView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1B87B780244C268300488631 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87B77F244C268300488631 /* SWXMLHash.framework */; };
 		1B87B781244C268300488631 /* SWXMLHash.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87B77F244C268300488631 /* SWXMLHash.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1B96D8A2248A930200C4A2FF /* closeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B96D8A1248A930200C4A2FF /* closeButton@2x.png */; };
 		1BAF7B4823A3DD30003C8A59 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAF7B4723A3DD30003C8A59 /* WebViewController.swift */; };
 		1BAF7B4A23A3DD7F003C8A59 /* WebView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BAF7B4923A3DD7F003C8A59 /* WebView.storyboard */; };
 		1BAF7B4C23A3DDF6003C8A59 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAF7B4B23A3DDF6003C8A59 /* WebView.swift */; };
@@ -152,7 +152,6 @@
 		1B4CB86A2487D7CF004E78A5 /* PhotoImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		1B4CB86D2487DB0D004E78A5 /* delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@2x.png"; sourceTree = "<group>"; };
 		1B4D87FB247F73E300DDE78B /* return_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "return_icon@2x.png"; sourceTree = "<group>"; };
-		1B4DF568242B943700679B26 /* closeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closeButton@2x.png"; sourceTree = "<group>"; };
 		1B50A1E9246AD34500F08485 /* LocationDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDataCell.swift; sourceTree = "<group>"; };
 		1B50A1EA246AD34500F08485 /* LocationDataCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationDataCell.xib; sourceTree = "<group>"; };
 		1B53D77423B39ED100DA6E91 /* create@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "create@2x.png"; sourceTree = "<group>"; };
@@ -169,6 +168,7 @@
 		1B87B773244C265000488631 /* LTMorphingLabel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LTMorphingLabel.framework; path = Carthage/Build/iOS/LTMorphingLabel.framework; sourceTree = "<group>"; };
 		1B87B776244C265E00488631 /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorView.framework; path = Carthage/Build/iOS/NVActivityIndicatorView.framework; sourceTree = "<group>"; };
 		1B87B77F244C268300488631 /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = Carthage/Build/iOS/SWXMLHash.framework; sourceTree = "<group>"; };
+		1B96D8A1248A930200C4A2FF /* closeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closeButton@2x.png"; sourceTree = "<group>"; };
 		1BAF7B4723A3DD30003C8A59 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		1BAF7B4923A3DD7F003C8A59 /* WebView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebView.storyboard; sourceTree = "<group>"; };
 		1BAF7B4B23A3DDF6003C8A59 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
@@ -328,7 +328,7 @@
 				1B28CF312369D07000C756B0 /* news@2x.png */,
 				1B28CF2F2369CFF200C756B0 /* home@2x.png */,
 				1B53D77423B39ED100DA6E91 /* create@2x.png */,
-				1B4DF568242B943700679B26 /* closeButton@2x.png */,
+				1B96D8A1248A930200C4A2FF /* closeButton@2x.png */,
 				1B5A258C2470204400485B56 /* remove@2x.png */,
 			);
 			path = image;
@@ -585,6 +585,7 @@
 				1B55298723B5D810000BF3C8 /* Splash.storyboard in Resources */,
 				1B4CB86E2487DB0D004E78A5 /* delete@2x.png in Resources */,
 				1BAF7B4A23A3DD7F003C8A59 /* WebView.storyboard in Resources */,
+				1B96D8A2248A930200C4A2FF /* closeButton@2x.png in Resources */,
 				1B1054AF231D51E40067E7AF /* Assets.xcassets in Resources */,
 				1B630A99243470FF007D22D0 /* ScheduleCreation.storyboard in Resources */,
 				1B28CF342369D0CE00C756B0 /* camera@2x.png in Resources */,
@@ -597,7 +598,6 @@
 				1B2894E9232531860090A221 /* Location.storyboard in Resources */,
 				1B4D87FC247F73E400DDE78B /* return_icon@2x.png in Resources */,
 				1B4CB8682487CB55004E78A5 /* PhotoLibrary.storyboard in Resources */,
-				1B4DF569242B943800679B26 /* closeButton@2x.png in Resources */,
 				1B28CF302369CFF300C756B0 /* home@2x.png in Resources */,
 				1B73AA7E2430300B008C02A4 /* NewsCollectionViewCell.xib in Resources */,
 				1B28CF322369D07000C756B0 /* news@2x.png in Resources */,

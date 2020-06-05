@@ -36,7 +36,13 @@ class PhotoLibraryViewController: UIViewController {
                                               style: .done,
                                               target: self,
                                               action: #selector(self.deleteButton))
-        self.navigationItem.rightBarButtonItem = rightSearchBarButtonItem
+        
+        let closeButton:
+            UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "closeButton"),
+                                              style: .done,
+                                              target: self,
+                                              action: #selector(self.tapCloseButton))
+        self.navigationItem.rightBarButtonItems = [closeButton, rightSearchBarButtonItem]
     }
     
     func setupCollectionView() {
@@ -56,6 +62,10 @@ class PhotoLibraryViewController: UIViewController {
         self.setupRemoveDialog()
     }
     
+    @objc func tapCloseButton() {
+        self.dismiss(animated: true)
+    }
+    
     func setupRemoveDialog() {
         let removeDialog = UIAlertController(title: "全削除致します。",
                                              message: "削除した写真は復元することができません。",
@@ -63,6 +73,7 @@ class PhotoLibraryViewController: UIViewController {
         let notRemove = UIAlertAction(title: "いいえ", style: .cancel)
         let remove = UIAlertAction(title: "はい", style: .default) { [weak self] _ in
             self?.dataManagement.removePhotoImage()
+            self?.collectionView.reloadData()
         }
         removeDialog.addAction(notRemove)
         removeDialog.addAction(remove)

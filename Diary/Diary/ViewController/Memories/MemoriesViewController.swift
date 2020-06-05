@@ -238,6 +238,7 @@ extension MemoriesViewController: PhotoLibraryDelegate {
     func showPhotoLibrary() {
         let storyboard = UIStoryboard(name: "PhotoLibrary", bundle: nil)
         guard let viewController = storyboard.instantiateInitialViewController() else { return }
+        viewController.modalPresentationStyle = .fullScreen
         self.present(viewController, animated: true)
     }
 }
