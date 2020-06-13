@@ -47,6 +47,8 @@
 		1B4D87FC247F73E400DDE78B /* return_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B4D87FB247F73E300DDE78B /* return_icon@2x.png */; };
 		1B50A1EB246AD34500F08485 /* LocationDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B50A1E9246AD34500F08485 /* LocationDataCell.swift */; };
 		1B50A1EC246AD34500F08485 /* LocationDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B50A1EA246AD34500F08485 /* LocationDataCell.xib */; };
+		1B50AFFB24910B71002E439C /* DiaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B50AFF924910B71002E439C /* DiaryCell.swift */; };
+		1B50AFFC24910B71002E439C /* DiaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B50AFFA24910B71002E439C /* DiaryCell.xib */; };
 		1B53D77523B39ED100DA6E91 /* create@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B53D77423B39ED100DA6E91 /* create@2x.png */; };
 		1B55298723B5D810000BF3C8 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B55298623B5D810000BF3C8 /* Splash.storyboard */; };
 		1B55E7C623AA601A00D8402C /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B55E7C523AA601A00D8402C /* LocationViewModel.swift */; };
@@ -154,6 +156,8 @@
 		1B4D87FB247F73E300DDE78B /* return_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "return_icon@2x.png"; sourceTree = "<group>"; };
 		1B50A1E9246AD34500F08485 /* LocationDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDataCell.swift; sourceTree = "<group>"; };
 		1B50A1EA246AD34500F08485 /* LocationDataCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationDataCell.xib; sourceTree = "<group>"; };
+		1B50AFF924910B71002E439C /* DiaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryCell.swift; sourceTree = "<group>"; };
+		1B50AFFA24910B71002E439C /* DiaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiaryCell.xib; sourceTree = "<group>"; };
 		1B53D77423B39ED100DA6E91 /* create@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "create@2x.png"; sourceTree = "<group>"; };
 		1B55298623B5D810000BF3C8 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		1B55E7C523AA601A00D8402C /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
@@ -388,6 +392,8 @@
 				1BEDF577248134540096CDEB /* SlideView.swift */,
 				1B4CB8692487D7CF004E78A5 /* PhotoImageCollectionViewCell.swift */,
 				1B4CB86A2487D7CF004E78A5 /* PhotoImageCollectionViewCell.xib */,
+				1B50AFF924910B71002E439C /* DiaryCell.swift */,
+				1B50AFFA24910B71002E439C /* DiaryCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -399,13 +405,6 @@
 				1B55E7C723AA608900D8402C /* Location.strings */,
 			);
 			path = Location;
-			sourceTree = "<group>";
-		};
-		1B4B8E6624360B1200D37E51 /* Diary */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Diary;
 			sourceTree = "<group>";
 		};
 		1B4CB8642487CAF0004E78A5 /* PhotoLibrary */ = {
@@ -430,7 +429,6 @@
 			isa = PBXGroup;
 			children = (
 				1B3C70702466EC7500805A79 /* Location */,
-				1B4B8E6624360B1200D37E51 /* Diary */,
 				1BC88DBA236EE6AF00C63F30 /* News */,
 			);
 			path = ViewModel;
@@ -588,6 +586,7 @@
 				1B96D8A2248A930200C4A2FF /* closeButton@2x.png in Resources */,
 				1B1054AF231D51E40067E7AF /* Assets.xcassets in Resources */,
 				1B630A99243470FF007D22D0 /* ScheduleCreation.storyboard in Resources */,
+				1B50AFFC24910B71002E439C /* DiaryCell.xib in Resources */,
 				1B28CF342369D0CE00C756B0 /* camera@2x.png in Resources */,
 				1B2FE999236C6CB000677ACA /* NewsTableViewCell.xib in Resources */,
 				1B28CF382369D1A200C756B0 /* diary@2x.png in Resources */,
@@ -719,6 +718,7 @@
 				1B2894E1232531370090A221 /* NewsViewController.swift in Sources */,
 				1B2894E5232531570090A221 /* HomeViewController.swift in Sources */,
 				1B2B939C2322AEED0015CB8A /* Strings.swift in Sources */,
+				1B50AFFB24910B71002E439C /* DiaryCell.swift in Sources */,
 				1B4CB86B2487D7CF004E78A5 /* PhotoImageCollectionViewCell.swift in Sources */,
 				1BC88DB8236EE69B00C63F30 /* NewsViewModel.swift in Sources */,
 				1B1054D7231EA6660067E7AF /* TabBer.swift in Sources */,

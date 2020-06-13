@@ -17,59 +17,63 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kTP-AX-xPi" customClass="JBDatePickerView" customModule="JBDatePicker">
-                                <rect key="frame" x="0.0" y="44" width="375" height="400"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="375"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="400" id="WUj-qH-iVk"/>
+                                    <constraint firstAttribute="height" constant="375" id="WUj-qH-iVk"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6KF-fS-UUh">
-                                <rect key="frame" x="0.0" y="444" width="375" height="180"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="hZc-4E-SAu"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="53E-Op-smS"/>
-                                </connections>
-                            </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vDy-bq-1l6">
-                                <rect key="frame" x="0.0" y="624" width="375" height="43"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dpt-pw-nRX">
+                                <rect key="frame" x="0.0" y="419" width="375" height="248"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rzm-zi-uxF">
-                                        <rect key="frame" x="339" y="0.0" width="31" height="43"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <state key="normal" title="＋"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6KF-fS-UUh">
+                                        <rect key="frame" x="0.0" y="40" width="375" height="208"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="BYZ-38-t0r" id="hZc-4E-SAu"/>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="53E-Op-smS"/>
+                                        </connections>
+                                    </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="liU-9e-rvI">
+                                        <rect key="frame" x="335" y="5" width="30" height="30"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1D4-CU-sHq">
+                                        <rect key="frame" x="10" y="5" width="30" height="30"/>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="rzm-zi-uxF" secondAttribute="bottom" id="3s3-3t-M01"/>
-                                    <constraint firstItem="rzm-zi-uxF" firstAttribute="top" secondItem="vDy-bq-1l6" secondAttribute="top" id="64E-fO-ei9"/>
-                                    <constraint firstItem="rzm-zi-uxF" firstAttribute="centerY" secondItem="vDy-bq-1l6" secondAttribute="centerY" id="L2D-cE-Geo"/>
-                                    <constraint firstAttribute="trailing" secondItem="rzm-zi-uxF" secondAttribute="trailing" constant="5" id="MAT-6E-1lj"/>
-                                    <constraint firstAttribute="height" constant="43" id="pcH-dB-fay"/>
+                                    <constraint firstAttribute="bottom" secondItem="6KF-fS-UUh" secondAttribute="bottom" id="GOe-JU-rP4"/>
+                                    <constraint firstAttribute="trailing" secondItem="liU-9e-rvI" secondAttribute="trailing" constant="10" id="GQd-RV-74h"/>
+                                    <constraint firstItem="6KF-fS-UUh" firstAttribute="top" secondItem="1D4-CU-sHq" secondAttribute="bottom" constant="5" id="Hkg-3r-b5I"/>
+                                    <constraint firstItem="liU-9e-rvI" firstAttribute="top" secondItem="dpt-pw-nRX" secondAttribute="top" constant="5" id="K1g-zU-Q2S"/>
+                                    <constraint firstItem="6KF-fS-UUh" firstAttribute="top" secondItem="liU-9e-rvI" secondAttribute="bottom" constant="5" id="OBh-JY-PM3"/>
+                                    <constraint firstItem="1D4-CU-sHq" firstAttribute="leading" secondItem="dpt-pw-nRX" secondAttribute="leading" constant="10" id="fJP-lU-kSH"/>
+                                    <constraint firstItem="6KF-fS-UUh" firstAttribute="leading" secondItem="dpt-pw-nRX" secondAttribute="leading" id="i2S-pw-Zb9"/>
+                                    <constraint firstItem="1D4-CU-sHq" firstAttribute="top" secondItem="dpt-pw-nRX" secondAttribute="top" constant="5" id="wHV-Wj-aVW"/>
+                                    <constraint firstAttribute="trailing" secondItem="6KF-fS-UUh" secondAttribute="trailing" id="ws2-nI-auQ"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kTP-AX-xPi" secondAttribute="trailing" id="7dC-bR-QJ1"/>
-                            <constraint firstItem="vDy-bq-1l6" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="NwE-cy-US9"/>
                             <constraint firstItem="kTP-AX-xPi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Tvr-5l-URT"/>
-                            <constraint firstItem="vDy-bq-1l6" firstAttribute="top" secondItem="6KF-fS-UUh" secondAttribute="bottom" id="VRM-1p-pDo"/>
+                            <constraint firstItem="dpt-pw-nRX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="WPG-y9-pZA"/>
+                            <constraint firstAttribute="bottom" secondItem="dpt-pw-nRX" secondAttribute="bottom" id="X0O-Q2-rBh"/>
                             <constraint firstItem="kTP-AX-xPi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="YQ5-Mf-ufC"/>
-                            <constraint firstItem="6KF-fS-UUh" firstAttribute="top" secondItem="kTP-AX-xPi" secondAttribute="bottom" id="k4R-JA-3eM"/>
-                            <constraint firstItem="vDy-bq-1l6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kfn-xX-ly7"/>
-                            <constraint firstItem="vDy-bq-1l6" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="uC6-BA-eOc"/>
-                            <constraint firstItem="6KF-fS-UUh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wez-fu-xMr"/>
-                            <constraint firstItem="6KF-fS-UUh" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="yHc-ee-aHh"/>
+                            <constraint firstAttribute="trailing" secondItem="dpt-pw-nRX" secondAttribute="trailing" id="eZR-JW-UlR"/>
+                            <constraint firstItem="dpt-pw-nRX" firstAttribute="top" secondItem="kTP-AX-xPi" secondAttribute="bottom" id="krx-Fs-9PT"/>
+                            <constraint firstItem="dpt-pw-nRX" firstAttribute="top" secondItem="kTP-AX-xPi" secondAttribute="bottom" id="sAb-QR-vO5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="XCl-IT-SdN"/>
                     <connections>
-                        <outlet property="beaseView" destination="vDy-bq-1l6" id="Dtd-hQ-IdZ"/>
+                        <outlet property="baseView" destination="dpt-pw-nRX" id="CR5-nC-mT5"/>
                         <outlet property="diaryView" destination="kTP-AX-xPi" id="BeT-fU-f2o"/>
-                        <outlet property="plusButton" destination="rzm-zi-uxF" id="W0u-tW-Vtc"/>
+                        <outlet property="plusButton" destination="liU-9e-rvI" id="hGA-Mh-Z48"/>
+                        <outlet property="removeButton" destination="1D4-CU-sHq" id="IwO-tM-IeM"/>
                         <outlet property="tableView" destination="6KF-fS-UUh" id="jUD-75-ft5"/>
                     </connections>
                 </viewController>

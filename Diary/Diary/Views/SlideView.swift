@@ -114,7 +114,8 @@ class SlideView: UIView {
         guard let leftFrame = self.leftFrame else { return }
         self.slideView.frame = leftFrame
     }
-    
+    // TODO: アルバムから戻ってきた際にタブがカメラになっていること。
+    // TODO: 写真タップ時に観覧できること
     @objc func tapSlideButton() {
         if !self.tapFrags {
             // アルバムタブ

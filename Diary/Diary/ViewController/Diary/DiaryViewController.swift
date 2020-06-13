@@ -13,23 +13,28 @@ class DiaryViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var diaryView: JBDatePickerView!
-    @IBOutlet weak var beaseView: UIView!
+    @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var plusButton: UIButton!
+    @IBOutlet weak var removeButton: UIButton!
     
     // 時刻取得
     var dateFormatter: DateFormatter = {
         var formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM"
+        formatter.dateFormat = "yyyy/MM/dd"
         return formatter
     }()
+    
+    var colorCode: UIColor {
+        return UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupNavigation(.diary)
         self.diaryView.delegate = self
-        self.setupImage()
         self.setupTableView()
-        self.reloadTableView()
+        self.setupBaseView()
+        self.setupButton()
     }
     // Navugation Bar
     func setupNavigation(_ setTitle: navigationTitle) {
@@ -43,24 +48,32 @@ class DiaryViewController: UIViewController {
 extension DiaryViewController {
     func setupTableView() {
         // TODO: Cell追加時にNib設定
-//        self.tableView.register(UINib(nibName: DiaryPlusCell.identifier, bundle: nil), forCellReuseIdentifier: DiaryPlusCell.identifier)
+        self.tableView.register(UINib(nibName: DiaryCell.identifier, bundle: nil),
+                                forCellReuseIdentifier: DiaryCell.identifier)
         self.tableView.separatorStyle = .none
-        self.tableView.backgroundColor = .clear
+        self.tableView.backgroundColor = self.colorCode
         self.tableView.layer.borderColor = UIColor.lightGray.cgColor
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
     }
     
-    func setupImage() {
-        self.plusButton.tintColor = .lightGray
-        
-        self.beaseView.layer.borderColor = UIColor.lightGray.cgColor
-        self.beaseView.layer.borderWidth = 1
+    func setupBaseView() {
+        self.baseView.backgroundColor = self.colorCode
+        // iOS11以降のみ対応
+        self.baseView.layer.cornerRadius = 20
+        self.baseView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
     }
     
-    func reloadTableView() {
-        self.tableView.reloadData()
+    func setupButton() {
+        self.plusButton.setTitle("＋", for: .normal)
+        self.plusButton.setTitleColor(.black, for: .normal)
+        self.plusButton.titleLabel?.font = .systemFont(ofSize: 25)
+        
+        self.removeButton.setImage(UIImage(named: "delete"), for: .normal)
+        self.removeButton.imageView?.contentMode = .scaleAspectFit
+        self.removeButton.titleLabel?.font = .systemFont(ofSize: 25)
+        self.removeButton.tintColor = .black
     }
 }
 
@@ -80,15 +93,17 @@ extension DiaryViewController: JBDatePickerViewDelegate {
 
 extension DiaryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return self.viewModel.displayCellType.count
         // TODO: 仮
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-//        cell = tableView.dequeueReusableCell(withIdentifier: self.viewModel.displayCellType[indexPath.row], for: indexPath)
+        var cell = UITableViewCell()
+        cell = tableView.dequeueReusableCell(withIdentifier: DiaryCell.identifier, for: indexPath)
         cell.selectionStyle = .none
+        if let diaryCell = cell as? DiaryCell {
+            diaryCell.setup()
+        }
         // TODO: ここに年月日ごとに取得した日記履歴を表示
         return cell
     }
