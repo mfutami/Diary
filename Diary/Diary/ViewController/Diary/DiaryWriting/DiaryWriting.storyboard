@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XQa-ps-i9A">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Diary Writing View Controller-->
+        <scene sceneID="oX4-JE-qG7">
+            <objects>
+                <viewController modalPresentationStyle="overFullScreen" id="XQa-ps-i9A" customClass="DiaryWritingViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ghQ-Nb-76N">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XSp-MN-Gbu">
+                                <rect key="frame" x="20" y="54" width="374" height="747"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="747" id="2ZX-kO-zGE"/>
+                                </constraints>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6YL-pN-TjP">
+                                <rect key="frame" x="20" y="816" width="374" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="swP-KG-MzV">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="swP-KG-MzV" firstAttribute="top" secondItem="6YL-pN-TjP" secondAttribute="top" id="A34-Fg-FF8"/>
+                                    <constraint firstAttribute="bottom" secondItem="swP-KG-MzV" secondAttribute="bottom" id="KpH-Jb-RKw"/>
+                                    <constraint firstAttribute="height" constant="50" id="a8D-Qh-PLK"/>
+                                    <constraint firstAttribute="trailing" secondItem="swP-KG-MzV" secondAttribute="trailing" id="hO1-Qs-4d6"/>
+                                    <constraint firstItem="swP-KG-MzV" firstAttribute="leading" secondItem="6YL-pN-TjP" secondAttribute="leading" id="nBR-66-WzQ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="6YL-pN-TjP" secondAttribute="trailing" id="4AZ-nE-DhZ"/>
+                            <constraint firstItem="6YL-pN-TjP" firstAttribute="leading" secondItem="ghQ-Nb-76N" secondAttribute="leadingMargin" id="5HF-a0-c9g"/>
+                            <constraint firstItem="XSp-MN-Gbu" firstAttribute="top" secondItem="ghQ-Nb-76N" secondAttribute="topMargin" constant="10" id="NUW-F8-eev"/>
+                            <constraint firstAttribute="bottom" secondItem="6YL-pN-TjP" secondAttribute="bottom" constant="30" id="OWJ-46-4YB"/>
+                            <constraint firstItem="XSp-MN-Gbu" firstAttribute="leading" secondItem="ghQ-Nb-76N" secondAttribute="leadingMargin" id="R1N-0m-XWa"/>
+                            <constraint firstItem="6YL-pN-TjP" firstAttribute="top" relation="greaterThanOrEqual" secondItem="XSp-MN-Gbu" secondAttribute="bottom" constant="10" id="iXK-ha-4oa"/>
+                            <constraint firstItem="XSp-MN-Gbu" firstAttribute="trailing" secondItem="ghQ-Nb-76N" secondAttribute="trailingMargin" id="m9i-ef-Jum"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="QsQ-vh-IFq"/>
+                    </view>
+                    <connections>
+                        <outlet property="cancelBaseView" destination="6YL-pN-TjP" id="tCr-as-fse"/>
+                        <outlet property="cancelButton" destination="swP-KG-MzV" id="Y9X-ls-Y04"/>
+                        <outlet property="tableView" destination="XSp-MN-Gbu" id="1aT-Hi-Jet"/>
+                        <outlet property="tableViewHeight" destination="2ZX-kO-zGE" id="Z2a-Ww-axE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IXy-o7-inP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-28.985507246376812" y="138.61607142857142"/>
+        </scene>
+    </scenes>
+</document>

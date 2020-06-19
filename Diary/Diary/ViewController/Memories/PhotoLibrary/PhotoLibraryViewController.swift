@@ -14,6 +14,9 @@ class PhotoLibraryViewController: UIViewController {
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
     
     private let dataManagement = DataManagement()
+    
+    private var photoImage = [UIImageView]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupNavigation()
@@ -45,6 +48,16 @@ class PhotoLibraryViewController: UIViewController {
         self.navigationItem.rightBarButtonItems = [closeButton, rightSearchBarButtonItem]
     }
     
+    func setupNavigationLeftItem(photoView: PhotoView) {
+        self.navigationItem.rightBarButtonItems = nil
+        
+        let leftBarButtonItem:
+            UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
+                                              target: photoView,
+                                              action: #selector(photoView.tapCloseButton))
+        self.navigationItem.leftBarButtonItem = leftBarButtonItem
+    }
+    
     func setupCollectionView() {
         self.collectionView.register(UINib(nibName: PhotoImageCollectionViewCell.identifier, bundle: nil),
                                      forCellWithReuseIdentifier: PhotoImageCollectionViewCell.identifier)
@@ -63,7 +76,10 @@ class PhotoLibraryViewController: UIViewController {
     }
     
     @objc func tapCloseButton() {
-        self.dismiss(animated: true)
+        self.dismiss(animated: true) {
+            guard let slideView = MemoriesViewController.slideView else { return }
+            slideView.slideAnimation()
+        }
     }
     
     func setupRemoveDialog() {
@@ -92,8 +108,19 @@ extension PhotoLibraryViewController: UICollectionViewDataSource {
         cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoImageCollectionViewCell.identifier, for: indexPath)
         if let photoImageCollectionViewCell = cell as? PhotoImageCollectionViewCell {
             photoImageCollectionViewCell.setup(data: self.dataManagement.photoImageArreData[indexPath.row])
+            self.photoImage.append(photoImageCollectionViewCell.photoImageView)
         }
         return cell
+    }
+}
+
+extension PhotoLibraryViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let imageView = PhotoView(frame: self.view.frame)
+        imageView.setupImageView(imageView: self.photoImage[indexPath.row])
+        imageView.photoDelegate = self
+        self.setupNavigationLeftItem(photoView: imageView)
+        self.view.addSubview(imageView)
     }
 }
 
@@ -102,5 +129,12 @@ extension PhotoLibraryViewController: UICollectionViewDelegateFlowLayout {
         let horizontalSpace: CGFloat = 20
         let cellSize: CGFloat = self.view.frame.width / 3 - horizontalSpace
         return CGSize(width: cellSize, height: cellSize)
+    }
+}
+
+extension PhotoLibraryViewController: PhotoViewDelegate {
+    func removeNavigationLeftItem() {
+        self.navigationItem.leftBarButtonItem = nil
+        self.setupNavigationRightItem()
     }
 }

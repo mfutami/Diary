@@ -30,7 +30,7 @@ class TabBer {
                 return "Location"
             }
         }
-        // TODO: 後日変更
+        
         var image: String? {
             switch self {
             case .diary:

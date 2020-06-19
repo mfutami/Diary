@@ -52,7 +52,6 @@ extension DiaryViewController {
                                 forCellReuseIdentifier: DiaryCell.identifier)
         self.tableView.separatorStyle = .none
         self.tableView.backgroundColor = self.colorCode
-        self.tableView.layer.borderColor = UIColor.lightGray.cgColor
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -69,11 +68,20 @@ extension DiaryViewController {
         self.plusButton.setTitle("＋", for: .normal)
         self.plusButton.setTitleColor(.black, for: .normal)
         self.plusButton.titleLabel?.font = .systemFont(ofSize: 25)
+        self.plusButton.addTarget(self,
+                                  action: #selector(self.tapPlusButton),
+                                  for: .touchUpInside)
         
         self.removeButton.setImage(UIImage(named: "delete"), for: .normal)
         self.removeButton.imageView?.contentMode = .scaleAspectFit
         self.removeButton.titleLabel?.font = .systemFont(ofSize: 25)
         self.removeButton.tintColor = .black
+    }
+    
+    @objc func tapPlusButton() {
+        let storyboard = UIStoryboard(name: "DiaryWriting", bundle: nil)
+        guard let viewController = storyboard.instantiateInitialViewController() else { return }
+        self.present(viewController, animated: false)
     }
 }
 

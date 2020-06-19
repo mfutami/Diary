@@ -24,13 +24,15 @@ class MemoriesViewController: UIViewController {
     private var change: Bool = false
     private var isChangeCamera: Bool = true
     
-    private var getSlideView: UIView {
-        let slideView = SlideView(frame: CGRect(x: self.baseView.bounds.origin.x + 20,
-                                                y: self.baseView.bounds.origin.y + 10,
-                                                width: self.baseView.bounds.size.width,
-                                                height: 40))
-        slideView.delegate = self
-        return slideView
+    static var slideView: SlideView?
+    
+    private var getSlideView: UIView? {
+        MemoriesViewController.slideView = SlideView(frame: CGRect(x: self.baseView.bounds.origin.x + 20,
+                                                                   y: self.baseView.bounds.origin.y + 10,
+                                                                   width: self.baseView.bounds.size.width,
+                                                                   height: 40))
+        MemoriesViewController.slideView?.delegate = self
+        return MemoriesViewController.slideView
     }
     
     override func viewDidLoad() {
@@ -81,7 +83,8 @@ class MemoriesViewController: UIViewController {
     }
     
     func setupSlideView() {
-        self.baseView.addSubview(self.getSlideView)
+        guard let slideView = self.getSlideView else { return }
+        self.baseView.addSubview(slideView)
     }
     
     func removeCaptureSession() {
@@ -195,7 +198,7 @@ class MemoriesViewController: UIViewController {
     
     // MARK: - Action
     @IBAction func shutterButtonAction(_ sender: UIButton) {
-        // TODO: メモ_AVCapturePhotoSettingsが2回目以降になると起動しない？的なこと書いてあったためメソッド内で設定したらいけた
+        // メモ: AVCapturePhotoSettingsが2回目以降になると起動しない？的なこと書いてあったためメソッド内で設定したらいけた
         let settings = AVCapturePhotoSettings()
         // フラッシュ設定
         settings.flashMode = .off
