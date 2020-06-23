@@ -14,7 +14,7 @@ class DiaryCell: UITableViewCell {
     @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var diaryButton: UIButton!
     
-    func setup() {
+    func setup(title: String) {
         self.backgroundColor = .clear
         
         self.baseView.backgroundColor = .white
@@ -25,7 +25,7 @@ class DiaryCell: UITableViewCell {
         self.baseView.layer.shadowOpacity = 0.2
         self.baseView.layer.shadowRadius = 1
         
-        self.diaryButton.setTitle("飲み会", for: .normal)
+        self.diaryButton.setTitle(title, for: .normal)
         self.diaryButton.setTitleColor(.black, for: .normal)
         self.diaryButton.titleLabel?.font = .boldSystemFont(ofSize: 20)
         self.diaryButton.titleEdgeInsets = UIEdgeInsets(top: .zero, left: 20, bottom: .zero, right: .zero)

@@ -29,6 +29,9 @@
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6KF-fS-UUh">
                                         <rect key="frame" x="0.0" y="40" width="375" height="208"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="208" id="hwC-x6-548"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="dataSource" destination="BYZ-38-t0r" id="hZc-4E-SAu"/>
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="53E-Op-smS"/>
@@ -48,6 +51,7 @@
                                     <constraint firstItem="6KF-fS-UUh" firstAttribute="top" secondItem="1D4-CU-sHq" secondAttribute="bottom" constant="5" id="Hkg-3r-b5I"/>
                                     <constraint firstItem="liU-9e-rvI" firstAttribute="top" secondItem="dpt-pw-nRX" secondAttribute="top" constant="5" id="K1g-zU-Q2S"/>
                                     <constraint firstItem="6KF-fS-UUh" firstAttribute="top" secondItem="liU-9e-rvI" secondAttribute="bottom" constant="5" id="OBh-JY-PM3"/>
+                                    <constraint firstItem="6KF-fS-UUh" firstAttribute="top" secondItem="dpt-pw-nRX" secondAttribute="top" constant="40" id="Xun-3P-3gJ"/>
                                     <constraint firstItem="1D4-CU-sHq" firstAttribute="leading" secondItem="dpt-pw-nRX" secondAttribute="leading" constant="10" id="fJP-lU-kSH"/>
                                     <constraint firstItem="6KF-fS-UUh" firstAttribute="leading" secondItem="dpt-pw-nRX" secondAttribute="leading" id="i2S-pw-Zb9"/>
                                     <constraint firstItem="1D4-CU-sHq" firstAttribute="top" secondItem="dpt-pw-nRX" secondAttribute="top" constant="5" id="wHV-Wj-aVW"/>
@@ -75,6 +79,7 @@
                         <outlet property="plusButton" destination="liU-9e-rvI" id="hGA-Mh-Z48"/>
                         <outlet property="removeButton" destination="1D4-CU-sHq" id="IwO-tM-IeM"/>
                         <outlet property="tableView" destination="6KF-fS-UUh" id="jUD-75-ft5"/>
+                        <outlet property="tableViewHeight" destination="hwC-x6-548" id="45N-Av-jaM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

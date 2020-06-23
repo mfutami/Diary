@@ -16,6 +16,7 @@ class DiaryWritingViewController: UIViewController {
     @IBOutlet weak var cancelBaseView: UIView!
     
     private let viewModel = DiaryWritingViewModel()
+    private let dataManagement = DataManagement()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +27,7 @@ class DiaryWritingViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+//        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         self.tableViewHeight.constant = self.tableView.contentSize.height
     }
 }
@@ -44,13 +45,25 @@ private extension DiaryWritingViewController {
         
         self.tableView.separatorStyle = .none
         self.tableView.isScrollEnabled = false
+        
         self.tableView.layer.cornerRadius = 20
+        self.tableView.layer.shadowOffset = CGSize(width: 0.5, height: 1.0)
+        self.tableView.layer.shadowColor = UIColor.lightGray.cgColor
+        self.tableView.layer.shadowOpacity = 0.5
+        self.tableView.layer.shadowRadius = 2
+        self.tableView.layer.masksToBounds = false
+        
         self.tableView.dataSource = self
         self.tableView.delegate = self
     }
     
     func setupCancel() {
         self.cancelBaseView.layer.cornerRadius = 15
+        self.cancelBaseView.layer.shadowOffset = CGSize(width: 0.5, height: 1.0)
+        self.cancelBaseView.layer.shadowColor = UIColor.lightGray.cgColor
+        self.cancelBaseView.layer.shadowOpacity = 0.5
+        self.cancelBaseView.layer.shadowRadius = 2
+        
         self.cancelBaseView.backgroundColor = .white
         
         self.cancelButton.backgroundColor = .clear
@@ -91,6 +104,10 @@ private extension DiaryWritingViewController {
                 self.errorDialog()
                 return
         }
+        // 記入したデータを保存
+        self.dataManagement.addDate()
+        self.dataManagement.getdate()
+        self.dismiss(animated: false)
     }
     
     @objc func hideKeyboard() {

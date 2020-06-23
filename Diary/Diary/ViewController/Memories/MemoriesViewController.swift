@@ -117,7 +117,7 @@ class MemoriesViewController: UIViewController {
                 if success {
                     self.captureSession.startRunning()
                 } else {
-                    self.setErrorDialog()
+                    // TODO: 拒否した場合クラッシュする為ダイアログ表示とバッティングするからかな？
                 }
             }
         }

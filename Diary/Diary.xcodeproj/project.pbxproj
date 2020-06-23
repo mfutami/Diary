@@ -40,6 +40,8 @@
 		1B493B6B246841480078004C /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B493B6A246841480078004C /* RealmSwift.framework */; };
 		1B493B6D246841580078004C /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B493B6C246841580078004C /* Realm.framework */; };
 		1B4C5F52249C6EB000D029A1 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4C5F51249C6EB000D029A1 /* PhotoView.swift */; };
+		1B4C5F58249CB2E100D029A1 /* CurrentLocationRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4C5F57249CB2E100D029A1 /* CurrentLocationRegistrationViewController.swift */; };
+		1B4C5F5A249CB2EC00D029A1 /* CurrentLocationRegistration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B4C5F59249CB2EC00D029A1 /* CurrentLocationRegistration.storyboard */; };
 		1B4CB8662487CB40004E78A5 /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4CB8652487CB40004E78A5 /* PhotoLibraryViewController.swift */; };
 		1B4CB8682487CB55004E78A5 /* PhotoLibrary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B4CB8672487CB55004E78A5 /* PhotoLibrary.storyboard */; };
 		1B4CB86B2487D7CF004E78A5 /* PhotoImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4CB8692487D7CF004E78A5 /* PhotoImageCollectionViewCell.swift */; };
@@ -165,6 +167,8 @@
 		1B493B6A246841480078004C /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		1B493B6C246841580078004C /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		1B4C5F51249C6EB000D029A1 /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
+		1B4C5F57249CB2E100D029A1 /* CurrentLocationRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationRegistrationViewController.swift; sourceTree = "<group>"; };
+		1B4C5F59249CB2EC00D029A1 /* CurrentLocationRegistration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CurrentLocationRegistration.storyboard; sourceTree = "<group>"; };
 		1B4CB8652487CB40004E78A5 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
 		1B4CB8672487CB55004E78A5 /* PhotoLibrary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PhotoLibrary.storyboard; sourceTree = "<group>"; };
 		1B4CB8692487D7CF004E78A5 /* PhotoImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -312,6 +316,7 @@
 		1B2894DE2325234B0090A221 /*  Location */ = {
 			isa = PBXGroup;
 			children = (
+				1B4C5F56249CB2C100D029A1 /* CurrentLocationRegistration */,
 				1B2894E22325314C0090A221 /* LocationViewController.swift */,
 				1B2894E8232531860090A221 /* Location.storyboard */,
 			);
@@ -449,6 +454,15 @@
 				1B4C5F51249C6EB000D029A1 /* PhotoView.swift */,
 			);
 			path = PhotoImageView;
+			sourceTree = "<group>";
+		};
+		1B4C5F56249CB2C100D029A1 /* CurrentLocationRegistration */ = {
+			isa = PBXGroup;
+			children = (
+				1B4C5F57249CB2E100D029A1 /* CurrentLocationRegistrationViewController.swift */,
+				1B4C5F59249CB2EC00D029A1 /* CurrentLocationRegistration.storyboard */,
+			);
+			path = CurrentLocationRegistration;
 			sourceTree = "<group>";
 		};
 		1B4CB8642487CAF0004E78A5 /* PhotoLibrary */ = {
@@ -693,6 +707,7 @@
 				1B1054B2231D51E40067E7AF /* LaunchScreen.storyboard in Resources */,
 				1B4CE199249507DB0077D34D /* TextCell.xib in Resources */,
 				1B2894EB232531920090A221 /* Home.storyboard in Resources */,
+				1B4C5F5A249CB2EC00D029A1 /* CurrentLocationRegistration.storyboard in Resources */,
 				1B55298723B5D810000BF3C8 /* Splash.storyboard in Resources */,
 				1B4CB86E2487DB0D004E78A5 /* delete@2x.png in Resources */,
 				1BAF7B4A23A3DD7F003C8A59 /* WebView.storyboard in Resources */,
@@ -855,6 +870,7 @@
 				1B2894E32325314C0090A221 /* LocationViewController.swift in Sources */,
 				1B50A1EB246AD34500F08485 /* LocationDataCell.swift in Sources */,
 				1B630A97243470E7007D22D0 /* ScheduleCreationViewController.swift in Sources */,
+				1B4C5F58249CB2E100D029A1 /* CurrentLocationRegistrationViewController.swift in Sources */,
 				1BAF7B4E23A3DE6D003C8A59 /* Splash.swift in Sources */,
 				1B73AA7D2430300B008C02A4 /* NewsCollectionViewCell.swift in Sources */,
 			);

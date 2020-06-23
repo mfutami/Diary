@@ -11,7 +11,7 @@
         <!--Diary Writing View Controller-->
         <scene sceneID="oX4-JE-qG7">
             <objects>
-                <viewController modalPresentationStyle="overFullScreen" id="XQa-ps-i9A" customClass="DiaryWritingViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XQa-ps-i9A" customClass="DiaryWritingViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ghQ-Nb-76N">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

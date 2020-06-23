@@ -23,6 +23,8 @@ class IconCell: UITableViewCell {
     }
     
     func setupBaseView() {
+        self.backgroundColor = .clear
+        
         self.baseView.layer.cornerRadius = 15
         self.baseView.layer.borderWidth = 0.5
         self.baseView.layer.borderColor = UIColor.lightGray.cgColor

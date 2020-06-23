@@ -25,7 +25,10 @@ class HeaderView: UIView {
     }
     
     private func setuoSubView() {
-        let label = UILabel(frame: frame)
+        let label = UILabel(frame: CGRect(x: self.frame.origin.x,
+                                          y: self.frame.origin.y,
+                                          width: 100,
+                                          height: self.frame.height))
         self.addSubview(label)
         self.titleLabel = label
     }

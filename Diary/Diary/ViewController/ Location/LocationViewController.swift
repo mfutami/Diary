@@ -21,15 +21,14 @@ class LocationViewController: UIViewController {
     private let dataManagement = DataManagement()
     private var location = CLLocationManager()
     private var region = MKCoordinateRegion()
-    // ジオコーディング, 逆ジオコーディング提供インスタンス
+    /// ジオコーディング, 逆ジオコーディング提供インスタンス
     private let geocoder = CLGeocoder()
-    // 現在緯度
+    /// 現在緯度
     private var currentLatitude: CLLocationDegrees?
-    // 現在経度
+    /// 現在経度
     private var currentLongitude: CLLocationDegrees?
-    
+    /// 現在位置
     private var streetAddress: String?
-    
     
     var viewModel = LocationViewModel()
     
@@ -51,12 +50,20 @@ class LocationViewController: UIViewController {
                                  selector: #selector(self.didEnterBackground(_:)),
                                  name: UIApplication.didEnterBackgroundNotification,
                                  object: nil)
-        
+
+        // 地点を登録していなかった場合登録VCを表示
+        guard self.viewModel.alreadyRegistered else {
+            self.showCurrentLocationRegistrationDisplay()
+            return
+        }
         self.requestWhenInUseAuthorization()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.setupMapView()
+        self.setupCompassButton()
+        self.setupRecordArea()
         // 登録情報がない場合 - errorView表示
         self.errorDisplayIfThereIsNoInformation()
     }
@@ -196,24 +203,11 @@ private extension LocationViewController {
         }
     }
     
-    func requestWhenInUseAuthorization() {
-        if CLLocationManager.locationServicesEnabled() {
-            switch CLLocationManager.authorizationStatus() {
-            case .notDetermined:
-                self.location.requestWhenInUseAuthorization()
-            case .authorizedAlways, .authorizedWhenInUse:
-                self.location.startUpdatingLocation()
-                self.setupMapView()
-                self.setupCompassButton()
-                self.setupRecordArea()
-            case .denied:
-                self.setupErrorDialog()
-            default:
-                break
-            }
-        } else {
-            self.setupErrorDialog()
-        }
+    func showCurrentLocationRegistrationDisplay() {
+        let storyboard = UIStoryboard(name: "CurrentLocationRegistration", bundle: nil)
+        guard let viewController = storyboard.instantiateInitialViewController() else { return }
+        viewController.modalPresentationStyle = .fullScreen
+        self.present(viewController, animated: false)
     }
     
     func onClickOkButton() {
@@ -268,7 +262,8 @@ private extension LocationViewController {
         self.errorTextLabel.isHidden = true
         self.tableView.isHidden = false
         self.getLocationData() {
-            self.getDistanceFromCurrentPosition(geocodeAddress: self.streetAddress)
+            self.getDistanceFromCurrentPosition(geocodeAddress: CurrentLocationRegistrationViewController.registrationData)
+            self.tableView.reloadData()
         }
     }
     
@@ -284,8 +279,27 @@ private extension LocationViewController {
         // TODO: エラーViewを表示して画面タップ時に設定画面に遷移させるでも良い
         self.requestWhenInUseAuthorization()
     }
-    
 }
+
+extension LocationViewController {
+    func requestWhenInUseAuthorization() {
+        if CLLocationManager.locationServicesEnabled() {
+            switch CLLocationManager.authorizationStatus() {
+            case .notDetermined:
+                self.location.requestWhenInUseAuthorization()
+            case .authorizedAlways, .authorizedWhenInUse:
+                self.location.startUpdatingLocation()
+            case .denied:
+                self.setupErrorDialog()
+            default:
+                break
+            }
+        } else {
+            self.setupErrorDialog()
+        }
+    }
+}
+
 // MARK: - UITableViewDataSource
 extension LocationViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

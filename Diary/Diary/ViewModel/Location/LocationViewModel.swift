@@ -26,4 +26,12 @@ class LocationViewModel {
     var backgroundColor: UIColor {
         return UIColor(red: 248/255, green: 248/255, blue: 248/255, alpha: 1.0)
     }
+    
+    var alreadyRegistered: Bool {
+        UserDefaults.standard.bool(forKey: "register")
+    }
+    
+    func whetherToRegister() {
+        UserDefaults.standard.set(true, forKey: "register")
+    }
 }
