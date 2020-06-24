@@ -12,7 +12,7 @@ class DiaryCell: UITableViewCell {
     static let identifier = "DiaryCell"
 
     @IBOutlet weak var baseView: UIView!
-    @IBOutlet weak var diaryButton: UIButton!
+    @IBOutlet weak var diaryLabel: UILabel!
     
     func setup(title: String) {
         self.backgroundColor = .clear
@@ -25,10 +25,9 @@ class DiaryCell: UITableViewCell {
         self.baseView.layer.shadowOpacity = 0.2
         self.baseView.layer.shadowRadius = 1
         
-        self.diaryButton.setTitle(title, for: .normal)
-        self.diaryButton.setTitleColor(.black, for: .normal)
-        self.diaryButton.titleLabel?.font = .boldSystemFont(ofSize: 20)
-        self.diaryButton.titleEdgeInsets = UIEdgeInsets(top: .zero, left: 20, bottom: .zero, right: .zero)
+        self.diaryLabel.text = title
+        self.diaryLabel.textColor = .black
+        self.diaryLabel.font = .boldSystemFont(ofSize: 20)
     }
     
 }

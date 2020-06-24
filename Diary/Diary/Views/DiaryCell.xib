@@ -20,19 +20,20 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EQG-iV-uzM">
                         <rect key="frame" x="10" y="0.0" width="317" height="40"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0h3-p9-wq0">
-                                <rect key="frame" x="5" y="0.0" width="312" height="40"/>
-                                <inset key="titleEdgeInsets" minX="1" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Button"/>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t6W-LI-dGK">
+                                <rect key="frame" x="20" y="0.0" width="297" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="0h3-p9-wq0" secondAttribute="trailing" id="11N-9u-jbT"/>
                             <constraint firstAttribute="height" constant="40" id="8ef-i7-czA"/>
-                            <constraint firstAttribute="bottom" secondItem="0h3-p9-wq0" secondAttribute="bottom" id="G9i-ja-KON"/>
-                            <constraint firstItem="0h3-p9-wq0" firstAttribute="top" secondItem="EQG-iV-uzM" secondAttribute="top" id="GOq-A0-tEm"/>
-                            <constraint firstItem="0h3-p9-wq0" firstAttribute="leading" secondItem="EQG-iV-uzM" secondAttribute="leading" constant="5" id="KZI-DD-Mix"/>
+                            <constraint firstAttribute="bottom" secondItem="t6W-LI-dGK" secondAttribute="bottom" id="Ny6-5F-jfw"/>
+                            <constraint firstItem="t6W-LI-dGK" firstAttribute="leading" secondItem="EQG-iV-uzM" secondAttribute="leading" constant="20" id="XpN-Bz-4uc"/>
+                            <constraint firstAttribute="trailing" secondItem="t6W-LI-dGK" secondAttribute="trailing" id="Zeb-rH-xmU"/>
+                            <constraint firstItem="t6W-LI-dGK" firstAttribute="top" secondItem="EQG-iV-uzM" secondAttribute="top" id="wr3-IJ-iWr"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -46,7 +47,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="baseView" destination="EQG-iV-uzM" id="eO7-bo-2jj"/>
-                <outlet property="diaryButton" destination="0h3-p9-wq0" id="Gfa-P2-8Ev"/>
+                <outlet property="diaryLabel" destination="t6W-LI-dGK" id="Y3j-EH-0zB"/>
             </connections>
             <point key="canvasLocation" x="125.36231884057972" y="110.82589285714285"/>
         </tableViewCell>

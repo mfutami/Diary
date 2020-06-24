@@ -27,7 +27,6 @@ class DiaryWritingViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         self.tableViewHeight.constant = self.tableView.contentSize.height
     }
 }
@@ -38,8 +37,6 @@ private extension DiaryWritingViewController {
                                 forCellReuseIdentifier: TitleCell.identifier)
         self.tableView.register(UINib(nibName: TextCell.identifier, bundle: nil),
                                 forCellReuseIdentifier: TextCell.identifier)
-        self.tableView.register(UINib(nibName: DeleteCell.identifier, bundle: nil),
-                                forCellReuseIdentifier: DeleteCell.identifier)
         self.tableView.register(UINib(nibName: IconCell.identifier, bundle: nil),
                                 forCellReuseIdentifier: IconCell.identifier)
         
@@ -160,8 +157,6 @@ extension DiaryWritingViewController: UITableViewDataSource {
         switch item {
         case .text:
             (cell as? TextCell)?.setup()
-        case .delete:
-            (cell as? DeleteCell)?.setup()
         case .icon:
             if let iconCell = cell as? IconCell {
                 iconCell.setupBaseView()

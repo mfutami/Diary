@@ -114,7 +114,7 @@ extension DiaryViewController {
         let storyboard = UIStoryboard(name: "DiaryWriting", bundle: nil)
         guard let viewController = storyboard.instantiateInitialViewController() else { return }
         viewController.modalPresentationStyle = .fullScreen
-        self.present(viewController, animated: false)
+        self.present(viewController, animated: true)
     }
     
     @objc func tapRemoveButton() {
@@ -158,7 +158,15 @@ extension DiaryViewController: UITableViewDataSource {
 }
 
 extension DiaryViewController: UITableViewDelegate {
-    // TODO: 選択したCellを把握し内容を取得して表示させる
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "DiaryViewing", bundle: nil)
+        guard let viewController = storyboard.instantiateInitialViewController() else { return }
+        if let diaryViewing = viewController as? DiaryViewingViewController {
+            diaryViewing.viewModel = DiaryViewingViewModel(title: DiaryViewController.title[indexPath.row],
+                                                           text: DiaryViewController.text[indexPath.row])
+            self.present(viewController, animated: false)
+        }
+    }
 }
 
 class DiaryDate: Object {

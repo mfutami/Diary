@@ -39,9 +39,16 @@
 		1B2FE999236C6CB000677ACA /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B2FE997236C6CB000677ACA /* NewsTableViewCell.xib */; };
 		1B493B6B246841480078004C /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B493B6A246841480078004C /* RealmSwift.framework */; };
 		1B493B6D246841580078004C /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B493B6C246841580078004C /* Realm.framework */; };
+		1B4B9EAA24A2C2F3002CBDD2 /* DiaryViewingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4B9EA924A2C2F3002CBDD2 /* DiaryViewingViewController.swift */; };
+		1B4B9EAC24A2C307002CBDD2 /* DiaryViewing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B4B9EAB24A2C307002CBDD2 /* DiaryViewing.storyboard */; };
+		1B4B9EAE24A2C590002CBDD2 /* DiaryViewingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4B9EAD24A2C590002CBDD2 /* DiaryViewingViewModel.swift */; };
+		1B4C0DC224A411F7005B5D17 /* ViewingTitleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4C0DC124A411F7005B5D17 /* ViewingTitleHeaderView.swift */; };
 		1B4C5F52249C6EB000D029A1 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4C5F51249C6EB000D029A1 /* PhotoView.swift */; };
 		1B4C5F58249CB2E100D029A1 /* CurrentLocationRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4C5F57249CB2E100D029A1 /* CurrentLocationRegistrationViewController.swift */; };
 		1B4C5F5A249CB2EC00D029A1 /* CurrentLocationRegistration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B4C5F59249CB2EC00D029A1 /* CurrentLocationRegistration.storyboard */; };
+		1B4C9A3D24A336C500F27273 /* ViewingTitleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4C9A3C24A336C500F27273 /* ViewingTitleHeader.swift */; };
+		1B4C9A4024A3376200F27273 /* ViewingTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4C9A3E24A3376100F27273 /* ViewingTextCell.swift */; };
+		1B4C9A4124A3376200F27273 /* ViewingTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B4C9A3F24A3376200F27273 /* ViewingTextCell.xib */; };
 		1B4CB8662487CB40004E78A5 /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4CB8652487CB40004E78A5 /* PhotoLibraryViewController.swift */; };
 		1B4CB8682487CB55004E78A5 /* PhotoLibrary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B4CB8672487CB55004E78A5 /* PhotoLibrary.storyboard */; };
 		1B4CB86B2487D7CF004E78A5 /* PhotoImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4CB8692487D7CF004E78A5 /* PhotoImageCollectionViewCell.swift */; };
@@ -56,8 +63,6 @@
 		1B4CE1932495078C0077D34D /* TitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B4CE1912495078C0077D34D /* TitleCell.xib */; };
 		1B4CE198249507DB0077D34D /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4CE196249507DB0077D34D /* TextCell.swift */; };
 		1B4CE199249507DB0077D34D /* TextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B4CE197249507DB0077D34D /* TextCell.xib */; };
-		1B4CE19C249508050077D34D /* DeleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4CE19A249508050077D34D /* DeleteCell.swift */; };
-		1B4CE19D249508050077D34D /* DeleteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B4CE19B249508050077D34D /* DeleteCell.xib */; };
 		1B4CE1A0249508250077D34D /* IconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4CE19E249508250077D34D /* IconCell.swift */; };
 		1B4CE1A1249508250077D34D /* IconCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B4CE19F249508250077D34D /* IconCell.xib */; };
 		1B4D87FC247F73E400DDE78B /* return_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B4D87FB247F73E300DDE78B /* return_icon@2x.png */; };
@@ -166,9 +171,16 @@
 		1B2FE997236C6CB000677ACA /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
 		1B493B6A246841480078004C /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		1B493B6C246841580078004C /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		1B4B9EA924A2C2F3002CBDD2 /* DiaryViewingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewingViewController.swift; sourceTree = "<group>"; };
+		1B4B9EAB24A2C307002CBDD2 /* DiaryViewing.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiaryViewing.storyboard; sourceTree = "<group>"; };
+		1B4B9EAD24A2C590002CBDD2 /* DiaryViewingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewingViewModel.swift; sourceTree = "<group>"; };
+		1B4C0DC124A411F7005B5D17 /* ViewingTitleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewingTitleHeaderView.swift; sourceTree = "<group>"; };
 		1B4C5F51249C6EB000D029A1 /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
 		1B4C5F57249CB2E100D029A1 /* CurrentLocationRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationRegistrationViewController.swift; sourceTree = "<group>"; };
 		1B4C5F59249CB2EC00D029A1 /* CurrentLocationRegistration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CurrentLocationRegistration.storyboard; sourceTree = "<group>"; };
+		1B4C9A3C24A336C500F27273 /* ViewingTitleHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewingTitleHeader.swift; sourceTree = "<group>"; };
+		1B4C9A3E24A3376100F27273 /* ViewingTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewingTextCell.swift; sourceTree = "<group>"; };
+		1B4C9A3F24A3376200F27273 /* ViewingTextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewingTextCell.xib; sourceTree = "<group>"; };
 		1B4CB8652487CB40004E78A5 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
 		1B4CB8672487CB55004E78A5 /* PhotoLibrary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PhotoLibrary.storyboard; sourceTree = "<group>"; };
 		1B4CB8692487D7CF004E78A5 /* PhotoImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -183,8 +195,6 @@
 		1B4CE1912495078C0077D34D /* TitleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleCell.xib; sourceTree = "<group>"; };
 		1B4CE196249507DB0077D34D /* TextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
 		1B4CE197249507DB0077D34D /* TextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextCell.xib; sourceTree = "<group>"; };
-		1B4CE19A249508050077D34D /* DeleteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCell.swift; sourceTree = "<group>"; };
-		1B4CE19B249508050077D34D /* DeleteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeleteCell.xib; sourceTree = "<group>"; };
 		1B4CE19E249508250077D34D /* IconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCell.swift; sourceTree = "<group>"; };
 		1B4CE19F249508250077D34D /* IconCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconCell.xib; sourceTree = "<group>"; };
 		1B4D87FB247F73E300DDE78B /* return_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "return_icon@2x.png"; sourceTree = "<group>"; };
@@ -480,6 +490,8 @@
 			children = (
 				1B4CE1832494FC8A0077D34D /* DiaryWritingViewController.swift */,
 				1B4CE1852494FC980077D34D /* DiaryWriting.storyboard */,
+				1B4B9EA924A2C2F3002CBDD2 /* DiaryViewingViewController.swift */,
+				1B4B9EAB24A2C307002CBDD2 /* DiaryViewing.storyboard */,
 			);
 			path = DiaryWriting;
 			sourceTree = "<group>";
@@ -488,6 +500,7 @@
 			isa = PBXGroup;
 			children = (
 				1B4CE1882494FF6A0077D34D /* DiaryWritingViewModel.swift */,
+				1B4B9EAD24A2C590002CBDD2 /* DiaryViewingViewModel.swift */,
 			);
 			path = DiaryWriting;
 			sourceTree = "<group>";
@@ -497,6 +510,7 @@
 			children = (
 				1B4CE18B249500CC0077D34D /* TitleHeader.swift */,
 				1B4CE18D249500F50077D34D /* TextHeeader.swift */,
+				1B4C9A3C24A336C500F27273 /* ViewingTitleHeader.swift */,
 			);
 			path = DiaryWriting;
 			sourceTree = "<group>";
@@ -507,6 +521,9 @@
 				1B550DC92498706F00F4D6ED /* HeaderView */,
 				1B4CE194249507B50077D34D /* Title */,
 				1B4CE195249507C10077D34D /* Text */,
+				1B4C9A3E24A3376100F27273 /* ViewingTextCell.swift */,
+				1B4C9A3F24A3376200F27273 /* ViewingTextCell.xib */,
+				1B4C0DC124A411F7005B5D17 /* ViewingTitleHeaderView.swift */,
 			);
 			path = DiaryWriting;
 			sourceTree = "<group>";
@@ -525,8 +542,6 @@
 			children = (
 				1B4CE196249507DB0077D34D /* TextCell.swift */,
 				1B4CE197249507DB0077D34D /* TextCell.xib */,
-				1B4CE19A249508050077D34D /* DeleteCell.swift */,
-				1B4CE19B249508050077D34D /* DeleteCell.xib */,
 				1B4CE19E249508250077D34D /* IconCell.swift */,
 				1B4CE19F249508250077D34D /* IconCell.xib */,
 			);
@@ -718,9 +733,9 @@
 				1BAB98E3249A3B8000B3EE62 /* save@2x.png in Resources */,
 				1B630A99243470FF007D22D0 /* ScheduleCreation.storyboard in Resources */,
 				1B50AFFC24910B71002E439C /* DiaryCell.xib in Resources */,
-				1B4CE19D249508050077D34D /* DeleteCell.xib in Resources */,
 				1B28CF342369D0CE00C756B0 /* camera@2x.png in Resources */,
 				1B2FE999236C6CB000677ACA /* NewsTableViewCell.xib in Resources */,
+				1B4B9EAC24A2C307002CBDD2 /* DiaryViewing.storyboard in Resources */,
 				1B28CF382369D1A200C756B0 /* diary@2x.png in Resources */,
 				1B2894E7232531670090A221 /* News.storyboard in Resources */,
 				1B28CF362369D12C00C756B0 /* location@2x.png in Resources */,
@@ -732,6 +747,7 @@
 				1B28CF302369CFF300C756B0 /* home@2x.png in Resources */,
 				1B73AA7E2430300B008C02A4 /* NewsCollectionViewCell.xib in Resources */,
 				1B28CF322369D07000C756B0 /* news@2x.png in Resources */,
+				1B4C9A4124A3376200F27273 /* ViewingTextCell.xib in Resources */,
 				1B5A258D2470204400485B56 /* remove@2x.png in Resources */,
 				1B55E7C823AA608900D8402C /* Location.strings in Resources */,
 				1B28CF3A2369D59C00C756B0 /* ChalkboardSE.ttc in Resources */,
@@ -840,13 +856,15 @@
 				1BAF7B4C23A3DDF6003C8A59 /* WebView.swift in Sources */,
 				1B4CE1922495078C0077D34D /* TitleCell.swift in Sources */,
 				1B4CB8662487CB40004E78A5 /* PhotoLibraryViewController.swift in Sources */,
-				1B4CE19C249508050077D34D /* DeleteCell.swift in Sources */,
+				1B4B9EAA24A2C2F3002CBDD2 /* DiaryViewingViewController.swift in Sources */,
 				1B4CE18E249500F50077D34D /* TextHeeader.swift in Sources */,
+				1B4C9A3D24A336C500F27273 /* ViewingTitleHeader.swift in Sources */,
 				1B4CE1892494FF6A0077D34D /* DiaryWritingViewModel.swift in Sources */,
 				1B2F08B323215470002BAF6E /* MemoriesViewController.swift in Sources */,
 				1B55E7C623AA601A00D8402C /* LocationViewModel.swift in Sources */,
 				1B2FE998236C6CB000677ACA /* NewsTableViewCell.swift in Sources */,
 				1B4C5F52249C6EB000D029A1 /* PhotoView.swift in Sources */,
+				1B4C0DC224A411F7005B5D17 /* ViewingTitleHeaderView.swift in Sources */,
 				1B2CAB7C232141C700590B47 /* TabBerModel.swift in Sources */,
 				1B1054A8231D51E20067E7AF /* AppDelegate.swift in Sources */,
 				1B2A97EB2371B06600113C8E /* image.swift in Sources */,
@@ -854,6 +872,7 @@
 				1BAF7B4823A3DD30003C8A59 /* WebViewController.swift in Sources */,
 				1B4CE198249507DB0077D34D /* TextCell.swift in Sources */,
 				1B2DC7AE23686FC600B9CB42 /* NavigationBar.swift in Sources */,
+				1B4B9EAE24A2C590002CBDD2 /* DiaryViewingViewModel.swift in Sources */,
 				1B4CE1842494FC8A0077D34D /* DiaryWritingViewController.swift in Sources */,
 				1B2894E1232531370090A221 /* NewsViewController.swift in Sources */,
 				1B2894E5232531570090A221 /* HomeViewController.swift in Sources */,
@@ -862,6 +881,7 @@
 				1B2B939C2322AEED0015CB8A /* Strings.swift in Sources */,
 				1B50AFFB24910B71002E439C /* DiaryCell.swift in Sources */,
 				1B4CB86B2487D7CF004E78A5 /* PhotoImageCollectionViewCell.swift in Sources */,
+				1B4C9A4024A3376200F27273 /* ViewingTextCell.swift in Sources */,
 				1BC88DB8236EE69B00C63F30 /* NewsViewModel.swift in Sources */,
 				1B1054D7231EA6660067E7AF /* TabBer.swift in Sources */,
 				1BEDF578248134540096CDEB /* SlideView.swift in Sources */,
