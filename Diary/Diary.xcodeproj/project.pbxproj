@@ -89,6 +89,7 @@
 		1B87B780244C268300488631 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87B77F244C268300488631 /* SWXMLHash.framework */; };
 		1B87B781244C268300488631 /* SWXMLHash.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87B77F244C268300488631 /* SWXMLHash.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1B96D8A2248A930200C4A2FF /* closeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B96D8A1248A930200C4A2FF /* closeButton@2x.png */; };
+		1BA5511324A5FFBE0010CF0E /* ViewingFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA5511224A5FFBE0010CF0E /* ViewingFooterView.swift */; };
 		1BAB98E3249A3B8000B3EE62 /* save@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BAB98E1249A3B8000B3EE62 /* save@2x.png */; };
 		1BAB98E4249A3B8000B3EE62 /* twitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BAB98E2249A3B8000B3EE62 /* twitter@2x.png */; };
 		1BAF7B4823A3DD30003C8A59 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAF7B4723A3DD30003C8A59 /* WebViewController.swift */; };
@@ -217,6 +218,7 @@
 		1B87B776244C265E00488631 /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorView.framework; path = Carthage/Build/iOS/NVActivityIndicatorView.framework; sourceTree = "<group>"; };
 		1B87B77F244C268300488631 /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = Carthage/Build/iOS/SWXMLHash.framework; sourceTree = "<group>"; };
 		1B96D8A1248A930200C4A2FF /* closeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closeButton@2x.png"; sourceTree = "<group>"; };
+		1BA5511224A5FFBE0010CF0E /* ViewingFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewingFooterView.swift; sourceTree = "<group>"; };
 		1BAB98E1249A3B8000B3EE62 /* save@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "save@2x.png"; sourceTree = "<group>"; };
 		1BAB98E2249A3B8000B3EE62 /* twitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter@2x.png"; sourceTree = "<group>"; };
 		1BAF7B4723A3DD30003C8A59 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -524,6 +526,7 @@
 				1B4C9A3E24A3376100F27273 /* ViewingTextCell.swift */,
 				1B4C9A3F24A3376200F27273 /* ViewingTextCell.xib */,
 				1B4C0DC124A411F7005B5D17 /* ViewingTitleHeaderView.swift */,
+				1BA5511224A5FFBE0010CF0E /* ViewingFooterView.swift */,
 			);
 			path = DiaryWriting;
 			sourceTree = "<group>";
@@ -859,6 +862,7 @@
 				1B4B9EAA24A2C2F3002CBDD2 /* DiaryViewingViewController.swift in Sources */,
 				1B4CE18E249500F50077D34D /* TextHeeader.swift in Sources */,
 				1B4C9A3D24A336C500F27273 /* ViewingTitleHeader.swift in Sources */,
+				1BA5511324A5FFBE0010CF0E /* ViewingFooterView.swift in Sources */,
 				1B4CE1892494FF6A0077D34D /* DiaryWritingViewModel.swift in Sources */,
 				1B2F08B323215470002BAF6E /* MemoriesViewController.swift in Sources */,
 				1B55E7C623AA601A00D8402C /* LocationViewModel.swift in Sources */,

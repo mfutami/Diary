@@ -17,8 +17,25 @@ class DiaryWritingViewModel {
     
     private(set) var section: [Section] = []
     
-    init() {
+    private let domain = "twitter.com/intent/"
+    private let query = "tweet?text="
+    
+    var title: String?
+    var text: String?
+    
+    init(title: String? = nil, text: String? = nil) {
         self.section = self.setSectionTypes()
+        self.title = title
+        self.text = text
+    }
+    
+    var urlString: String {
+        return "https://" + self.domain + self.query
+    }
+    
+    var titleString: String {
+        guard let title = TitleCell.textString else { return "" }
+        return "・\(title)\n\n"
     }
     
     private func setSectionTypes() -> [Section] {

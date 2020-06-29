@@ -17,20 +17,41 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xp5-cL-eZv">
-                                <rect key="frame" x="10" y="74" width="394" height="758"/>
+                                <rect key="frame" x="10" y="74" width="394" height="792"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4FW-ka-JZx">
+                                <rect key="frame" x="369" y="34" width="35" height="35"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FT2-Ap-E19">
+                                        <rect key="frame" x="1" y="1" width="33" height="33"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="FT2-Ap-E19" secondAttribute="trailing" constant="1" id="AKt-aU-GLK"/>
+                                    <constraint firstAttribute="width" constant="35" id="EtS-Ck-EWf"/>
+                                    <constraint firstAttribute="height" constant="35" id="GDN-lh-8xN"/>
+                                    <constraint firstItem="FT2-Ap-E19" firstAttribute="top" secondItem="4FW-ka-JZx" secondAttribute="top" constant="1" id="Vez-7y-Phr"/>
+                                    <constraint firstItem="FT2-Ap-E19" firstAttribute="leading" secondItem="4FW-ka-JZx" secondAttribute="leading" constant="1" id="dtf-de-G0b"/>
+                                    <constraint firstAttribute="bottom" secondItem="FT2-Ap-E19" secondAttribute="bottom" constant="1" id="q2l-zJ-f2J"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Of7-1j-0VR" firstAttribute="bottom" secondItem="xp5-cL-eZv" secondAttribute="bottom" constant="30" id="3X7-4g-V78"/>
+                            <constraint firstItem="xp5-cL-eZv" firstAttribute="top" secondItem="4FW-ka-JZx" secondAttribute="bottom" constant="5" id="6ku-VE-vTZ"/>
                             <constraint firstItem="xp5-cL-eZv" firstAttribute="leading" secondItem="Of7-1j-0VR" secondAttribute="leading" constant="10" id="Qsk-0D-zdg"/>
                             <constraint firstItem="xp5-cL-eZv" firstAttribute="top" secondItem="Of7-1j-0VR" secondAttribute="top" constant="30" id="RTA-1E-Pf3"/>
+                            <constraint firstAttribute="trailing" secondItem="4FW-ka-JZx" secondAttribute="trailing" constant="10" id="WeZ-LT-Mrh"/>
                             <constraint firstItem="Of7-1j-0VR" firstAttribute="trailing" secondItem="xp5-cL-eZv" secondAttribute="trailing" constant="10" id="Xgc-VM-ye9"/>
+                            <constraint firstAttribute="bottom" secondItem="xp5-cL-eZv" secondAttribute="bottom" constant="30" id="Y8u-Cr-oOW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Of7-1j-0VR"/>
                     </view>
                     <connections>
+                        <outlet property="closeBaseView" destination="4FW-ka-JZx" id="ygb-1j-pog"/>
+                        <outlet property="closeButton" destination="FT2-Ap-E19" id="TVj-Mf-MH7"/>
                         <outlet property="tableView" destination="xp5-cL-eZv" id="N5Y-ga-ogF"/>
                     </connections>
                 </viewController>

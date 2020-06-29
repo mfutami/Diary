@@ -8,6 +8,15 @@
 import UIKit
 
 class LocationViewModel {
+    static var registrationData: String? {
+        get {
+            UserDefaults.standard.string(forKey: "registrationData")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "registrationData")
+        }
+    }
+    
     var errorDialogTitle: String {
         return String.LocalizedString("errorDialogTitle", tableName: "Location")
     }

@@ -15,8 +15,13 @@ class DiaryWritingViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var cancelBaseView: UIView!
     
-    private let viewModel = DiaryWritingViewModel()
     private let dataManagement = DataManagement()
+    
+    var viewModel = DiaryWritingViewModel()
+    
+    var indexPath: Int?
+    
+    var isEdit = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,11 +93,25 @@ private extension DiaryWritingViewController {
     }
     
     @objc func tapCancelButton() {
+        self.isEdit = false
+        self.indexPath = nil
         self.dismiss(animated: false)
     }
     
     @objc func tapTwitterIcon() {
-        // TODO: Twitter連携
+        guard let title = TitleCell.textString, !title.isEmpty,
+            let text = TextCell.textViewString, !text.isEmpty,
+            let encodedTitle = ("・\(title)\n\n").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+            let encodedText = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+            let url = URL(string: self.viewModel.urlString + encodedTitle + encodedText) else {
+                self.errorDialog()
+                return
+        }
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
     }
     
     @objc func tapSaveIcon() {
@@ -101,9 +120,15 @@ private extension DiaryWritingViewController {
                 self.errorDialog()
                 return
         }
-        // 記入したデータを保存
-        self.dataManagement.addDate()
-        self.dataManagement.getdate()
+        if self.isEdit {
+            self.isEdit = false
+            self.dataManagement.editDate(indexPath: self.indexPath)
+        } else {
+            // 記入したデータを保存
+            self.dataManagement.addDate()
+            self.dataManagement.getdate()
+        }
+        self.indexPath = nil
         self.dismiss(animated: false)
     }
     
@@ -145,7 +170,7 @@ extension DiaryWritingViewController: UITableViewDataSource {
         cell = tableView.dequeueReusableCell(withIdentifier: item.identifier, for: indexPath)
         switch item {
         case .tetle:
-            (cell as? TitleCell)?.setup()
+            (cell as? TitleCell)?.setup(title: self.viewModel.title)
         }
         return cell
     }
@@ -156,7 +181,7 @@ extension DiaryWritingViewController: UITableViewDataSource {
         cell = tableView.dequeueReusableCell(withIdentifier: item.identifier, for: indexPath)
         switch item {
         case .text:
-            (cell as? TextCell)?.setup()
+            (cell as? TextCell)?.setup(text: self.viewModel.text)
         case .icon:
             if let iconCell = cell as? IconCell {
                 iconCell.setupBaseView()

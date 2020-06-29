@@ -17,7 +17,9 @@ class TextCell: UITableViewCell {
     
     static var textViewString: String?
     
-    func setup() {
+    func setup(text: String?) {
+        // 編集画面初期値設定 - 新規追加の際はnilになる為問題ない
+        TextCell.textViewString = text
         self.baseViewHeight.constant = UIScreen.main.bounds.height / 1.8
         
         self.textView.keyboardType = .default
@@ -26,6 +28,7 @@ class TextCell: UITableViewCell {
         self.textView.layer.borderColor = UIColor.lightGray.cgColor
         self.textView.layer.borderWidth = 0.5
         self.textView.returnKeyType = .default
+        self.textView.text = text
         
         self.textView.delegate = self
         

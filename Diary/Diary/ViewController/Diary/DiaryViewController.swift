@@ -17,7 +17,6 @@ class DiaryViewController: UIViewController {
     @IBOutlet weak var diaryView: JBDatePickerView!
     @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var plusButton: UIButton!
-    @IBOutlet weak var removeButton: UIButton!
     
     private let dataManagement = DataManagement()
     
@@ -100,14 +99,43 @@ extension DiaryViewController {
         self.plusButton.addTarget(self,
                                   action: #selector(self.tapPlusButton),
                                   for: .touchUpInside)
-        
-        self.removeButton.setImage(UIImage(named: "delete"), for: .normal)
-        self.removeButton.imageView?.contentMode = .scaleAspectFit
-        self.removeButton.titleLabel?.font = .systemFont(ofSize: 25)
-        self.removeButton.tintColor = .black
-        self.removeButton.addTarget(self,
-                                    action: #selector(self.tapRemoveButton),
-                                    for: .touchUpInside)
+    }
+    
+    func editOrBrowseDialog(title: String, text: String, indexPath: Int) {
+        let alert = UIAlertController(title: "",
+                                      message: "以下の操作を選択してください",
+                                      preferredStyle: .alert)
+        // 閲覧ボタン
+        let browseButton = UIAlertAction(title: "閲覧", style: .default) { [weak self] _ in
+            let storyboard = UIStoryboard(name: "DiaryViewing", bundle: nil)
+            guard let viewController = storyboard.instantiateInitialViewController(),
+                let diaryViewing = viewController as? DiaryViewingViewController else { return }
+            diaryViewing.viewModel = DiaryViewingViewModel(title: title, text: text)
+            self?.present(viewController, animated: false)
+        }
+        // 編集ボタン
+        let editButton = UIAlertAction(title: "編集", style: .default) { [weak self] _ in
+            let storyboard = UIStoryboard(name: "DiaryWriting", bundle: nil)
+            guard let viewController = storyboard.instantiateInitialViewController(),
+                let diaryWriting = viewController as? DiaryWritingViewController else { return }
+            diaryWriting.indexPath = indexPath
+            diaryWriting.isEdit = true
+            diaryWriting.viewModel = DiaryWritingViewModel(title: title, text: text)
+            viewController.modalPresentationStyle = .fullScreen
+            self?.present(viewController, animated: true)
+        }
+        // 削除ボタン
+        let deleteButton = UIAlertAction(title: "削除", style: .default) { [weak self] _ in
+            self?.dataManagement.removeDate(indexPath: indexPath)
+            self?.tableView.reloadData()
+        }
+        // キャンセルボタン
+        let cancelButton = UIAlertAction(title: "戻る", style: .cancel)
+        alert.addAction(browseButton)
+        alert.addAction(editButton)
+        alert.addAction(deleteButton)
+        alert.addAction(cancelButton)
+        self.present(alert, animated: false)
     }
     
     @objc func tapPlusButton() {
@@ -115,11 +143,6 @@ extension DiaryViewController {
         guard let viewController = storyboard.instantiateInitialViewController() else { return }
         viewController.modalPresentationStyle = .fullScreen
         self.present(viewController, animated: true)
-    }
-    
-    @objc func tapRemoveButton() {
-        self.dataManagement.removeDate()
-        self.tableView.reloadData()
     }
 }
 
@@ -159,13 +182,9 @@ extension DiaryViewController: UITableViewDataSource {
 
 extension DiaryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "DiaryViewing", bundle: nil)
-        guard let viewController = storyboard.instantiateInitialViewController() else { return }
-        if let diaryViewing = viewController as? DiaryViewingViewController {
-            diaryViewing.viewModel = DiaryViewingViewModel(title: DiaryViewController.title[indexPath.row],
-                                                           text: DiaryViewController.text[indexPath.row])
-            self.present(viewController, animated: false)
-        }
+        self.editOrBrowseDialog(title: DiaryViewController.title[indexPath.row],
+                                text: DiaryViewController.text[indexPath.row],
+                                indexPath: indexPath.row)
     }
 }
 

@@ -50,5 +50,6 @@ class ViewingTitleHeaderView: UIView {
         self.titleLabel.textColor = .black
         self.titleLabel.font = .boldSystemFont(ofSize: 25)
         self.titleLabel.textAlignment = .left
+        self.titleLabel.backgroundColor = .white
     }
 }

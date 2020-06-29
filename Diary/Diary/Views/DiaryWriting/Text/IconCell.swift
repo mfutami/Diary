@@ -20,6 +20,7 @@ class IconCell: UITableViewCell {
         button.imageView?.contentMode = .scaleAspectFit
         button.titleLabel?.font = .systemFont(ofSize: 25)
         button.tintColor = .black
+        button.isEnabled = true
     }
     
     func setupBaseView() {

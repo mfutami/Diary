@@ -14,7 +14,9 @@ class TitleCell: UITableViewCell {
     
     static var textString: String?
     
-    func setup() {
+    func setup(title: String?) {
+        // 編集画面初期値設定 - 新規追加の際はnilになる為問題ない
+        TitleCell.textString = title
         self.titleTextField.placeholder = "タイトルを入力してください"
         self.titleTextField.keyboardType = .default
         // 枠線を角丸
@@ -22,6 +24,8 @@ class TitleCell: UITableViewCell {
         self.titleTextField.returnKeyType = .done
         // 入力値クリアボタン追加
         self.titleTextField.clearButtonMode = .whileEditing
+        
+        self.titleTextField.text = title
         
         self.titleTextField.delegate = self
     }

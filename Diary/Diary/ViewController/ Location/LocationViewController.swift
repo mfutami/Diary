@@ -57,13 +57,13 @@ class LocationViewController: UIViewController {
             return
         }
         self.requestWhenInUseAuthorization()
+        self.setupMapView()
+        self.setupCompassButton()
+        self.setupRecordArea()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.setupMapView()
-        self.setupCompassButton()
-        self.setupRecordArea()
         // 登録情報がない場合 - errorView表示
         self.errorDisplayIfThereIsNoInformation()
     }
@@ -194,8 +194,17 @@ private extension LocationViewController {
         self.present(removeDialog, animated: false)
     }
     
+    func errorDialog() {
+        let errorDialog = UIAlertController(title: "位置情報が取得できませんでした",
+                                             message: "再度お試しください",
+                                             preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "OK", style: .cancel)
+        errorDialog.addAction(okButton)
+        self.present(errorDialog, animated: false)
+    }
+    
     func errorDisplayIfThereIsNoInformation() {
-        // 保持データがからの場合 - エラー画面表示
+        // 保持データが空の場合 - エラー画面表示
         guard !self.dataManagement.streetAddressData.isEmpty,
             !self.dataManagement.distanceData.isEmpty else {
                 self.setupErrorTextLabel()
@@ -229,7 +238,7 @@ private extension LocationViewController {
                 let locality = reverseGeocode.locality,
                 let name = reverseGeocode.name,
                 error == nil else {
-                    // エラーダイアログを設定
+                    self.errorDialog()
                     return
             }
             // thoroughfare + subThoroughfare（丁目,番地が左記にて取得できるはずなのだが番地が丁目になることがある為暫定としてnameでまとめて取得する
@@ -262,7 +271,7 @@ private extension LocationViewController {
         self.errorTextLabel.isHidden = true
         self.tableView.isHidden = false
         self.getLocationData() {
-            self.getDistanceFromCurrentPosition(geocodeAddress: CurrentLocationRegistrationViewController.registrationData)
+            self.getDistanceFromCurrentPosition(geocodeAddress: LocationViewModel.registrationData)
             self.tableView.reloadData()
         }
     }

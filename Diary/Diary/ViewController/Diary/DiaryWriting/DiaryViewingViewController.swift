@@ -9,10 +9,9 @@
 import UIKit
 
 class DiaryViewingViewController: UIViewController {
-    @IBOutlet weak var baseView: UIView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var closeBaseView: UIView!
+    @IBOutlet weak var closeButton: UIButton!
     
     var viewModel = DiaryViewingViewModel()
     
@@ -20,8 +19,7 @@ class DiaryViewingViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         self.setupTableView()
-//        self.setupBaseView()
-//        self.setuplabel(title: self.viewModel.title, text: self.viewModel.text)
+        self.setupCloseButton()
     }
 }
 
@@ -36,24 +34,23 @@ private extension DiaryViewingViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
     }
-//    func setupBaseView() {
-//        self.baseView.backgroundColor = .white
-//        self.baseView.layer.cornerRadius = 20
-//    }
-//
-//    func setuplabel(title: String?, text: String?) {
-//        self.titleLabel.text = title
-//        self.titleLabel.font = .boldSystemFont(ofSize: 25)
-//        self.titleLabel.textColor = .black
-//        self.titleLabel.textAlignment = .left
-//
-//        self.textLabel.text = text
-//
-//        self.textLabel.font = .systemFont(ofSize: 20)
-//        self.textLabel.textColor = .black
-//        self.textLabel.textAlignment = .left
-//        self.textLabel.numberOfLines = .zero
-//    }
+    
+    func setupCloseButton() {
+        self.closeBaseView.backgroundColor = .clear
+        self.closeBaseView.layer.cornerRadius = 17.5
+        self.closeBaseView.layer.borderWidth = 1
+        self.closeBaseView.layer.borderColor = UIColor.white.cgColor
+        
+        self.closeButton.setImage(UIImage(named: "closeButton"), for: .normal)
+        self.closeButton.tintColor = .white
+        self.closeButton.addTarget(self,
+                                   action: #selector(self.tapCloseButton),
+                                   for: .touchUpInside)
+    }
+    
+    @objc func tapCloseButton() {
+        self.dismiss(animated: false)
+    }
 }
 
 extension DiaryViewingViewController: UITableViewDataSource {
@@ -75,6 +72,7 @@ extension DiaryViewingViewController: UITableViewDataSource {
             cell = tableView.dequeueReusableCell(withIdentifier: item[indexPath.row].identifier, for: indexPath)
             (cell as? ViewingTextCell)?.setup(text: self.viewModel.text)
         }
+        cell.selectionStyle = .none
         return cell
     }
 }

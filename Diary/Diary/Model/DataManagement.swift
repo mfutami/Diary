@@ -36,7 +36,6 @@ class DataManagement {
                                         "list": [["title": TitleCell.textString ?? "",
                                                  "text": TextCell.textViewString ?? ""]]]
         print(dateArray)
-        self.diaryDate = dateArray
         let date = DiaryDate(value: dateArray)
         try! realm.write {
             realm.add(date)
@@ -91,6 +90,23 @@ class DataManagement {
         }
     }
     
+    func editDate(indexPath: Int?) {
+        let realm = try! Realm()
+        let date = realm.objects(DiaryDate.self)
+        try! realm.write {
+            for (index, data) in date.enumerated() {
+                data.list.forEach {
+                    if index == indexPath {
+                        $0.title = TitleCell.textString ?? ""
+                        $0.text = TextCell.textViewString ?? ""
+                        DiaryViewController.title[index] = TitleCell.textString ?? ""
+                        DiaryViewController.text[index] = TextCell.textViewString ?? ""
+                    }
+                }
+            }
+        }
+    }
+    
     func removeLocationData() {
         self.streetAddressData = []
         self.distanceData = []
@@ -110,17 +126,16 @@ class DataManagement {
         }
     }
     
-    func removeDate() {
+    func removeDate(indexPath: Int) {
         let realm = try! Realm()
         let diaryDate = realm.objects(DiaryDate.self)
         try! realm.write {
-            diaryDate.forEach {
-                for (index, _) in $0.list.enumerated() {
-                    if $0.date == DiaryViewController.date {
-                        realm.delete($0)
-                        DiaryViewController.title.remove(at: index)
-                        DiaryViewController.text.remove(at: index)
-                    }
+            for (index, date) in diaryDate.enumerated() {
+                if date.date == DiaryViewController.date, index == indexPath {
+                    realm.delete(date)
+                    DiaryViewController.title.remove(at: index)
+                    DiaryViewController.text.remove(at: index)
+                    return
                 }
             }
         }

@@ -62,9 +62,6 @@ class CurrentLocationRegistrationViewController: UIViewController {
     }
     
     private let locationViewController = LocationViewController()
-    
-    /// 登録地点
-    static var registrationData: String?
 }
 
 private extension CurrentLocationRegistrationViewController {
@@ -87,7 +84,7 @@ extension CurrentLocationRegistrationViewController: UITextFieldDelegate {
             textField.text?.suffix(1) == "町" ||
             textField.text?.suffix(1) == "村" {
             self.okButton.isEnabled = true
-            CurrentLocationRegistrationViewController.registrationData = textField.text
+            LocationViewModel.registrationData = textField.text
         }
         return true
     }
