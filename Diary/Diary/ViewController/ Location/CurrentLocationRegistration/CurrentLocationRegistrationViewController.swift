@@ -40,7 +40,10 @@ class CurrentLocationRegistrationViewController: UIViewController {
             newValue.borderStyle = .roundedRect
             newValue.returnKeyType = .done
             newValue.clearButtonMode = .whileEditing
+            newValue.becomeFirstResponder()
             newValue.delegate = self
+            // 登録情報変更の場合 - userdefualtに登録されていたら表示
+            newValue.text = LocationViewModel.registrationData
         }
     }
     @IBOutlet weak var okButton: UIButton! {

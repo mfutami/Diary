@@ -17,6 +17,21 @@ class LocationViewModel {
         }
     }
     
+    var registrationPoint: [String]? {
+        get {
+            UserDefaults.standard.array(forKey: "registrationPoint") as? [String] ?? []
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "registrationPoint")
+        }
+    }
+    
+    func deleteRegistrationPoint() {
+        UserDefaults.standard.removeObject(forKey: "registrationPoint")
+    }
+    
+    private var registration: [String]?
+    
     var errorDialogTitle: String {
         return String.LocalizedString("errorDialogTitle", tableName: "Location")
     }

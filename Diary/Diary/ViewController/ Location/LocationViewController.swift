@@ -56,10 +56,7 @@ class LocationViewController: UIViewController {
             self.showCurrentLocationRegistrationDisplay()
             return
         }
-        self.requestWhenInUseAuthorization()
-        self.setupMapView()
-        self.setupCompassButton()
-        self.setupRecordArea()
+        self.setup()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -89,8 +86,20 @@ private extension LocationViewController {
             UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "remove"),
                                               style: .done,
                                               target: self,
-                                              action: #selector(self.tapNavigationRightBar(_:)))
-        self.navigationItem.rightBarButtonItem = rightSearchBarButtonItem
+                                              action: #selector(self.tapNavigationRightBar))
+        let rightChangeBarRightItem:
+        UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "change"),
+                                          style: .done,
+                                          target: self,
+                                          action: #selector(self.tapNavigationRightChangeBar))
+        self.navigationItem.rightBarButtonItems = [rightSearchBarButtonItem, rightChangeBarRightItem]
+    }
+    
+    func setup() {
+        self.requestWhenInUseAuthorization()
+        self.setupMapView()
+        self.setupCompassButton()
+        self.setupRecordArea()
     }
     
     func setupTableView() {
@@ -185,6 +194,7 @@ private extension LocationViewController {
                                              preferredStyle: .alert)
         let notRemove = UIAlertAction(title: "いいえ", style: .cancel)
         let remove = UIAlertAction(title: "はい", style: .default) { [weak self] _ in
+            self?.viewModel.deleteRegistrationPoint()
             self?.dataManagement.removeLocationData()
             self?.tableView.reloadData()
             self?.errorDisplayIfThereIsNoInformation()
@@ -213,10 +223,7 @@ private extension LocationViewController {
     }
     
     func showCurrentLocationRegistrationDisplay() {
-        let storyboard = UIStoryboard(name: "CurrentLocationRegistration", bundle: nil)
-        guard let viewController = storyboard.instantiateInitialViewController() else { return }
-        viewController.modalPresentationStyle = .fullScreen
-        self.present(viewController, animated: false)
+        self.presentCurrentLocationRegistration()
     }
     
     func onClickOkButton() {
@@ -267,17 +274,37 @@ private extension LocationViewController {
         }
     }
     
+    func presentCurrentLocationRegistration() {
+        let storyboard = UIStoryboard(name: "CurrentLocationRegistration", bundle: nil)
+        guard let viewController = storyboard.instantiateInitialViewController() else { return }
+        viewController.modalPresentationStyle = .fullScreen
+        self.present(viewController, animated: false)
+    }
+    
     @objc func tapRecordButton(_ sender: UIButton) {
         self.errorTextLabel.isHidden = true
         self.tableView.isHidden = false
+        // 登録地点名表示用に追加（現在登録されている情報を表示）
+        var point = [String]()
+        // 保持済情報を取得
+        point = self.viewModel.registrationPoint ?? [""]
+        // 登録済情報を追加
+        point.append(LocationViewModel.registrationData ?? "")
+        // 全ての保持済登録情報を保持
+        self.viewModel.registrationPoint = point
+        
         self.getLocationData() {
             self.getDistanceFromCurrentPosition(geocodeAddress: LocationViewModel.registrationData)
             self.tableView.reloadData()
         }
     }
     
-    @objc func tapNavigationRightBar(_ sender: UIButton) {
+    @objc func tapNavigationRightBar() {
         self.setupRemoveDialog()
+    }
+    
+    @objc func tapNavigationRightChangeBar() {
+        self.presentCurrentLocationRegistration()
     }
     
     @objc func didEnterBackground(_ notification: Notification?) {
@@ -322,7 +349,8 @@ extension LocationViewController: UITableViewDataSource {
         cell.selectionStyle = .none
         if let locationDataCell = cell as? LocationDataCell {
             locationDataCell.setup(presentLocation: self.dataManagement.streetAddressData[indexPath.row],
-                                   distanceString: self.dataManagement.distanceData[indexPath.row])
+                                   distanceString: self.dataManagement.distanceData[indexPath.row],
+                                   registrationPoint: self.viewModel.registrationPoint?[indexPath.row] ?? "")
         }
         return cell
     }
@@ -331,10 +359,20 @@ extension LocationViewController: UITableViewDataSource {
 // MARK: - CLLocationManagerDelegate
 extension LocationViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.first else { return }
         // 現在位置情報を格納
-        self.currentLatitude = location.coordinate.latitude
-        self.currentLongitude = location.coordinate.longitude
+        self.currentLatitude = locations.first?.coordinate.latitude
+        self.currentLongitude = locations.first?.coordinate.longitude
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedAlways, .authorizedWhenInUse:
+            self.setup()
+        case .denied:
+            self.setupErrorDialog()
+        default:
+            break
+        }
     }
 }
 
