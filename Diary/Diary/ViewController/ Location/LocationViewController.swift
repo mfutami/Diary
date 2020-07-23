@@ -51,7 +51,7 @@ class LocationViewController: UIViewController {
                                  name: UIApplication.didEnterBackgroundNotification,
                                  object: nil)
 
-        // 地点を登録していなかった場合登録VCを表示
+        // 地点を登録していなかった場合 - 登録VCを表示
         guard self.viewModel.alreadyRegistered else {
             self.showCurrentLocationRegistrationDisplay()
             return
@@ -74,10 +74,7 @@ class LocationViewController: UIViewController {
 private extension LocationViewController {
     // Navugation Bar
     func setupNavigation(_ setTitle: navigationTitle) {
-        self.title = setTitle.title
-        self.navigationController?.navigationBar.barTintColor = UIColor.white
-        self.navigationController?.navigationBar.tintColor = UIColor.black
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
+        self.navigationController?.navigationItem(title: setTitle.title)
         self.setupNavigationRightItem()
     }
     
@@ -175,11 +172,11 @@ private extension LocationViewController {
                                        message: self.viewModel.errorDialogMessage,
                                        preferredStyle: .alert)
         
-        let okButton = UIAlertAction(title: self.viewModel.okButtonTitle, style: .default) { action in
-            self.onClickOkButton()
+        let okButton = UIAlertAction(title: self.viewModel.okButtonTitle, style: .default) { [weak self] _ in
+            self?.onClickOkButton()
         }
-        let cancelButton = UIAlertAction(title: self.viewModel.cancelButtonTitle, style: .cancel) { action in
-            self.dismiss(animated: true) {
+        let cancelButton = UIAlertAction(title: self.viewModel.cancelButtonTitle, style: .cancel) { [weak self] _ in
+            self?.dismiss(animated: true) {
                 // TODO: キャンセルボタン押下後エラー画面を表示させる
             }
         }
@@ -238,13 +235,10 @@ private extension LocationViewController {
     func getLocationData(closure: (() -> Void)?) {
         guard let latitude = self.currentLatitude,
             let longitude = self.currentLongitude else { return }
-        let location = CLLocation(latitude: latitude, longitude: longitude)
-        self.geocoder.reverseGeocodeLocation(location) { getReverseGeocode, error in
-            guard let reverseGeocode = getReverseGeocode?.first,
-                let administrativeArea = reverseGeocode.administrativeArea,
-                let locality = reverseGeocode.locality,
-                let name = reverseGeocode.name,
-                error == nil else {
+        self.geocoder.reverseGeocodeLocation(CLLocation(latitude: latitude, longitude: longitude)) { getReverseGeocode, error in
+            guard let reverseGeocode = getReverseGeocode?.first, error == nil,
+                let administrativeArea = reverseGeocode.administrativeArea, let locality = reverseGeocode.locality,
+                let name = reverseGeocode.name else {
                     self.errorDialog()
                     return
             }
@@ -260,11 +254,9 @@ private extension LocationViewController {
         self.geocoder.geocodeAddressString(address) { placemarks, error in
             guard let latitude = placemarks?.first?.location?.coordinate.latitude,
                 let longitude = placemarks?.first?.location?.coordinate.longitude,
-                let currentLatitude = self.currentLatitude,
-                let currentLongitude = self.currentLongitude else{ return }
-            let presentLocation = CLLocation(latitude: currentLatitude, longitude: currentLongitude)
-            let registrationPosition = CLLocation(latitude: latitude, longitude: longitude)
-            let distance = registrationPosition.distance(from: presentLocation)
+                let currentLatitude = self.currentLatitude, let currentLongitude = self.currentLongitude else{ return }
+            let distance = CLLocation(latitude: latitude, longitude: longitude)
+                .distance(from: CLLocation(latitude: currentLatitude, longitude: currentLongitude))
             // 四捨五入
             var getFloor = distance.binade
             getFloor.round(.up)
@@ -293,7 +285,7 @@ private extension LocationViewController {
         // 全ての保持済登録情報を保持
         self.viewModel.registrationPoint = point
         
-        self.getLocationData() {
+        self.getLocationData {
             self.getDistanceFromCurrentPosition(geocodeAddress: LocationViewModel.registrationData)
             self.tableView.reloadData()
         }
@@ -312,7 +304,6 @@ private extension LocationViewController {
     }
     
     @objc func willEnterForeground(_ notification: Notification?) {
-        // TODO: エラーViewを表示して画面タップ時に設定画面に遷移させるでも良い
         self.requestWhenInUseAuthorization()
     }
 }
@@ -376,6 +367,7 @@ extension LocationViewController: CLLocationManagerDelegate {
     }
 }
 
+// MARK: - LocationData
 class LocationData: Object {
     @objc dynamic var streetAddress = ""
     @objc dynamic var distance = ""

@@ -12,15 +12,13 @@ import RxSwift
 import SWXMLHash
 
 class NewsViewModel {
-    private let url = URL(string: "https://toyokeizai.net/list/feed/rss")
+    private let url = "https://toyokeizai.net/list/feed/rss"
     
     func xmlPaserRxSwift() -> Observable<Data> {
         return Observable.create { observer in
-            if let apiUrl = self.url {
-                let urlRequest = URLRequest(url: apiUrl)
-                let configuration = URLSessionConfiguration.default
-                let session = URLSession(configuration: configuration)
-                let task = session.dataTask(with: urlRequest) { date, response, error in
+            if let apiUrl = URL(string: self.url) {
+                let task = URLSession(configuration: .default)
+                    .dataTask(with: URLRequest(url: apiUrl)) { date, response, error in
                     guard let date = date else { return }
                     observer.onNext(date)
                 }

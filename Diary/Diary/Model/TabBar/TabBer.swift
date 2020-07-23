@@ -6,8 +6,6 @@
 //  Copyright © 2019年 futami. All rights reserved.
 //
 
-typealias Footer = TabBer.StoryBoard
-
 class TabBer {
     enum StoryBoard: CaseIterable {
         case diary
@@ -64,15 +62,15 @@ class TabBer {
         var name: String? {
             switch self {
             case .diary:
-                return String.LocalizedString("diaryIconName", tableName: "TabBar")
+                return .LocalizedString("diaryIconName", tableName: "TabBar")
             case .memories:
-                return String.LocalizedString("memoriesIconName", tableName: "TabBar")
+                return .LocalizedString("memoriesIconName", tableName: "TabBar")
             case .home:
-                return String.LocalizedString("homeIconName", tableName: "TabBar")
+                return .LocalizedString("homeIconName", tableName: "TabBar")
             case .news:
-                return String.LocalizedString("newsIconName", tableName: "TabBar")
+                return .LocalizedString("newsIconName", tableName: "TabBar")
             case .location:
-                return String.LocalizedString("locationIconName", tableName: "TabBar")
+                return .LocalizedString("locationIconName", tableName: "TabBar")
             }
         }
     }

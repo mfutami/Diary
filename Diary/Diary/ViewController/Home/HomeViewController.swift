@@ -25,10 +25,7 @@ class HomeViewController: UIViewController {
     
     // Navugation Bar
     func setupNavigation(_ setTitle: navigationTitle) {
-        self.title = setTitle.title
-        self.navigationController?.navigationBar.barTintColor = UIColor.white
-        self.navigationController?.navigationBar.tintColor = UIColor.black
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
+        self.navigationController?.navigationItem(title: setTitle.title)
     }
     
     var setFrame: CGRect {

@@ -55,12 +55,13 @@ class NewsViewController: UIViewController, XMLParserDelegate {
                                  selector: #selector(self.didEnterBackground(_:)),
                                  name: UIApplication.didEnterBackgroundNotification,
                                  object: nil)
+        
         self.tableViewHeight.constant = self.tableView.contentSize.height
         self.collectionViewWidth.constant = self.collectionView.contentSize.width
+        
         self.xmlPaserRx { [weak self] in
-            guard let wself = self else { return }
-            wself.tableView.reloadData()
-            wself.collectionView.reloadData()
+            self?.tableView.reloadData()
+            self?.collectionView.reloadData()
         }
     }
     
@@ -85,10 +86,7 @@ class NewsViewController: UIViewController, XMLParserDelegate {
     // MARK: - Navugation Bar
     
     func setupNavigation(_ setTitle: navigationTitle) {
-        self.title = setTitle.title
-        self.navigationController?.navigationBar.barTintColor = UIColor.white
-        self.navigationController?.navigationBar.tintColor = UIColor.black
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
+        self.navigationController?.navigationItem(title: setTitle.title)
     }
     
     func xmlPaserRx(completion: (() -> Void)? = nil) {
@@ -96,14 +94,13 @@ class NewsViewController: UIViewController, XMLParserDelegate {
         self.viewModel.xmlPaserRxSwift()
             .subscribeOn(backgroundScheduler)
             .observeOn(MainScheduler.instance)
-            .subscribe (onNext:{[weak self] date in
+            .subscribe (onNext:{ [weak self] date in
                 guard let wself = self else { return }
-                let xml = SWXMLHash.parse(date)
                 var counto: Int = .zero
-                for xmls in xml["rss"]["channel"]["item"].all {
-                    guard let title = xmls["title"].element?.text,
-                        let link = xmls["link"].element?.text,
-                        let image = xmls["enclosure"].element?.attribute(by: "url")?.text else { return }
+                SWXMLHash.parse(date)["rss"]["channel"]["item"].all.forEach {
+                    guard let title = $0["title"].element?.text,
+                        let link = $0["link"].element?.text,
+                        let image = $0["enclosure"].element?.attribute(by: "url")?.text else { return }
                     if counto < wself.fiveCount {
                         wself.titleString.append(title)
                         wself.link.append(link)
@@ -134,7 +131,7 @@ class NewsViewController: UIViewController, XMLParserDelegate {
     }
 }
 // MARK: - NewsViewController
-extension NewsViewController {
+private extension NewsViewController {
     func setupTableView() {
         self.tableView.register(UINib(nibName: NewsTableViewCell.identifier, bundle: nil),
                                 forCellReuseIdentifier: NewsTableViewCell.identifier)

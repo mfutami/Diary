@@ -26,10 +26,7 @@ class PhotoLibraryViewController: UIViewController {
     
     // Navugation Bar
     func setupNavigation() {
-        self.title = "フォトライブラリ"
-        self.navigationController?.navigationBar.barTintColor = UIColor.white
-        self.navigationController?.navigationBar.tintColor = UIColor.black
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
+        self.navigationController?.navigationItem(title: "フォトライブラリ")
         self.setupNavigationRightItem()
     }
     

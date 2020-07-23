@@ -7,29 +7,28 @@
 //
 import UIKit
 
-// MARK - UITabBarController
+// MARK: - UITabBarController
 class TabBerModel: UITabBarController {
     
     var footerTabBer: [UIViewController] = []
-    // タブバーの設定を各画面ごとに設定
+    /// タブバーの設定を各画面ごとに設定
     func setupTabBar() -> [UIViewController] {
         self.setupTabBarColor()
-        Footer.allCases.forEach {
-            guard let storyBoardId = $0.storyBoardId,
-                let image = $0.image,
-                let tag = $0.tag,
-                let name = $0.name else { return }
+        TabBer.StoryBoard.allCases.forEach {
+            guard let storyBoardId = $0.storyBoardId else { return }
             let footerView = UIStoryboard(name: storyBoardId, bundle: nil)
             guard let storyBoard = footerView.instantiateInitialViewController() else { return }
-            storyBoard.tabBarItem = UITabBarItem(title: name, image: UIImage(named: image), tag: tag)
-            footerTabBer.append(storyBoard)
+            storyBoard.tabBarItem = UITabBarItem(title: $0.name ?? "",
+                                                 image: UIImage(named: $0.image ?? ""),
+                                                 tag: $0.tag ?? .zero)
+            self.footerTabBer.append(storyBoard)
         }
         return self.footerTabBer
     }
-    // TabBar Color
-    func setupTabBarColor() {
-        UITabBar.appearance().tintColor = UIColor.white
-        UITabBar.appearance().unselectedItemTintColor = UIColor.gray
-        UITabBar.appearance().barTintColor = UIColor.black
+    /// TabBar Color
+    private func setupTabBarColor() {
+        UITabBar.appearance().tintColor = .white
+        UITabBar.appearance().unselectedItemTintColor = .gray
+        UITabBar.appearance().barTintColor = .black
     }
 }

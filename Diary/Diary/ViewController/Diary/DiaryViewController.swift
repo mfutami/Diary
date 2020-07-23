@@ -67,15 +67,11 @@ class DiaryViewController: UIViewController {
     // Navugation Bar
     func setupNavigation(_ setTitle: navigationTitle) {
         // TODO: 前の月に移動した際にタイトルもその月になるようにする
-        self.title = setTitle.title
-        self.navigationController?.navigationBar.barTintColor = UIColor.white
-        self.navigationController?.navigationBar.tintColor = UIColor.black
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
+        self.navigationController?.navigationItem(title: setTitle.title)
     }
 }
 extension DiaryViewController {
     func setupTableView() {
-        // TODO: Cell追加時にNib設定
         self.tableView.register(UINib(nibName: DiaryCell.identifier, bundle: nil),
                                 forCellReuseIdentifier: DiaryCell.identifier)
         self.tableView.separatorStyle = .none

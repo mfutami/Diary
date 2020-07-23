@@ -66,10 +66,7 @@ class MemoriesViewController: UIViewController {
     }
     // Navugation Bar
     func setupNavigation(_ setTitle: navigationTitle) {
-        self.title = setTitle.title
-        self.navigationController?.navigationBar.barTintColor = UIColor.white
-        self.navigationController?.navigationBar.tintColor = UIColor.black
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
+        self.navigationController?.navigationItem(title: setTitle.title)
         self.setupNavigationRightItem()
     }
     
@@ -117,7 +114,7 @@ class MemoriesViewController: UIViewController {
                 if success {
                     self.captureSession.startRunning()
                 } else {
-                    // TODO: 拒否した場合クラッシュする為ダイアログ表示とバッティングするからかな？
+                    self.setErrorDialog()
                 }
             }
         }
