@@ -10,6 +10,7 @@ import UIKit
 
 class ViewingTextCell: UITableViewCell {
     static let identifier = "ViewingTextCell"
+    
     @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var viewingTextLabel: UILabel!
     

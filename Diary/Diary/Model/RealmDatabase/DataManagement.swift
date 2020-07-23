@@ -34,8 +34,7 @@ class DataManagement {
         let realm = try! Realm()
         let dateArray: [String: Any] = ["date": DiaryViewController.date ?? "",
                                         "list": [["title": TitleCell.textString ?? "",
-                                                 "text": TextCell.textViewString ?? ""]]]
-        print(dateArray)
+                                                  "text": TextCell.textViewString ?? ""]]]
         let date = DiaryDate(value: dateArray)
         try! realm.write {
             realm.add(date)

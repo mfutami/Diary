@@ -88,7 +88,7 @@ class SlideView: UIView {
         self.slideView.alpha = 0.5
     }
     
-    func setupButton(_ button: UIButton, title: String) {
+    private func setupButton(_ button: UIButton, title: String) {
         button.setTitle(title, for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.textAlignment = .center
@@ -105,33 +105,30 @@ class SlideView: UIView {
         self.leftFrame = self.slideView.frame
     }
     
-    func setRightFrame() {
+    private func setRightFrame() {
         guard let rightFrame = self.rightFrame else { return }
         self.slideView.frame = rightFrame
     }
     
-    func setLeftFrame() {
+    private func setLeftFrame() {
         guard let leftFrame = self.leftFrame else { return }
         self.slideView.frame = leftFrame
     }
     
     func slideAnimation() {
-        if !self.tapFrags {
-            // アルバムタブ
-            UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: 0.3) {
+            if !self.tapFrags {
+                // アルバムタブ
                 self.setRightFrame()
                 self.delegate?.showPhotoLibrary()
-                self.tapFrags = true
-            }
-        } else {
-            // カメラタブ
-            UIView.animate(withDuration: 0.3) {
+            } else {
+                // カメラタブ
                 self.setLeftFrame()
-                self.tapFrags = false
             }
+            self.tapFrags = !self.tapFrags
         }
     }
-    // TODO: 写真タップ時に観覧できること
+    
     @objc func tapSlideButton() {
         self.slideAnimation()
     }

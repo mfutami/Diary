@@ -12,7 +12,6 @@ import WebKit
 class WebViewController: UIViewController {
     
     var wkWebView = WKWebView()
-    var topPadding: CGFloat = 0
     var urlString: String?
     
     deinit {
@@ -27,8 +26,8 @@ class WebViewController: UIViewController {
     }
     
     func setupNavigation() {
-        self.navigationController?.navigationBar.barTintColor = UIColor.white
-        self.navigationController?.navigationBar.tintColor = UIColor.black
+        self.navigationController?.navigationBar.barTintColor = .white
+        self.navigationController?.navigationBar.tintColor = .black
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
         
         let rightSearchBarButtonItem:
@@ -41,19 +40,17 @@ class WebViewController: UIViewController {
     
     // webViewサイズ設定
     func setupWebView() {
-        let screenWidth:CGFloat = view.frame.size.width
-        let screenHeight:CGFloat = view.frame.size.height
-        let rect = CGRect(x: 0,
-                          y: topPadding,
-                          width: screenWidth,
-                          height: screenHeight - topPadding)
+        let rect = CGRect(x: .zero,
+                          y: .zero,
+                          width: view.frame.width,
+                          height: view.frame.height)
         
         let webConfiguration = WKWebViewConfiguration()
         self.wkWebView = WKWebView(frame: rect, configuration: webConfiguration)
     }
     
     @objc func closeButtonAction() {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true)
     }
     
     func showWebView(_ urlString: String?) {

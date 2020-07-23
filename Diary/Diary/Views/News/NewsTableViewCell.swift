@@ -24,7 +24,7 @@ class NewsTableViewCell: UITableViewCell {
         self.newsImage.clipsToBounds = true
         
         self.newsTitle.text = title
-        self.newsTitle.font = UIFont.systemFont(ofSize: 15)
+        self.newsTitle.font = .systemFont(ofSize: 15)
         self.newsTitle.numberOfLines = 0
         
         self.baseView.layer.cornerRadius = 10
