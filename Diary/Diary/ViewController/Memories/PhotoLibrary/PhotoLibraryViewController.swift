@@ -26,7 +26,8 @@ class PhotoLibraryViewController: UIViewController {
     
     // Navugation Bar
     func setupNavigation() {
-        self.navigationController?.navigationItem(title: "フォトライブラリ")
+        self.navigationController?.navigationItem(title: "フォトライブラリ",
+                                                  viewController: self)
         self.setupNavigationRightItem()
     }
     

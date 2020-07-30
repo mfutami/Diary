@@ -42,6 +42,7 @@ class MemoriesViewController: UIViewController {
         self.setupPhotoIageView()
         self.setupSlideView()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let notification = NotificationCenter.default
@@ -64,9 +65,13 @@ class MemoriesViewController: UIViewController {
         super.viewDidDisappear(animated)
         self.removeCaptureSession()
     }
+}
+
+private extension MemoriesViewController {
     // Navugation Bar
     func setupNavigation(_ setTitle: navigationTitle) {
-        self.navigationController?.navigationItem(title: setTitle.title)
+        self.navigationController?.navigationItem(title: setTitle.title,
+                                                  viewController: self)
         self.setupNavigationRightItem()
     }
     

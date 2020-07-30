@@ -39,9 +39,9 @@ class TextCell: UITableViewCell {
         let toolBar = UIToolbar()
         toolBar.barStyle = .default
         toolBar.setItems([UIBarButtonItem(title: "OK",
-                                       style: .plain,
-                                       target: self,
-                                       action: #selector(self.tapOkButton))], animated: true)
+                                          style: .plain,
+                                          target: self,
+                                          action: #selector(self.tapOkButton))], animated: true)
         toolBar.sizeToFit()
         self.textView.inputAccessoryView = toolBar
     }

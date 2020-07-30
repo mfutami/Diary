@@ -17,7 +17,7 @@ class Indicator {
                                                              color: .gray,
                                                              padding: 0)
         self.activityIndicatorView.center = viewController.view.center
-        viewController.view.addSubview(activityIndicatorView)
+        viewController.view.addSubview(self.activityIndicatorView)
     }
     
     func start() {

@@ -9,8 +9,8 @@
 import UIKit
 
 extension UINavigationController {
-    func navigationItem(title: String) {
-        self.title = title
+    func navigationItem(title: String, viewController: UIViewController) {
+        viewController.title = title
         self.navigationBar.barTintColor = .white
         self.navigationBar.tintColor = .black
         self.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]

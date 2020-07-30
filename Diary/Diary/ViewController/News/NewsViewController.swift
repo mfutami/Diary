@@ -86,7 +86,8 @@ class NewsViewController: UIViewController, XMLParserDelegate {
     // MARK: - Navugation Bar
     
     func setupNavigation(_ setTitle: navigationTitle) {
-        self.navigationController?.navigationItem(title: setTitle.title)
+        self.navigationController?.navigationItem(title: setTitle.title,
+                                                  viewController: self)
     }
     
     func xmlPaserRx(completion: (() -> Void)? = nil) {

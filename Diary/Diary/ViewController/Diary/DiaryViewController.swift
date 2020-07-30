@@ -20,26 +20,17 @@ class DiaryViewController: UIViewController {
     
     private let dataManagement = DataManagement()
     
+    var viewModel = DiaryViewModel()
+    
     static var date: String?
     
     static var title = [String]()
     
     static var text = [String]()
     
-    // 時刻取得
-    var dateFormatter: DateFormatter = {
-        var formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd"
-        return formatter
-    }()
-    
-    var colorCode: UIColor {
-        return UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
-    }
-    
     var dateToShow: String? {
         guard let date = self.diaryView.delegate else { return nil }
-        return self.dateFormatter.string(from: date.dateToShow)
+        return self.viewModel.dateFormatter.string(from: date.dateToShow)
     }
     
     override func viewDidLoad() {
@@ -63,26 +54,26 @@ class DiaryViewController: UIViewController {
         super.viewDidAppear(animated)
         self.tableViewHeight.constant = self.tableView.contentSize.height
     }
-    
-    // Navugation Bar
-    func setupNavigation(_ setTitle: navigationTitle) {
-        // TODO: 前の月に移動した際にタイトルもその月になるようにする
-        self.navigationController?.navigationItem(title: setTitle.title)
-    }
 }
 extension DiaryViewController {
     func setupTableView() {
         self.tableView.register(UINib(nibName: DiaryCell.identifier, bundle: nil),
                                 forCellReuseIdentifier: DiaryCell.identifier)
         self.tableView.separatorStyle = .none
-        self.tableView.backgroundColor = self.colorCode
+        self.tableView.backgroundColor = self.viewModel.colorCode
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
     }
     
+    // Navugation Bar
+    func setupNavigation(_ setTitle: navigationTitle) {
+        self.navigationController?.navigationItem(title: setTitle.title,
+                                                  viewController: self)
+    }
+    
     func setupBaseView() {
-        self.baseView.backgroundColor = self.colorCode
+        self.baseView.backgroundColor = self.viewModel.colorCode
         // iOS11以降のみ対応
         self.baseView.layer.cornerRadius = 20
         self.baseView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
@@ -146,9 +137,9 @@ extension DiaryViewController {
 extension DiaryViewController: JBDatePickerViewDelegate {
     func didSelectDay(_ dayView: JBDatePickerDayView) {
         guard let dayView = dayView.date else { return }
-        print("day selected:\(self.dateFormatter.string(from: dayView))")
+        print("day selected:\(self.viewModel.dateFormatter.string(from: dayView))")
         // 選択した日時を保持
-        DiaryViewController.date = self.dateFormatter.string(from: dayView)
+        DiaryViewController.date = self.viewModel.dateFormatter.string(from: dayView)
         self.dataManagement.getdate()
         self.tableView.reloadData()
     }
