@@ -14,7 +14,7 @@ import SWXMLHash
 class NewsViewModel {
     private let url = "https://toyokeizai.net/list/feed/rss"
     
-    func xmlPaserRxSwift() -> Observable<Data> {
+    func newsInfoAcquisitionProcess() -> Observable<Data> {
         return Observable.create { observer in
             if let apiUrl = URL(string: self.url) {
                 let task = URLSession(configuration: .default)

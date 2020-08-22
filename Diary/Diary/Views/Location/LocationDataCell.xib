@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="359" height="60"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pcr-HX-7m3">
-                                <rect key="frame" x="5" y="0.0" width="279" height="60"/>
+                                <rect key="frame" x="5" y="5" width="279" height="50"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -49,12 +49,12 @@
                             <constraint firstAttribute="trailing" secondItem="tCc-op-Umr" secondAttribute="trailing" constant="5" id="JCB-Jc-3pD"/>
                             <constraint firstItem="tCc-op-Umr" firstAttribute="top" secondItem="Xz3-Tw-mba" secondAttribute="top" constant="2" id="Uav-Ff-mGh"/>
                             <constraint firstAttribute="bottom" secondItem="4uE-bh-eaQ" secondAttribute="bottom" id="bvP-I1-8Ze"/>
-                            <constraint firstItem="pcr-HX-7m3" firstAttribute="top" secondItem="Xz3-Tw-mba" secondAttribute="top" id="kSo-BM-qqp"/>
+                            <constraint firstItem="pcr-HX-7m3" firstAttribute="top" secondItem="Xz3-Tw-mba" secondAttribute="top" constant="5" id="kSo-BM-qqp"/>
                             <constraint firstItem="pcr-HX-7m3" firstAttribute="leading" secondItem="Xz3-Tw-mba" secondAttribute="leading" constant="5" id="kUC-Uc-HIe"/>
                             <constraint firstItem="4uE-bh-eaQ" firstAttribute="top" secondItem="Xz3-Tw-mba" secondAttribute="top" id="oCm-62-lRd"/>
                             <constraint firstAttribute="height" constant="60" id="p9b-Tb-T7P"/>
                             <constraint firstItem="4uE-bh-eaQ" firstAttribute="leading" secondItem="pcr-HX-7m3" secondAttribute="trailing" constant="10" id="pSH-BW-eUY"/>
-                            <constraint firstAttribute="bottom" secondItem="pcr-HX-7m3" secondAttribute="bottom" id="xjj-6Y-VMz"/>
+                            <constraint firstAttribute="bottom" secondItem="pcr-HX-7m3" secondAttribute="bottom" constant="5" id="xjj-6Y-VMz"/>
                             <constraint firstAttribute="trailing" secondItem="4uE-bh-eaQ" secondAttribute="trailing" constant="5" id="xyF-dh-Obi"/>
                         </constraints>
                     </view>

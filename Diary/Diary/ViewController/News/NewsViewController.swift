@@ -19,12 +19,12 @@ class NewsViewController: UIViewController, XMLParserDelegate {
     
     private var layout = UICollectionViewFlowLayout()
     
-    var viewModel = NewsViewModel()
-    
     private let backgroundScheduler = ConcurrentDispatchQueueScheduler(qos: .background)
     private let disposeBag = DisposeBag()
     
     private let indicator = Indicator()
+    
+    var viewModel = NewsViewModel()
     
     var newsTitle = [String]()
     var newsLink = [String]()
@@ -34,7 +34,7 @@ class NewsViewController: UIViewController, XMLParserDelegate {
     var link = [String]()
     var image = [String]()
     
-    var fiveCount: Int = 5
+    var maxCollection: Int = 5
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,19 +55,91 @@ class NewsViewController: UIViewController, XMLParserDelegate {
                                  selector: #selector(self.didEnterBackground(_:)),
                                  name: UIApplication.didEnterBackgroundNotification,
                                  object: nil)
-        
-        self.tableViewHeight.constant = self.tableView.contentSize.height
-        self.collectionViewWidth.constant = self.collectionView.contentSize.width
-        
-        self.xmlPaserRx { [weak self] in
-            self?.tableView.reloadData()
-            self?.collectionView.reloadData()
-        }
+        self.getNews()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.removeDate()
+    }
+    
+    @objc func didEnterBackground(_ notification: Notification?) {
+        self.removeDate()
+    }
+    
+    @objc func willEnterForeground(_ notification: Notification?) {
+        self.getNews()
+    }
+}
+// MARK: - NewsViewController
+private extension NewsViewController {
+    func setupTableView() {
+        self.tableView.register(UINib(nibName: NewsTableViewCell.identifier, bundle: nil),
+                                forCellReuseIdentifier: NewsTableViewCell.identifier)
+        self.tableView.allowsSelection = true
+        self.tableView.backgroundColor = .clear
+        self.tableView.separatorStyle = .none
+        
+        self.tableView.alwaysBounceVertical = true
+        
+        self.tableViewHeight.constant = self.tableView.contentSize.height
+        
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+    }
+    
+    func setupCollectionView() {
+        self.collectionView.register(UINib(nibName: NewsCollectionViewCell.identifier, bundle: nil),
+                                     forCellWithReuseIdentifier: NewsCollectionViewCell.identifier)
+        self.layout.itemSize = self.collectionView.bounds.size
+        self.layout.minimumInteritemSpacing = self.collectionView.bounds.height
+        self.layout.scrollDirection = .horizontal
+        self.layout.minimumInteritemSpacing = 20
+        
+        self.collectionViewWidth.constant = self.collectionView.contentSize.width
+        
+        self.collectionView.collectionViewLayout = self.layout
+        self.collectionView.showsHorizontalScrollIndicator = false
+        
+        self.collectionView.dataSource = self
+        self.collectionView.delegate = self
+    }
+    
+    func newsInfoAcquisitionProcess(completion: (() -> Void)? = nil) {
+        self.indicator.start()
+        self.viewModel.newsInfoAcquisitionProcess()
+            .subscribeOn(backgroundScheduler)
+            .observeOn(MainScheduler.instance)
+            .subscribe (
+                onNext: { [weak self] date in
+                    guard let wself = self else { return }
+                    defer { wself.indicator.stop() }
+                    var counto: Int = .zero
+                    SWXMLHash.parse(date)["rss"]["channel"]["item"].all.forEach {
+                        guard let title = $0["title"].element?.text,
+                            let link = $0["link"].element?.text,
+                            let image = $0["enclosure"].element?.attribute(by: "url")?.text else { return }
+                        if counto < wself.maxCollection {
+                            wself.titleString.append(title)
+                            wself.link.append(link)
+                            wself.image.append(image)
+                            counto = counto + 1
+                        } else {
+                            wself.newsTitle.append(title)
+                            wself.newsLink.append(link)
+                            wself.newsImage.append(image)
+                        }
+                    }
+                    completion?()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func getNews() {
+        self.newsInfoAcquisitionProcess { [weak self] in
+            self?.tableView.reloadData()
+            self?.collectionView.reloadData()
+        }
     }
     
     func removeDate() {
@@ -82,6 +154,9 @@ class NewsViewController: UIViewController, XMLParserDelegate {
         self.tableView.reloadData()
         self.collectionView.reloadData()
     }
+}
+// MARK: - UITableViewDataSource
+extension NewsViewController: UITableViewDataSource {
     
     // MARK: - Navugation Bar
     
@@ -90,92 +165,18 @@ class NewsViewController: UIViewController, XMLParserDelegate {
                                                   viewController: self)
     }
     
-    func xmlPaserRx(completion: (() -> Void)? = nil) {
-        self.indicator.start()
-        self.viewModel.xmlPaserRxSwift()
-            .subscribeOn(backgroundScheduler)
-            .observeOn(MainScheduler.instance)
-            .subscribe (onNext:{ [weak self] date in
-                guard let wself = self else { return }
-                var counto: Int = .zero
-                SWXMLHash.parse(date)["rss"]["channel"]["item"].all.forEach {
-                    guard let title = $0["title"].element?.text,
-                        let link = $0["link"].element?.text,
-                        let image = $0["enclosure"].element?.attribute(by: "url")?.text else { return }
-                    if counto < wself.fiveCount {
-                        wself.titleString.append(title)
-                        wself.link.append(link)
-                        wself.image.append(image)
-                        counto = counto + 1
-                    } else {
-                        wself.newsTitle.append(title)
-                        wself.newsLink.append(link)
-                        wself.newsImage.append(image)
-                    }
-                }
-                wself.indicator.stop()
-                completion?()
-            })
-            .disposed(by: disposeBag)
-    }
+    // MARK: - TableView
     
-    @objc func didEnterBackground(_ notification: Notification?) {
-        self.removeDate()
-    }
-    
-    @objc func willEnterForeground(_ notification: Notification?) {
-        self.xmlPaserRx { [weak self] in
-            guard let wself = self else { return }
-            wself.tableView.reloadData()
-            wself.collectionView.reloadData()
-        }
-    }
-}
-// MARK: - NewsViewController
-private extension NewsViewController {
-    func setupTableView() {
-        self.tableView.register(UINib(nibName: NewsTableViewCell.identifier, bundle: nil),
-                                forCellReuseIdentifier: NewsTableViewCell.identifier)
-        self.tableView.rowHeight = UITableView.automaticDimension
-        self.tableView.allowsSelection = true
-        self.tableView.backgroundColor = .clear
-        self.tableView.separatorStyle = .none
-        
-        self.tableView.alwaysBounceVertical = true
-        
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
-    }
-    
-    func setupCollectionView() {
-        self.collectionView.register(UINib(nibName: NewsCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: NewsCollectionViewCell.identifier)
-        self.layout.itemSize = self.collectionView.bounds.size
-        self.layout.minimumInteritemSpacing = self.collectionView.bounds.height
-        self.layout.scrollDirection = .horizontal
-        self.layout.minimumInteritemSpacing = 20
-        
-        self.collectionView.collectionViewLayout = self.layout
-        self.collectionView.showsHorizontalScrollIndicator = false
-        
-        self.collectionView.dataSource = self
-        self.collectionView.delegate = self
-    }
-}
-// MARK: - UITableViewDataSource
-extension NewsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.newsTitle.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
-        let identifier = NewsTableViewCell.identifier
-        cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+        cell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.identifier, for: indexPath)
         cell.selectionStyle = .none
-        if let newsCell = cell as? NewsTableViewCell {
-            newsCell.setupCell(title: self.newsTitle[indexPath.row],
-                               imageUrl: self.newsImage[indexPath.row])
-        }
+        (cell as? NewsTableViewCell)?.setupCell(title: self.newsTitle[indexPath.row],
+                                                imageUrl: self.newsImage[indexPath.row])
         return cell
     }
 }

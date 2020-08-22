@@ -20,10 +20,10 @@
                                 <rect key="frame" x="0.0" y="465" width="414" height="431"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0nP-gK-MXu">
-                                        <rect key="frame" x="0.0" y="5" width="414" height="90"/>
+                                        <rect key="frame" x="10" y="5" width="394" height="90"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezg-IM-rJU">
-                                                <rect key="frame" x="15" y="10" width="384" height="70"/>
+                                                <rect key="frame" x="15" y="15" width="364" height="65"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -34,7 +34,7 @@
                                             <constraint firstAttribute="height" constant="90" id="4vU-OY-FaY"/>
                                             <constraint firstAttribute="trailing" secondItem="ezg-IM-rJU" secondAttribute="trailing" constant="15" id="5Qv-Ue-Y2B"/>
                                             <constraint firstItem="ezg-IM-rJU" firstAttribute="leading" secondItem="0nP-gK-MXu" secondAttribute="leading" constant="15" id="GRb-mO-sF5"/>
-                                            <constraint firstItem="ezg-IM-rJU" firstAttribute="top" secondItem="0nP-gK-MXu" secondAttribute="top" constant="10" id="TMI-hk-WQE"/>
+                                            <constraint firstItem="ezg-IM-rJU" firstAttribute="top" secondItem="0nP-gK-MXu" secondAttribute="top" constant="15" id="TMI-hk-WQE"/>
                                             <constraint firstAttribute="bottom" secondItem="ezg-IM-rJU" secondAttribute="bottom" constant="10" id="XKn-iU-Tho"/>
                                         </constraints>
                                     </view>
@@ -65,9 +65,9 @@
                                     <constraint firstAttribute="bottom" secondItem="2B7-bW-daT" secondAttribute="bottom" id="Jmi-uU-7xr"/>
                                     <constraint firstItem="2B7-bW-daT" firstAttribute="leading" secondItem="YeP-1k-i83" secondAttribute="leading" id="KfU-Rq-Hdi"/>
                                     <constraint firstItem="0nP-gK-MXu" firstAttribute="top" secondItem="YeP-1k-i83" secondAttribute="top" constant="5" id="LrJ-9F-lnW"/>
-                                    <constraint firstItem="0nP-gK-MXu" firstAttribute="leading" secondItem="YeP-1k-i83" secondAttribute="leading" id="MuZ-h7-b5U"/>
+                                    <constraint firstItem="0nP-gK-MXu" firstAttribute="leading" secondItem="YeP-1k-i83" secondAttribute="leading" constant="10" id="MuZ-h7-b5U"/>
                                     <constraint firstItem="Lfn-Cl-JeJ" firstAttribute="leading" secondItem="YeP-1k-i83" secondAttribute="leading" id="c2Q-ao-ucT"/>
-                                    <constraint firstAttribute="trailing" secondItem="0nP-gK-MXu" secondAttribute="trailing" id="gSF-ar-ccf"/>
+                                    <constraint firstAttribute="trailing" secondItem="0nP-gK-MXu" secondAttribute="trailing" constant="10" id="gSF-ar-ccf"/>
                                     <constraint firstItem="Lfn-Cl-JeJ" firstAttribute="top" secondItem="0nP-gK-MXu" secondAttribute="bottom" id="lbe-OV-mai"/>
                                     <constraint firstAttribute="trailing" secondItem="2B7-bW-daT" secondAttribute="trailing" id="vve-3x-8Ij"/>
                                 </constraints>

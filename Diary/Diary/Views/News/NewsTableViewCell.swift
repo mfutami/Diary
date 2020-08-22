@@ -16,9 +16,11 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet weak var baseView: UIView!
     
     func setupCell(title: String, imageUrl: String) {
-        guard let image = UIImage.getImageByUrl(url: imageUrl) else { return }
-        
-        self.newsImage.image = image
+        ImageItems.getImageByUrl(url: imageUrl) { [weak self] image in
+            DispatchQueue.main.async {
+                self?.newsImage.image = image
+            }
+        }
         self.newsImage.contentMode = .scaleToFill
         self.newsImage.layer.cornerRadius = 10
         self.newsImage.clipsToBounds = true

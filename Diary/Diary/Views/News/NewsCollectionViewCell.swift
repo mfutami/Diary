@@ -16,7 +16,11 @@ class NewsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var baseView: UIView!
     
     func setup(image: String, text: String) {
-        self.newsImage.image = UIImage.getImageByUrl(url: image)
+        ImageItems.getImageByUrl(url: image) { [weak self] image in
+            DispatchQueue.main.async {
+                self?.newsImage.image = image
+            }
+        }
         self.newsImage.layer.cornerRadius = 10
         self.newsImage.contentMode = .scaleAspectFill
         
