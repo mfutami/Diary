@@ -38,7 +38,7 @@
 		1B2FE998236C6CB000677ACA /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2FE996236C6CB000677ACA /* NewsTableViewCell.swift */; };
 		1B2FE999236C6CB000677ACA /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B2FE997236C6CB000677ACA /* NewsTableViewCell.xib */; };
 		1B493B6B246841480078004C /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B493B6A246841480078004C /* RealmSwift.framework */; };
-		1B493B6D246841580078004C /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B493B6C246841580078004C /* Realm.framework */; };
+		1B493B6D246841580078004C /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B493B6C246841580078004C /* Realm.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		1B4B71E924CBF489009D55E7 /* WhetherResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4B71E824CBF489009D55E7 /* WhetherResult.swift */; };
 		1B4B71EB24CC6D7A009D55E7 /* PrefecturesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4B71EA24CC6D7A009D55E7 /* PrefecturesData.swift */; };
 		1B4B71EE24CC713A009D55E7 /* PrefecturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4B71ED24CC713A009D55E7 /* PrefecturesViewController.swift */; };

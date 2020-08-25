@@ -119,7 +119,9 @@ private extension MemoriesViewController {
                 if success {
                     self.captureSession.startRunning()
                 } else {
-                    self.setErrorDialog()
+                    DispatchQueue.main.async {
+                        self.setErrorDialog()
+                    }
                 }
             }
         }
@@ -212,7 +214,7 @@ private extension MemoriesViewController {
 // MARK: - dialog
 extension MemoriesViewController {
     func setErrorDialog() {
-        let errorDialog = UIAlertController(title: "",
+        let errorDialog = UIAlertController(title: "Error",
                                              message: "カメラアクセスを許可してください",
                                              preferredStyle: .alert)
         let settingButton = UIAlertAction(title: "設定する", style: .default) { [weak self] _ in
