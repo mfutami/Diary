@@ -280,9 +280,9 @@ private extension LocationViewController {
         // 登録地点名表示用に追加（現在登録されている情報を表示）
         var point = [String]()
         // 保持済情報を取得
-        point = self.viewModel.registrationPoint ?? [""]
+        point = self.viewModel.registrationPoint ?? [.empty]
         // 登録済情報を追加
-        point.append(LocationViewModel.registrationData ?? "")
+        point.append(LocationViewModel.registrationData ?? .empty)
         // 全ての保持済登録情報を保持
         self.viewModel.registrationPoint = point
         
@@ -342,7 +342,7 @@ extension LocationViewController: UITableViewDataSource {
         if let locationDataCell = cell as? LocationDataCell {
             locationDataCell.setup(presentLocation: self.dataManagement.streetAddressData[indexPath.row],
                                    distanceString: self.dataManagement.distanceData[indexPath.row],
-                                   registrationPoint: self.viewModel.registrationPoint?[indexPath.row] ?? "")
+                                   registrationPoint: self.viewModel.registrationPoint?[indexPath.row] ?? .empty)
         }
         return cell
     }
@@ -370,6 +370,6 @@ extension LocationViewController: CLLocationManagerDelegate {
 
 // MARK: - LocationData
 class LocationData: Object {
-    @objc dynamic var streetAddress = ""
-    @objc dynamic var distance = ""
+    @objc dynamic var streetAddress = .empty
+    @objc dynamic var distance = .empty
 }

@@ -8,14 +8,24 @@
 
 import UIKit
 
+protocol DeletePhotoDelegate: class {
+    func selectView(count: Int)
+}
+
 class PhotoLibraryViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
     
+    weak var deletePhotoDelegate: DeletePhotoDelegate?
+    
     private let dataManagement = DataManagement()
     
     private var photoImage = [UIImageView]()
+    
+    private var selectCount: Int?
+    
+    private var deleteMode = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,28 +42,35 @@ class PhotoLibraryViewController: UIViewController {
     }
     
     func setupNavigationRightItem() {
-        let rightSearchBarButtonItem:
-            UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "delete"),
-                                              style: .done,
-                                              target: self,
-                                              action: #selector(self.deleteButton))
+        let rightSearchBarButtonItem = UIBarButtonItem(image: UIImage(named: "delete"),
+                                                       style: .done,
+                                                       target: self,
+                                                       action: #selector(self.deleteButton))
         
-        let closeButton:
-            UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "closeButton"),
-                                              style: .done,
-                                              target: self,
-                                              action: #selector(self.tapCloseButton))
+        let closeButton = UIBarButtonItem(image: UIImage(named: "closeButton"),
+                                          style: .done,
+                                          target: self,
+                                          action: #selector(self.tapCloseButton))
         self.navigationItem.rightBarButtonItems = [closeButton, rightSearchBarButtonItem]
     }
     
     func setupNavigationLeftItem(photoView: PhotoView) {
         self.navigationItem.rightBarButtonItems = nil
         
-        let leftBarButtonItem:
-            UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
-                                              target: photoView,
-                                              action: #selector(photoView.tapCloseButton))
+        let leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
+                                                target: photoView,
+                                                action: #selector(photoView.tapCloseButton))
         self.navigationItem.leftBarButtonItem = leftBarButtonItem
+    }
+    
+    func setupNavigationLeftItemWithDelete(count: Int = .zero) {
+        self.navigationItem.rightBarButtonItems = nil
+        
+        let leftBarButtonItem = UIBarButtonItem(title: "キャンセル",
+                                                style: .done,
+                                                target: self,
+                                                action: #selector(self.cancel))
+        self.navigationItem.rightBarButtonItem = leftBarButtonItem
     }
     
     func setupCollectionView() {
@@ -70,7 +87,17 @@ class PhotoLibraryViewController: UIViewController {
     }
     
     @objc func deleteButton() {
-        self.setupRemoveDialog()
+        self.deleteMode = true
+        self.setupNavigationLeftItemWithDelete()
+        let deleteView = DeleteView(frame: CGRect(x: self.view.frame.origin.x,
+                                                  y: self.view.frame.maxY,
+                                                  width: self.view.frame.width,
+                                                  height: 60))
+        self.view.addSubview(deleteView)
+        self.deletePhotoDelegate = deleteView as DeletePhotoDelegate
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseIn, animations: {
+            deleteView.setupOrigin(y: self.view.frame.maxY)
+        })
     }
     
     @objc func tapCloseButton() {
@@ -80,18 +107,14 @@ class PhotoLibraryViewController: UIViewController {
         }
     }
     
-    func setupRemoveDialog() {
-        let removeDialog = UIAlertController(title: "全削除致します。",
-                                             message: "削除した写真は復元することができません。",
-                                             preferredStyle: .alert)
-        let notRemove = UIAlertAction(title: "いいえ", style: .cancel)
-        let remove = UIAlertAction(title: "はい", style: .default) { [weak self] _ in
-            self?.dataManagement.removePhotoImage()
-            self?.collectionView.reloadData()
-        }
-        removeDialog.addAction(notRemove)
-        removeDialog.addAction(remove)
-        self.present(removeDialog, animated: false)
+    @objc func cancel() {
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseIn, animations: {
+            let deleteView = self.view.subviews.first { $0 is DeleteView }
+            (deleteView as? DeleteView)?.setupMaxY()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { deleteView?.removeFromSuperview() }
+        })
+        self.navigationItem.rightBarButtonItem = nil
+        self.setupNavigationRightItem()
     }
 }
 
@@ -114,11 +137,16 @@ extension PhotoLibraryViewController: UICollectionViewDataSource {
 
 extension PhotoLibraryViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let imageView = PhotoView(frame: self.view.frame)
-        imageView.setupImageView(imageView: self.photoImage[indexPath.row])
-        imageView.photoDelegate = self
-        self.setupNavigationLeftItem(photoView: imageView)
-        self.view.addSubview(imageView)
+        if self.deleteMode {
+            let imageView = PhotoView(frame: self.view.frame)
+            imageView.setupImageView(imageView: self.photoImage[indexPath.row])
+            imageView.photoDelegate = self
+            self.setupNavigationLeftItem(photoView: imageView)
+            self.view.addSubview(imageView)
+        } else {
+            let count = (self.selectCount ?? .zero) + 1
+            self.deletePhotoDelegate?.selectView(count: count)
+        }
     }
 }
 

@@ -33,16 +33,16 @@ class HomeViewModel {
     }
     
     var setUrl: String {
-        print((self.url + "\(HomeViewModel.cityString ?? ""),jp" + self.key))
-        return (self.url + "\(HomeViewModel.cityString ?? ""),jp" + self.key)
+        print((self.url + "\(HomeViewModel.cityString ?? .empty),jp" + self.key))
+        return (self.url + "\(HomeViewModel.cityString ?? .empty),jp" + self.key)
     }
     
     var getImageUrl: String {
-        return (self.imageUrl + "\(self.whetherResult?.icon ?? "")@2x.png")
+        return (self.imageUrl + "\(self.whetherResult?.icon ?? .empty)@2x.png")
     }
     
     var getWhetherMain: String {
-        return self.whetherResult?.main ?? ""
+        return self.whetherResult?.main ?? .empty
     }
     
     var getTemperature: String {
@@ -75,7 +75,7 @@ class HomeViewModel {
     }
     
     var getCityName: String {
-        return self.whetherResult?.cityName ?? ""
+        return self.whetherResult?.cityName ?? .empty
     }
     
     var haveYouAlreadyDone: Bool {

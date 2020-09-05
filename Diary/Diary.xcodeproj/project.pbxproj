@@ -82,6 +82,7 @@
 		1B5698F323A66F7B0095C7D3 /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5698F223A66F7B0095C7D3 /* Indicator.swift */; };
 		1B58202C24D9A20600A19A77 /* error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B58202B24D9A20600A19A77 /* error@2x.png */; };
 		1B5A258D2470204400485B56 /* remove@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B5A258C2470204400485B56 /* remove@2x.png */; };
+		1B6219BE24FA7A9E00CF0894 /* DeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6219BD24FA7A9E00CF0894 /* DeleteView.swift */; };
 		1B73AA7D2430300B008C02A4 /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B73AA7B2430300B008C02A4 /* NewsCollectionViewCell.swift */; };
 		1B73AA7E2430300B008C02A4 /* NewsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B73AA7C2430300B008C02A4 /* NewsCollectionViewCell.xib */; };
 		1B87B771244C264300488631 /* JBDatePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87B770244C264300488631 /* JBDatePicker.framework */; };
@@ -222,6 +223,7 @@
 		1B5698F223A66F7B0095C7D3 /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
 		1B58202B24D9A20600A19A77 /* error@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "error@2x.png"; sourceTree = "<group>"; };
 		1B5A258C2470204400485B56 /* remove@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "remove@2x.png"; sourceTree = "<group>"; };
+		1B6219BD24FA7A9E00CF0894 /* DeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteView.swift; sourceTree = "<group>"; };
 		1B73AA7B2430300B008C02A4 /* NewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCell.swift; sourceTree = "<group>"; };
 		1B73AA7C2430300B008C02A4 /* NewsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCollectionViewCell.xib; sourceTree = "<group>"; };
 		1B87B770244C264300488631 /* JBDatePicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JBDatePicker.framework; path = Carthage/Build/iOS/JBDatePicker.framework; sourceTree = "<group>"; };
@@ -596,6 +598,7 @@
 			isa = PBXGroup;
 			children = (
 				1B4C5F51249C6EB000D029A1 /* PhotoView.swift */,
+				1B6219BD24FA7A9E00CF0894 /* DeleteView.swift */,
 			);
 			path = PhotoImageView;
 			sourceTree = "<group>";
@@ -1039,6 +1042,7 @@
 				1BEDF578248134540096CDEB /* SlideView.swift in Sources */,
 				1B4CE18C249500CC0077D34D /* TitleHeader.swift in Sources */,
 				1BD71D3024684A280092206E /* DataManagement.swift in Sources */,
+				1B6219BE24FA7A9E00CF0894 /* DeleteView.swift in Sources */,
 				1B2894E32325314C0090A221 /* LocationViewController.swift in Sources */,
 				1B4B71E924CBF489009D55E7 /* WhetherResult.swift in Sources */,
 				1B50A1EB246AD34500F08485 /* LocationDataCell.swift in Sources */,

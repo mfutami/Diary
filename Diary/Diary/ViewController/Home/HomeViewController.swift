@@ -119,7 +119,7 @@ private extension HomeViewController {
     
     func setupLabel(label: UILabel, size: CGFloat, bold font: Bool) {
         label.backgroundColor = .white
-        label.text = ""
+        label.text = .empty
         label.textAlignment = .left
         label.textColor = .lightGray
         label.font = font ? .boldSystemFont(ofSize: size) : .systemFont(ofSize: size)
@@ -129,7 +129,7 @@ private extension HomeViewController {
     
     func setupCityLabel() {
         self.cityLabel.backgroundColor = .white
-        self.cityLabel.text = ""
+        self.cityLabel.text = .empty
         self.cityLabel.textAlignment = .center
         self.cityLabel.textColor = .black
         self.cityLabel.font = .systemFont(ofSize: self.cityLabelFontSize)

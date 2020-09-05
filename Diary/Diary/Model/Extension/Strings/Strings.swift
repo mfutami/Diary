@@ -9,9 +9,11 @@
 import Foundation
 
 extension String {
+    static let empty = ""
+    
     static func LocalizedString(_ key: String, tableName: String?) -> String {
         return NSLocalizedString(key,
                                  tableName: tableName,
-                                 comment: "")
+                                 comment: .empty)
     }
 }

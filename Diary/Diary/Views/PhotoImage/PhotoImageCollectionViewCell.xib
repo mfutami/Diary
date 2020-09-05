@@ -20,18 +20,41 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NU8-Jv-uqi">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JEZ-Is-3RO">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j2R-cT-juB">
+                                <rect key="frame" x="170" y="170" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Dfe-H1-UAl"/>
+                                    <constraint firstAttribute="width" constant="30" id="UPZ-FE-Sly"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="j2R-cT-juB" secondAttribute="bottom" id="5Ev-5M-JfE"/>
+                            <constraint firstAttribute="trailing" secondItem="j2R-cT-juB" secondAttribute="trailing" id="lgp-0K-z4k"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="JEZ-Is-3RO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="0pH-Po-8KW"/>
                 <constraint firstItem="NU8-Jv-uqi" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="BHD-UE-3Jb"/>
                 <constraint firstAttribute="trailing" secondItem="NU8-Jv-uqi" secondAttribute="trailing" id="RCc-k7-9HR"/>
                 <constraint firstItem="NU8-Jv-uqi" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="RIO-Gs-35c"/>
+                <constraint firstAttribute="bottom" secondItem="JEZ-Is-3RO" secondAttribute="bottom" id="SDo-A6-v50"/>
                 <constraint firstAttribute="bottom" secondItem="NU8-Jv-uqi" secondAttribute="bottom" id="Sf7-Vg-0hS"/>
+                <constraint firstItem="JEZ-Is-3RO" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="cpc-9E-sXy"/>
+                <constraint firstAttribute="trailing" secondItem="JEZ-Is-3RO" secondAttribute="trailing" id="fPe-BJ-OzZ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="200" height="200"/>
             <connections>
+                <outlet property="checkImage" destination="j2R-cT-juB" id="ezW-hP-nxD"/>
                 <outlet property="photoImageView" destination="NU8-Jv-uqi" id="f8x-pE-EJH"/>
+                <outlet property="shadowView" destination="JEZ-Is-3RO" id="vWj-bg-tfF"/>
             </connections>
             <point key="canvasLocation" x="249.27536231884059" y="188.16964285714286"/>
         </collectionViewCell>

@@ -18,8 +18,8 @@ class TabBerModel: UITabBarController {
             guard let storyBoardId = $0.storyBoardId else { return }
             let footerView = UIStoryboard(name: storyBoardId, bundle: nil)
             guard let storyBoard = footerView.instantiateInitialViewController() else { return }
-            storyBoard.tabBarItem = UITabBarItem(title: $0.name ?? "",
-                                                 image: UIImage(named: $0.image ?? ""),
+            storyBoard.tabBarItem = UITabBarItem(title: $0.name ?? .empty,
+                                                 image: UIImage(named: $0.image ?? .empty),
                                                  tag: $0.tag ?? .zero)
             self.footerTabBer.append(storyBoard)
         }

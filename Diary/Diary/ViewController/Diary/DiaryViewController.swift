@@ -89,7 +89,7 @@ extension DiaryViewController {
     }
     
     func editOrBrowseDialog(title: String, text: String, indexPath: Int) {
-        let alert = UIAlertController(title: "",
+        let alert = UIAlertController(title: .empty,
                                       message: "以下の操作を選択してください",
                                       preferredStyle: .alert)
         // 閲覧ボタン
@@ -176,11 +176,11 @@ extension DiaryViewController: UITableViewDelegate {
 }
 
 class DiaryDate: Object {
-    @objc dynamic var date: String = ""
+    @objc dynamic var date: String = .empty
     let list = List<TitleDiary>()
 }
 
 class TitleDiary: Object {
-    @objc dynamic var title: String = ""
-    @objc dynamic var text: String = ""
+    @objc dynamic var title: String = .empty
+    @objc dynamic var text: String = .empty
 }

@@ -32,9 +32,9 @@ class DataManagement {
     
     func addDate() {
         let realm = try! Realm()
-        let dateArray: [String: Any] = ["date": DiaryViewController.date ?? "",
-                                        "list": [["title": TitleCell.textString ?? "",
-                                                  "text": TextCell.textViewString ?? ""]]]
+        let dateArray: [String: Any] = ["date": DiaryViewController.date ?? .empty,
+                                        "list": [["title": TitleCell.textString ?? .empty,
+                                                  "text": TextCell.textViewString ?? .empty]]]
         let date = DiaryDate(value: dateArray)
         try! realm.write {
             realm.add(date)
@@ -96,10 +96,10 @@ class DataManagement {
             for (index, data) in date.enumerated() {
                 data.list.forEach {
                     if index == indexPath {
-                        $0.title = TitleCell.textString ?? ""
-                        $0.text = TextCell.textViewString ?? ""
-                        DiaryViewController.title[index] = TitleCell.textString ?? ""
-                        DiaryViewController.text[index] = TextCell.textViewString ?? ""
+                        $0.title = TitleCell.textString ?? .empty
+                        $0.text = TextCell.textViewString ?? .empty
+                        DiaryViewController.title[index] = TitleCell.textString ?? .empty
+                        DiaryViewController.text[index] = TextCell.textViewString ?? .empty
                     }
                 }
             }

@@ -34,7 +34,7 @@ class DiaryWritingViewModel {
     }
     
     var titleString: String {
-        guard let title = TitleCell.textString else { return "" }
+        guard let title = TitleCell.textString else { return .empty }
         return "・\(title)\n\n"
     }
     
