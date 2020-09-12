@@ -21,8 +21,10 @@ class MemoriesViewController: UIViewController {
     private let photoOutput = AVCapturePhotoOutput()
     private var cameraPreviewLayer = AVCaptureVideoPreviewLayer()
     
-    private var change: Bool = false
-    private var isChangeCamera: Bool = true
+    private let viewModel = MemoriesViewModel()
+    
+    private var change = false
+    private var isChangeCamera = true
     
     static var slideView: SlideView?
     
@@ -69,7 +71,7 @@ class MemoriesViewController: UIViewController {
 
 private extension MemoriesViewController {
     // Navugation Bar
-    func setupNavigation(_ setTitle: navigationTitle) {
+    func setupNavigation(_ setTitle: NavigationTitle) {
         self.navigationController?.navigationItem(title: setTitle.title,
                                                   viewController: self)
         self.setupNavigationRightItem()
@@ -99,28 +101,20 @@ private extension MemoriesViewController {
         }
     }
     
-    @objc func chengeCamera() {
-        self.removeCaptureSession()
-        self.isChangeCamera = !self.isChangeCamera
-        self.setupDevice(change: self.isChangeCamera)
-        self.captureSession.startRunning()
-    }
-    
     func authorization() {
         let mediaType = AVMediaType.video
-        let status = AVCaptureDevice.authorizationStatus(for: mediaType)
-        switch status {
+        switch AVCaptureDevice.authorizationStatus(for: mediaType) {
         case .restricted, .denied:
             self.setErrorDialog()
         case .authorized:
             self.captureSession.startRunning()
         case .notDetermined:
-            AVCaptureDevice.requestAccess(for: mediaType) { success in
+            AVCaptureDevice.requestAccess(for: mediaType) { [weak self] success in
                 if success {
-                    self.captureSession.startRunning()
+                    self?.captureSession.startRunning()
                 } else {
                     DispatchQueue.main.async {
-                        self.setErrorDialog()
+                        self?.setErrorDialog()
                     }
                 }
             }
@@ -170,7 +164,7 @@ private extension MemoriesViewController {
         // viewの座標に合わせる
         self.cameraPreviewLayer.frame = self.view.frame
         // cameraViewのレイヤーの下にcameraPreviewLayerを挿入
-        self.cameaView.layer.insertSublayer(self.cameraPreviewLayer, at: 0)
+        self.cameaView.layer.insertSublayer(self.cameraPreviewLayer, at: .zero)
     }
     
     // shutterButton layout
@@ -183,8 +177,8 @@ private extension MemoriesViewController {
         self.photographButton.backgroundColor = UIColor.white
     }
     
-    func openSettingScreen(_ url: URL? = URL(string: "App-Prefs:root=jp.co.sample.futami.Diary")) {
-        guard let url = url else { return }
+    func openSettingScreen() {
+        guard let url = URL(string: self.viewModel.settingUrlString) else { return }
         if #available(iOS 10.0, *) {
             UIApplication.shared.open(url, options: [:])
         } else {
@@ -210,15 +204,23 @@ private extension MemoriesViewController {
         settings.isAutoRedEyeReductionEnabled = true
         self.photoOutput.capturePhoto(with: settings, delegate: self)
     }
+    
+    @objc func chengeCamera() {
+        self.removeCaptureSession()
+        self.isChangeCamera = !self.isChangeCamera
+        self.setupDevice(change: self.isChangeCamera)
+        self.captureSession.startRunning()
+    }
 }
 // MARK: - dialog
 extension MemoriesViewController {
     func setErrorDialog() {
-        let errorDialog = UIAlertController(title: "Error",
-                                             message: "カメラアクセスを許可してください",
+        let errorDialog = UIAlertController(title: self.viewModel.textString(.error),
+                                             message: self.viewModel.textString(.permission),
                                              preferredStyle: .alert)
-        let settingButton = UIAlertAction(title: "設定する", style: .default) { [weak self] _ in
-            self?.openSettingScreen()
+        let settingButton = UIAlertAction(title: self.viewModel.textString(.setting),
+                                          style: .default) { [unowned self] _ in
+                                            self.openSettingScreen()
         }
         errorDialog.addAction(settingButton)
         self.present(errorDialog, animated: false)

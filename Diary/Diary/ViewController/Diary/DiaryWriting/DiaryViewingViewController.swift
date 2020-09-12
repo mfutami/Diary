@@ -61,9 +61,7 @@ extension DiaryViewingViewController: UITableViewDataSource {
         }
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return self.viewModel.section.count
-    }
+    func numberOfSections(in tableView: UITableView) -> Int { self.viewModel.section.count }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
@@ -79,9 +77,8 @@ extension DiaryViewingViewController: UITableViewDataSource {
 
 extension DiaryViewingViewController: UITableViewDelegate {
     /// sectionHeadrの高さ設定
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return ViewingTitleHeaderView.height
-    }
+    func tableView(_ tableView: UITableView,
+                   heightForHeaderInSection section: Int) -> CGFloat { ViewingTitleHeaderView.height }
     
     /// sectionHeaderの設定
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

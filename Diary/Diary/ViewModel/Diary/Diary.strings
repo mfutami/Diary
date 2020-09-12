@@ -1,0 +1,23 @@
+//
+//  Diary.strings
+//  Diary
+//
+//  Created by futami on 2020/09/05.
+//  Copyright © 2020 futami. All rights reserved.
+//
+
+// 日記画面
+"operationSelection_text" = "以下の操作を選択してください";
+"browse_text" = "閲覧";
+"edit_text" = "編集";
+"delete_text" = "削除";
+"back_text" = "戻る";
+"plus_text" = "＋";
+
+// 日記作成画面
+"cancel_text" = "キャンセル";
+"error_title" = "エラー";
+"nonCompleted_text" = "入力が完了していません。\n再度ご確認ください。";
+"ok_text" = "OK";
+"title_text" = "題名";
+"text" = "本文";

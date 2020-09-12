@@ -27,34 +27,28 @@ class HomeViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private let indicator = Indicator()
     
-    let weatherLabelFontSize: CGFloat = 30
-    let temperatureLabelFontSize: CGFloat = 50
-    let detailsLabelFontSize: CGFloat = 15
-    let cityLabelFontSize: CGFloat = 20
+    private let weatherLabelFontSize: CGFloat = 30
+    private let temperatureLabelFontSize: CGFloat = 50
+    private let detailsLabelFontSize: CGFloat = 15
+    private let cityLabelFontSize: CGFloat = 20
     
-    var viewModel = HomeViewModel()
-    
-    let prefectures = PrefecturesViewController()
+    private var viewModel = HomeViewModel()
     
     var timerString: String? {
-        didSet {
-            self.timerLabel.text = self.timerString
-        }
+        didSet { self.timerLabel.text = self.timerString }
     }
     
     var nowDate: String {
-        let now = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd"
-        return dateFormatter.string(from: now)
+        return dateFormatter.string(from: Date())
     }
     
     var nowTimer: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .none
         dateFormatter.timeStyle = .medium
-        let now = Date()
-        return dateFormatter.string(from: now)
+        return dateFormatter.string(from: Date())
     }
     
     override func viewDidLoad() {
@@ -97,7 +91,7 @@ private extension HomeViewController {
     
     // MARK: - Navugation Bar
     
-    func setupNavigation(_ setTitle: navigationTitle) {
+    func setupNavigation(_ setTitle: NavigationTitle) {
         self.navigationController?.navigationItem(title: setTitle.title,
                                                   viewController: self)
     }
@@ -106,7 +100,6 @@ private extension HomeViewController {
         view.backgroundColor = .white
         
         view.layer.cornerRadius = 15
-        
         view.layer.shadowOffset = CGSize(width: 0.5, height: 1.0)
         view.layer.shadowColor = UIColor.lightGray.cgColor
         view.layer.shadowOpacity = 0.5
@@ -201,9 +194,7 @@ private extension HomeViewController {
         guard let url = URL(string: self.viewModel.getImageUrl) else { return }
         self.viewModel.getData(from: url) { [weak self] (data, response, error) in
             guard let data = data else { return }
-            DispatchQueue.main.async {
-                self?.whetherIcon.image = UIImage(data: data)
-            }
+            DispatchQueue.main.async { self?.whetherIcon.image = UIImage(data: data) }
         }
     }
     
@@ -220,10 +211,10 @@ private extension HomeViewController {
     }
     
     func displayErrorDialog() {
-        let dialog = UIAlertController(title: "天気情報取得失敗",
-                                       message: "再取得を実行致します。",
+        let dialog = UIAlertController(title: self.viewModel.textString(.weatherInformationFailed),
+                                       message: self.viewModel.textString(.reacquisition),
                                        preferredStyle: .alert)
-        let okButton = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+        let okButton = UIAlertAction(title: self.viewModel.textString(.ok), style: .default) { [weak self] _ in
             self?.whetherIcon.image = nil
             self?.setup()
         }
@@ -247,19 +238,12 @@ private extension HomeViewController {
                              repeats: true)
     }
 
-    @objc func timer() {
-        self.timerString = self.nowTimer
-    }
-    
-    @objc func tapChangeButton() {
-        self.present()
-    }
+    @objc func timer() { self.timerString = self.nowTimer }
+    @objc func tapChangeButton() { self.present() }
 }
 
 extension HomeViewController: PrefecturesDelegate {
-    func startWhether() {
-        self.setup()
-    }
+    func startWhether() { self.setup() }
 }
 
 struct WeatherResponse: Codable {

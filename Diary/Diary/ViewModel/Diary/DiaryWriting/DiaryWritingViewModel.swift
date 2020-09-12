@@ -15,9 +15,18 @@ class DiaryWritingViewModel {
         case textHeader([TextHeader.Text])
     }
     
+    enum TextStrings: String {
+        case cancel = "cancel_text"
+        case errorTitle = "error_title"
+        case nonCompleted = "nonCompleted_text"
+        case ok = "ok_text"
+        case title = "title_text"
+        case text = "text"
+    }
+    
     private(set) var section: [Section] = []
     
-    private let domain = "twitter.com/intent/"
+    private let domain = "https://twitter.com/intent/"
     private let query = "tweet?text="
     
     var title: String?
@@ -29,9 +38,7 @@ class DiaryWritingViewModel {
         self.text = text
     }
     
-    var urlString: String {
-        return "https://" + self.domain + self.query
-    }
+    var urlString: String { self.domain + self.query }
     
     var titleString: String {
         guard let title = TitleCell.textString else { return .empty }
@@ -44,4 +51,6 @@ class DiaryWritingViewModel {
         section.append(.textHeader(TextHeader.items()))
         return section
     }
+    
+    func textString(_ key: TextStrings) -> String { .LocalizedString(key.rawValue, tableName: "Diary") }
 }

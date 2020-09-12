@@ -39,9 +39,7 @@ class SlideView: UIView {
                       height: self.bounds.size.height - 10)
     }
     
-    private var colorCode: UIColor {
-        return UIColor(red: 211/255, green: 211/255, blue: 211/255, alpha: 1)
-    }
+    private var colorCode: UIColor { UIColor(red: 211/255, green: 211/255, blue: 211/255, alpha: 1) }
     
     override init(frame: CGRect) {
         super.init(frame: frame)

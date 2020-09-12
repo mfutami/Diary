@@ -24,7 +24,7 @@ class NewsViewController: UIViewController, XMLParserDelegate {
     
     private let indicator = Indicator()
     
-    var viewModel = NewsViewModel()
+    private var viewModel = NewsViewModel()
     
     var newsTitle = [String]()
     var newsLink = [String]()
@@ -73,6 +73,14 @@ class NewsViewController: UIViewController, XMLParserDelegate {
 }
 // MARK: - NewsViewController
 private extension NewsViewController {
+    
+    // MARK: - Navugation Bar
+    
+    func setupNavigation(_ setTitle: NavigationTitle) {
+        self.navigationController?.navigationItem(title: setTitle.title,
+                                                  viewController: self)
+    }
+    
     func setupTableView() {
         self.tableView.register(UINib(nibName: NewsTableViewCell.identifier, bundle: nil),
                                 forCellReuseIdentifier: NewsTableViewCell.identifier)
@@ -131,6 +139,9 @@ private extension NewsViewController {
                         }
                     }
                     completion?()
+                },
+                onError: { [weak self] error in
+                    self?.showNetWorkErrorDialog()
             })
             .disposed(by: disposeBag)
     }
@@ -154,26 +165,29 @@ private extension NewsViewController {
         self.tableView.reloadData()
         self.collectionView.reloadData()
     }
+    
+    func showNetWorkErrorDialog() {
+        let alert = UIAlertController(title: self.viewModel.textString(.communicationError),
+                                      message: self.viewModel.textString(.again),
+                                      preferredStyle: .alert)
+        let action = UIAlertAction(title: self.viewModel.textString(.reacquire), style: .default) { [unowned self] _ in
+            self.getNews()
+        }
+        
+        alert.addAction(action)
+        self.present(alert, animated: true)
+    }
 }
 // MARK: - UITableViewDataSource
 extension NewsViewController: UITableViewDataSource {
     
-    // MARK: - Navugation Bar
-    
-    func setupNavigation(_ setTitle: navigationTitle) {
-        self.navigationController?.navigationItem(title: setTitle.title,
-                                                  viewController: self)
-    }
-    
     // MARK: - TableView
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.newsTitle.count
-    }
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int { self.newsTitle.count }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = UITableViewCell()
-        cell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.identifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.identifier, for: indexPath)
         cell.selectionStyle = .none
         (cell as? NewsTableViewCell)?.setupCell(title: self.newsTitle[indexPath.row],
                                                 imageUrl: self.newsImage[indexPath.row])
@@ -193,14 +207,13 @@ extension NewsViewController: UITableViewDelegate {
 }
 // MARK: - UICollectionViewDataSource
 extension NewsViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.titleString.count
-    }
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int { self.titleString.count }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell = UICollectionViewCell()
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let identifier = NewsCollectionViewCell.identifier
-        cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
         if let collectionCell = cell as? NewsCollectionViewCell {
             let newsTitle = self.titleString[indexPath.row]
             let newsImage = self.image[indexPath.row]

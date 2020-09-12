@@ -73,23 +73,21 @@ class LocationViewController: UIViewController {
 // MARK: - LocationViewController
 private extension LocationViewController {
     // Navugation Bar
-    func setupNavigation(_ setTitle: navigationTitle) {
+    func setupNavigation(_ setTitle: NavigationTitle) {
         self.navigationController?.navigationItem(title: setTitle.title,
                                                   viewController: self)
         self.setupNavigationRightItem()
     }
     
     func setupNavigationRightItem() {
-        let rightSearchBarButtonItem:
-            UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "remove"),
-                                              style: .done,
-                                              target: self,
-                                              action: #selector(self.tapNavigationRightBar))
-        let rightChangeBarRightItem:
-        UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "change"),
-                                          style: .done,
-                                          target: self,
-                                          action: #selector(self.tapNavigationRightChangeBar))
+        let rightSearchBarButtonItem = UIBarButtonItem(image: UIImage(named: "remove"),
+                                                       style: .done,
+                                                       target: self,
+                                                       action: #selector(self.tapNavigationRightBar))
+        let rightChangeBarRightItem = UIBarButtonItem(image: UIImage(named: "change"),
+                                                      style: .done,
+                                                      target: self,
+                                                      action: #selector(self.tapNavigationRightChangeBar))
         self.navigationItem.rightBarButtonItems = [rightSearchBarButtonItem, rightChangeBarRightItem]
     }
     
@@ -131,7 +129,7 @@ private extension LocationViewController {
         
         // recordButton - text
         self.recordButton.backgroundColor = self.viewModel.backgroundColor
-        self.recordButton.setTitle(self.viewModel.recordButtonTitle, for: .normal)
+        self.recordButton.setTitle(self.viewModel.textString(.record), for: .normal)
         self.recordButton.setTitleColor(.lightGray, for: .normal)
         self.recordButton.titleLabel?.font = .boldSystemFont(ofSize: 20)
         
@@ -148,8 +146,8 @@ private extension LocationViewController {
     
     func setupCompassButton() {
         let compass = MKCompassButton(mapView: mapView)
-        compass.compassVisibility = .visible
         let size = CGSize(width: 50, height: 50)
+        compass.compassVisibility = .visible
         compass.frame = CGRect(origin: .zero, size: size)
         self.mapView.addSubview(compass)
         // デフォルトコンパスを非表示
@@ -161,7 +159,7 @@ private extension LocationViewController {
         
         self.errorTextLabel.isHidden = false
         self.errorTextLabel.backgroundColor = .white
-        self.errorTextLabel.text = "表示する記録データがありません。\n現在位置を記録した場合に記録が表示されます。"
+        self.errorTextLabel.text = self.viewModel.textString(.noneData)
         self.errorTextLabel.textColor = .red
         self.errorTextLabel.textAlignment = .center
         self.errorTextLabel.numberOfLines = .zero
@@ -169,15 +167,15 @@ private extension LocationViewController {
     }
     
     func setupErrorDialog() {
-        let dialog = UIAlertController(title: self.viewModel.errorDialogTitle,
-                                       message: self.viewModel.errorDialogMessage,
+        let dialog = UIAlertController(title: self.viewModel.textString(.errorTitle),
+                                       message: self.viewModel.textString(.errorText),
                                        preferredStyle: .alert)
         
-        let okButton = UIAlertAction(title: self.viewModel.okButtonTitle, style: .default) { [weak self] _ in
-            self?.onClickOkButton()
+        let okButton = UIAlertAction(title: self.viewModel.textString(.ok), style: .default) { [unowned self] _ in
+            self.onClickOkButton()
         }
-        let cancelButton = UIAlertAction(title: self.viewModel.cancelButtonTitle, style: .cancel) { [weak self] _ in
-            self?.dismiss(animated: true) {
+        let cancelButton = UIAlertAction(title: self.viewModel.textString(.cancel), style: .cancel) { [unowned self] _ in
+            self.dismiss(animated: true) {
                 // TODO: キャンセルボタン押下後エラー画面を表示させる
             }
         }
@@ -187,15 +185,15 @@ private extension LocationViewController {
     }
     
     func setupRemoveDialog() {
-        let removeDialog = UIAlertController(title: "削除してよろしいですか？",
-                                             message: "削除した記録は復元することができません。",
-                                             preferredStyle: .alert)
-        let notRemove = UIAlertAction(title: "いいえ", style: .cancel)
-        let remove = UIAlertAction(title: "はい", style: .default) { [weak self] _ in
-            self?.viewModel.deleteRegistrationPoint()
-            self?.dataManagement.removeLocationData()
-            self?.tableView.reloadData()
-            self?.errorDisplayIfThereIsNoInformation()
+        let removeDialog = UIAlertController(title: self.viewModel.textString(.deleteTitle),
+                                             message: self.viewModel.textString(.cannotBeRestored),
+                                             preferredStyle: .actionSheet)
+        let notRemove = UIAlertAction(title: self.viewModel.textString(.noText), style: .cancel)
+        let remove = UIAlertAction(title: self.viewModel.textString(.yesText), style: .default) { [unowned self] _ in
+            self.viewModel.deleteRegistrationPoint()
+            self.dataManagement.removeLocationData()
+            self.tableView.reloadData()
+            self.errorDisplayIfThereIsNoInformation()
         }
         removeDialog.addAction(notRemove)
         removeDialog.addAction(remove)
@@ -203,10 +201,10 @@ private extension LocationViewController {
     }
     
     func errorDialog() {
-        let errorDialog = UIAlertController(title: "位置情報が取得できませんでした",
-                                             message: "再度お試しください",
-                                             preferredStyle: .alert)
-        let okButton = UIAlertAction(title: "OK", style: .cancel)
+        let errorDialog = UIAlertController(title: self.viewModel.textString(.locationNone),
+                                            message: self.viewModel.textString(.again),
+                                            preferredStyle: .alert)
+        let okButton = UIAlertAction(title: self.viewModel.textString(.ok), style: .cancel)
         errorDialog.addAction(okButton)
         self.present(errorDialog, animated: false)
     }
@@ -317,10 +315,8 @@ extension LocationViewController {
                 self.location.requestWhenInUseAuthorization()
             case .authorizedAlways, .authorizedWhenInUse:
                 self.location.startUpdatingLocation()
-            case .denied:
-                self.setupErrorDialog()
             default:
-                break
+                self.setupErrorDialog()
             }
         } else {
             self.setupErrorDialog()
@@ -330,20 +326,16 @@ extension LocationViewController {
 
 // MARK: - UITableViewDataSource
 extension LocationViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.dataManagement.streetAddressData.count
-    }
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int { self.dataManagement.streetAddressData.count }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = UITableViewCell()
-        cell = tableView.dequeueReusableCell(withIdentifier: LocationDataCell.identifier,
-                                             for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: LocationDataCell.identifier,
+                                                 for: indexPath)
         cell.selectionStyle = .none
-        if let locationDataCell = cell as? LocationDataCell {
-            locationDataCell.setup(presentLocation: self.dataManagement.streetAddressData[indexPath.row],
-                                   distanceString: self.dataManagement.distanceData[indexPath.row],
-                                   registrationPoint: self.viewModel.registrationPoint?[indexPath.row] ?? .empty)
-        }
+        (cell as? LocationDataCell)?.setup(presentLocation: self.dataManagement.streetAddressData[indexPath.row],
+                                           distanceString: self.dataManagement.distanceData[indexPath.row],
+                                           registrationPoint: self.viewModel.registrationPoint?[indexPath.row] ?? .empty)
         return cell
     }
 }
@@ -370,6 +362,6 @@ extension LocationViewController: CLLocationManagerDelegate {
 
 // MARK: - LocationData
 class LocationData: Object {
-    @objc dynamic var streetAddress = .empty
-    @objc dynamic var distance = .empty
+    @objc dynamic var streetAddress: String = .empty
+    @objc dynamic var distance: String = .empty
 }

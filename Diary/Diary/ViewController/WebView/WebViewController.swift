@@ -11,13 +11,13 @@ import WebKit
 
 class WebViewController: UIViewController {
     
+    private let progress = "estimatedProgress"
+    
     var wkWebView = WKWebView()
     var progressView = UIProgressView()
     var urlString: String?
     
-    deinit {
-        self.urlString = nil
-    }
+    deinit { self.urlString = nil }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -31,7 +31,7 @@ class WebViewController: UIViewController {
                                of object: Any?,
                                change: [NSKeyValueChangeKey : Any]?,
                                context: UnsafeMutableRawPointer?) {
-        if (keyPath == "estimatedProgress") {
+        if (keyPath == self.progress) {
             self.progressView.alpha = 1.0
             // estimatedProgressが変更されたときにプログレスバーの値を変更
             self.progressView.setProgress(Float(self.wkWebView.estimatedProgress), animated: true)
@@ -64,12 +64,7 @@ private extension WebViewController {
     
     // webViewサイズ設定
     func setupWebView() {
-        let rect = CGRect(x: .zero, y: .zero,
-                          width: view.frame.width,
-                          height: view.frame.height)
-        
-        let webConfiguration = WKWebViewConfiguration()
-        self.wkWebView = WKWebView(frame: rect, configuration: webConfiguration)
+        self.wkWebView = WKWebView(frame: self.view.frame, configuration: WKWebViewConfiguration())
     }
     
     func setupProgressView() {
@@ -81,12 +76,8 @@ private extension WebViewController {
         self.navigationController?.navigationBar.addSubview(self.progressView)
         
         // KVO 監視
-        self.wkWebView.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)
+        self.wkWebView.addObserver(self, forKeyPath: self.progress, options: .new, context: nil)
         self.wkWebView.addObserver(self, forKeyPath: "loading", options: .new, context: nil)
-    }
-    
-    @objc func closeButtonAction() {
-        self.dismiss(animated: true)
     }
     
     func showWebView(_ urlString: String?) {
@@ -95,5 +86,9 @@ private extension WebViewController {
         let webView = URLRequest(url: url)
         self.wkWebView.load(webView)
         self.view.addSubview(self.wkWebView)
+    }
+    
+    @objc func closeButtonAction() {
+        self.dismiss(animated: true)
     }
 }

@@ -8,54 +8,40 @@
 import UIKit
 
 class LocationViewModel {
-    static var registrationData: String? {
-        get {
-            UserDefaults.standard.string(forKey: "registrationData")
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: "registrationData")
-        }
-    }
-    
-    var registrationPoint: [String]? {
-        get {
-            UserDefaults.standard.array(forKey: "registrationPoint") as? [String] ?? []
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: "registrationPoint")
-        }
-    }
-    
-    func deleteRegistrationPoint() {
-        UserDefaults.standard.removeObject(forKey: "registrationPoint")
+    enum TextStrings: String {
+        case record = "record_title"
+        case noneData = "noneData_text"
+        case errorTitle = "errorDialogTitle"
+        case errorText = "errorDialogMessage"
+        case ok = "ok"
+        case cancel = "cancel"
+        case deleteTitle = "delete_title"
+        case cannotBeRestored = "cannotBeRestored_text"
+        case yesText = "yes_text"
+        case noText = "no_text"
+        case locationNone = "locationNone_text"
+        case again = "again_text"
     }
     
     private var registration: [String]?
     
-    var errorDialogTitle: String {
-        return String.LocalizedString("errorDialogTitle", tableName: "Location")
-    }
-    var errorDialogMessage: String {
-        return String.LocalizedString("errorDialogMessage", tableName: "Location")
-    }
-    var okButtonTitle: String {
-        return String.LocalizedString("ok", tableName: "Location")
-    }
-    var cancelButtonTitle: String {
-        return String.LocalizedString("cancel", tableName: "Location")
-    }
-    var recordButtonTitle: String {
-        return String.LocalizedString("record_title", tableName: "Location")
-    }
-    var backgroundColor: UIColor {
-        return UIColor(red: 248/255, green: 248/255, blue: 248/255, alpha: 1.0)
+    func textString(_ key: TextStrings) -> String { .LocalizedString(key.rawValue, tableName: "Location") }
+    
+    static var registrationData: String? {
+        get { UserDefaults.standard.string(forKey: "registrationData") }
+        set { UserDefaults.standard.set(newValue, forKey: "registrationData") }
     }
     
-    var alreadyRegistered: Bool {
-        UserDefaults.standard.bool(forKey: "register")
+    var registrationPoint: [String]? {
+        get { UserDefaults.standard.array(forKey: "registrationPoint") as? [String] ?? [] }
+        set { UserDefaults.standard.set(newValue, forKey: "registrationPoint") }
     }
     
-    func whetherToRegister() {
-        UserDefaults.standard.set(true, forKey: "register")
-    }
+    var backgroundColor: UIColor { UIColor(red: 248/255, green: 248/255, blue: 248/255, alpha: 1.0) }
+    
+    var alreadyRegistered: Bool { UserDefaults.standard.bool(forKey: "register") }
+    
+    func deleteRegistrationPoint() { UserDefaults.standard.removeObject(forKey: "registrationPoint") }
+    
+    func whetherToRegister() { UserDefaults.standard.set(true, forKey: "register") }
 }

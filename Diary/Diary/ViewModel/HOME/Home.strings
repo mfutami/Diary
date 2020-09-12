@@ -1,0 +1,11 @@
+//
+//  Home.strings
+//  Diary
+//
+//  Created by futami on 2020/09/06.
+//  Copyright © 2020 futami. All rights reserved.
+//
+
+"weatherInformationFailed_text" = "天気情報取得失敗";
+"reacquisition_text" = "再取得を実行致します。";
+"ok_text" = "OK";

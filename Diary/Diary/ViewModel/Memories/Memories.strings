@@ -1,0 +1,11 @@
+//
+//  Memories.strings
+//  Diary
+//
+//  Created by futami on 2020/09/07.
+//  Copyright © 2020 futami. All rights reserved.
+//
+
+"error_text" = "error";
+"permission_text" = "カメラアクセスを許可してください";
+"setting_text" = "設定する";

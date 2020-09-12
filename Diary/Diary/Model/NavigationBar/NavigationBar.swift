@@ -7,10 +7,10 @@
 //
 import UIKit
 
-typealias navigationTitle = NavigationBar.NavigationTitle
+typealias NavigationTitle = NavigationBar.NavigationTitle
 
 class NavigationBar {
-    enum NavigationTitle: CaseIterable {
+    enum NavigationTitle {
         case home
         case diary
         case memories

@@ -1,0 +1,11 @@
+//
+//  News.strings
+//  Diary
+//
+//  Created by futami on 2020/09/11.
+//  Copyright © 2020 futami. All rights reserved.
+//
+
+"communicationError_text" = "通信エラー";
+"again_text" = "情報の取得に失敗しました。\n再度お試しください";
+"reacquire_text" = "再取得";

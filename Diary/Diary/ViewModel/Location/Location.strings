@@ -11,3 +11,8 @@
 "ok" = "OK";
 "cancel" = "キャンセル";
 "record_title" = "現在位置を記録する";
+"noneData_text" = "表示する記録データがありません。\n現在位置を記録した場合に記録が表示されます。";
+"delete_title" = "削除してよろしいですか？";
+"cannotBeRestored_text" = "削除した記録は復元することができません。";
+"yes_text" = "YES";
+"no_text" = "NO";

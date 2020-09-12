@@ -18,9 +18,7 @@ class DiaryWritingViewController: UIViewController {
     private let dataManagement = DataManagement()
     
     var viewModel = DiaryWritingViewModel()
-    
     var indexPath: Int?
-    
     var isEdit = false
     
     override func viewDidLoad() {
@@ -38,38 +36,26 @@ class DiaryWritingViewController: UIViewController {
 
 private extension DiaryWritingViewController {
     func setTableView() {
-        self.tableView.register(UINib(nibName: TitleCell.identifier, bundle: nil),
-                                forCellReuseIdentifier: TitleCell.identifier)
-        self.tableView.register(UINib(nibName: TextCell.identifier, bundle: nil),
-                                forCellReuseIdentifier: TextCell.identifier)
-        self.tableView.register(UINib(nibName: IconCell.identifier, bundle: nil),
-                                forCellReuseIdentifier: IconCell.identifier)
+        self.register(identifier: TitleCell.identifier)
+        self.register(identifier: TextCell.identifier)
+        self.register(identifier: IconCell.identifier)
+        
+        self.setupLayer(view: self.tableView)
+        self.tableView.layer.masksToBounds = false
         
         self.tableView.separatorStyle = .none
         self.tableView.isScrollEnabled = false
-        
-        self.tableView.layer.cornerRadius = 20
-        self.tableView.layer.shadowOffset = CGSize(width: 0.5, height: 1.0)
-        self.tableView.layer.shadowColor = UIColor.lightGray.cgColor
-        self.tableView.layer.shadowOpacity = 0.5
-        self.tableView.layer.shadowRadius = 2
-        self.tableView.layer.masksToBounds = false
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
     }
     
     func setupCancel() {
-        self.cancelBaseView.layer.cornerRadius = 15
-        self.cancelBaseView.layer.shadowOffset = CGSize(width: 0.5, height: 1.0)
-        self.cancelBaseView.layer.shadowColor = UIColor.lightGray.cgColor
-        self.cancelBaseView.layer.shadowOpacity = 0.5
-        self.cancelBaseView.layer.shadowRadius = 2
-        
+        self.setupLayer(view: self.cancelBaseView)
         self.cancelBaseView.backgroundColor = .white
         
         self.cancelButton.backgroundColor = .clear
-        self.cancelButton.setTitle("キャンセル", for: .normal)
+        self.cancelButton.setTitle(self.viewModel.textString(.cancel), for: .normal)
         self.cancelButton.setTitleColor(.lightGray, for: .normal)
         self.cancelButton.titleLabel?.font = .systemFont(ofSize: 20)
         self.cancelButton.addTarget(self,
@@ -83,11 +69,24 @@ private extension DiaryWritingViewController {
         self.view.addGestureRecognizer(tap)
     }
     
+    func register(identifier: String) {
+        self.tableView.register(UINib(nibName: identifier, bundle: nil),
+                                forCellReuseIdentifier: identifier)
+    }
+    
+    func setupLayer(view: UIView) {
+        view.layer.cornerRadius = 20
+        view.layer.shadowOffset = CGSize(width: 0.5, height: 1.0)
+        view.layer.shadowColor = UIColor.lightGray.cgColor
+        view.layer.shadowOpacity = 0.5
+        view.layer.shadowRadius = 2
+    }
+    
     func errorDialog() {
-        let error = UIAlertController(title: "エラー",
-                                      message: "入力が完了していません。\n再度ご確認ください。",
+        let error = UIAlertController(title: self.viewModel.textString(.errorTitle),
+                                      message: self.viewModel.textString(.nonCompleted),
                                       preferredStyle: .alert)
-        let okButton = UIAlertAction(title: "OK", style: .cancel)
+        let okButton = UIAlertAction(title: self.viewModel.textString(.ok), style: .cancel)
         error.addAction(okButton)
         self.present(error, animated: false)
     }
@@ -115,8 +114,8 @@ private extension DiaryWritingViewController {
     }
     
     @objc func tapSaveIcon() {
-        guard let title = TitleCell.textString, !title.isEmpty,
-        let text = TextCell.textViewString, !text.isEmpty else {
+        guard !(TitleCell.textString ?? .empty).isEmpty,
+            !(TextCell.textViewString ?? .empty).isEmpty else {
                 self.errorDialog()
                 return
         }
@@ -148,9 +147,7 @@ extension DiaryWritingViewController: UITableViewDataSource {
         }
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return self.viewModel.section.count
-    }
+    func numberOfSections(in tableView: UITableView) -> Int { self.viewModel.section.count }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
@@ -165,9 +162,10 @@ extension DiaryWritingViewController: UITableViewDataSource {
     }
     
     /// TitleSection配下のCellの設定
-    func titleSectionCell(_ tableView: UITableView, item: TitleHeader.Title, at indexPath: IndexPath) -> UITableViewCell {
-        var cell = UITableViewCell()
-        cell = tableView.dequeueReusableCell(withIdentifier: item.identifier, for: indexPath)
+    func titleSectionCell(_ tableView: UITableView,
+                          item: TitleHeader.Title,
+                          at indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: item.identifier, for: indexPath)
         switch item {
         case .tetle:
             (cell as? TitleCell)?.setup(title: self.viewModel.title)
@@ -176,9 +174,10 @@ extension DiaryWritingViewController: UITableViewDataSource {
     }
     
     /// TextSection配下のCellの設定
-    func textSectionCell(_ tableView: UITableView, item: TextHeader.Text, at indexPath: IndexPath) -> UITableViewCell {
-        var cell = UITableViewCell()
-        cell = tableView.dequeueReusableCell(withIdentifier: item.identifier, for: indexPath)
+    func textSectionCell(_ tableView: UITableView,
+                         item: TextHeader.Text,
+                         at indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: item.identifier, for: indexPath)
         switch item {
         case .text:
             (cell as? TextCell)?.setup(text: self.viewModel.text)
@@ -201,9 +200,8 @@ extension DiaryWritingViewController: UITableViewDataSource {
 
 extension DiaryWritingViewController: UITableViewDelegate {
     /// sectionHeadrの高さ設定
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return HeaderView.headerHeight
-    }
+    func tableView(_ tableView: UITableView,
+                   heightForHeaderInSection section: Int) -> CGFloat { HeaderView.headerHeight }
     
     /// sectionHeaderの設定
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -212,9 +210,9 @@ extension DiaryWritingViewController: UITableViewDelegate {
         let headerView = HeaderView(frame: CGRect(origin: origin, size: size))
         switch self.viewModel.section[section] {
         case .titleHeader:
-            headerView.setup(text: "題名")
+            headerView.setup(text: self.viewModel.textString(.title))
         case .textHeader:
-            headerView.setup(text: "本文")
+            headerView.setup(text: self.viewModel.textString(.text))
         }
         return headerView
     }

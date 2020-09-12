@@ -19,13 +19,10 @@ class DiaryViewController: UIViewController {
     @IBOutlet weak var plusButton: UIButton!
     
     private let dataManagement = DataManagement()
-    
-    var viewModel = DiaryViewModel()
+    private var viewModel = DiaryViewModel()
     
     static var date: String?
-    
     static var title = [String]()
-    
     static var text = [String]()
     
     var dateToShow: String? {
@@ -55,7 +52,7 @@ class DiaryViewController: UIViewController {
         self.tableViewHeight.constant = self.tableView.contentSize.height
     }
 }
-extension DiaryViewController {
+private extension DiaryViewController {
     func setupTableView() {
         self.tableView.register(UINib(nibName: DiaryCell.identifier, bundle: nil),
                                 forCellReuseIdentifier: DiaryCell.identifier)
@@ -66,8 +63,9 @@ extension DiaryViewController {
         self.tableView.delegate = self
     }
     
-    // Navugation Bar
-    func setupNavigation(_ setTitle: navigationTitle) {
+    // MARK: - Navugation Bar
+    
+    func setupNavigation(_ setTitle: NavigationTitle) {
         self.navigationController?.navigationItem(title: setTitle.title,
                                                   viewController: self)
     }
@@ -80,7 +78,7 @@ extension DiaryViewController {
     }
     
     func setupButton() {
-        self.plusButton.setTitle("＋", for: .normal)
+        self.plusButton.setTitle(self.viewModel.textString(.plus), for: .normal)
         self.plusButton.setTitleColor(.black, for: .normal)
         self.plusButton.titleLabel?.font = .systemFont(ofSize: 25)
         self.plusButton.addTarget(self,
@@ -90,18 +88,18 @@ extension DiaryViewController {
     
     func editOrBrowseDialog(title: String, text: String, indexPath: Int) {
         let alert = UIAlertController(title: .empty,
-                                      message: "以下の操作を選択してください",
-                                      preferredStyle: .alert)
+                                      message: self.viewModel.textString(.operationSelection),
+                                      preferredStyle: .actionSheet)
         // 閲覧ボタン
-        let browseButton = UIAlertAction(title: "閲覧", style: .default) { [weak self] _ in
+        let browseButton = UIAlertAction(title: self.viewModel.textString(.browse), style: .default) { [unowned self] _ in
             let storyboard = UIStoryboard(name: "DiaryViewing", bundle: nil)
             guard let viewController = storyboard.instantiateInitialViewController(),
                 let diaryViewing = viewController as? DiaryViewingViewController else { return }
             diaryViewing.viewModel = DiaryViewingViewModel(title: title, text: text)
-            self?.present(viewController, animated: false)
+            self.present(viewController, animated: false)
         }
         // 編集ボタン
-        let editButton = UIAlertAction(title: "編集", style: .default) { [weak self] _ in
+        let editButton = UIAlertAction(title: self.viewModel.textString(.edit), style: .default) { [unowned self] _ in
             let storyboard = UIStoryboard(name: "DiaryWriting", bundle: nil)
             guard let viewController = storyboard.instantiateInitialViewController(),
                 let diaryWriting = viewController as? DiaryWritingViewController else { return }
@@ -109,15 +107,15 @@ extension DiaryViewController {
             diaryWriting.isEdit = true
             diaryWriting.viewModel = DiaryWritingViewModel(title: title, text: text)
             viewController.modalPresentationStyle = .fullScreen
-            self?.present(viewController, animated: true)
+            self.present(viewController, animated: true)
         }
         // 削除ボタン
-        let deleteButton = UIAlertAction(title: "削除", style: .default) { [weak self] _ in
-            self?.dataManagement.removeDate(indexPath: indexPath)
-            self?.tableView.reloadData()
+        let deleteButton = UIAlertAction(title: self.viewModel.textString(.delete), style: .default) { [unowned self] _ in
+            self.dataManagement.removeDate(indexPath: indexPath)
+            self.tableView.reloadData()
         }
         // キャンセルボタン
-        let cancelButton = UIAlertAction(title: "戻る", style: .cancel)
+        let cancelButton = UIAlertAction(title: self.viewModel.textString(.back), style: .default)
         alert.addAction(browseButton)
         alert.addAction(editButton)
         alert.addAction(deleteButton)
@@ -144,25 +142,22 @@ extension DiaryViewController: JBDatePickerViewDelegate {
         self.tableView.reloadData()
     }
     // 今日以外の選択中のボタンの色
-    var colorForSelectionCircleForOtherDate: UIColor { return .lightGray }
+    var colorForSelectionCircleForOtherDate: UIColor { .lightGray }
     // 曜日欄の色をblack
-    var colorForWeekDaysViewBackground: UIColor { return .lightGray }
+    var colorForWeekDaysViewBackground: UIColor { .lightGray }
     // 日にちのサイズ
-    var fontForDayLabel: JBFont { return JBFont(name: "ChalkboardSE-Light", size: .small) }
+    var fontForDayLabel: JBFont { JBFont(name: "ChalkboardSE-Light", size: .small) }
 }
 
 extension DiaryViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DiaryViewController.title.count
-    }
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int { DiaryViewController.title.count }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = UITableViewCell()
-        cell = tableView.dequeueReusableCell(withIdentifier: DiaryCell.identifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: DiaryCell.identifier, for: indexPath)
         cell.selectionStyle = .none
-        if let diaryCell = cell as? DiaryCell {
-            diaryCell.setup(title: DiaryViewController.title[indexPath.row])
-        }
+        
+        (cell as? DiaryCell)?.setup(title: DiaryViewController.title[indexPath.row])
         return cell
     }
 }

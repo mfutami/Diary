@@ -21,9 +21,9 @@ class PrefecturesViewController: UIViewController {
     
     weak var delegate: PrefecturesDelegate?
     
-    var text: String?
+    private var text: String?
     
-    var y = CGFloat() {
+    private var y = CGFloat() {
         didSet {
             // baseViewの高さを各端末の最大Y座標に設定
             self.baseView.frame.origin.y = UIScreen.main.bounds.maxY
@@ -40,10 +40,6 @@ class PrefecturesViewController: UIViewController {
         self.setupDecisionButton()
         // 初回表示時 - 初期値として北海道を設定
         self.text = Prefectures.hokkaido.rawValue
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -97,11 +93,11 @@ private extension PrefecturesViewController {
                                       for: .touchUpInside)
     }
     
+    // MARK: - Animation
+    
     func startAnimation() {
         // はい希有のViewをanimationで表示
-        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
-            self.view.alpha = 1.0
-        }) { [weak self] _ in
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: { self.view.alpha = 1.0 }) { [weak self] _ in
             guard let wself = self else { return }
             // baseViewを下部から保持したY座標までモーダル表示
             UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseIn, animations: {
@@ -118,6 +114,8 @@ private extension PrefecturesViewController {
         }
     }
     
+    // MARK: - Action
+    
     @objc func tapOkButton() {
         HomeViewModel.setPrefectures(set: true)
         HomeViewModel.setCity(city: self.text)
@@ -126,22 +124,21 @@ private extension PrefecturesViewController {
     }
 }
 
+// MARK: - UIPickerViewDataSource
 extension PrefecturesViewController: UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
+    func numberOfComponents(in pickerView: UIPickerView) -> Int { 1 }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return PrefecturesData.Prefectures.allCases.count
-    }
+    func pickerView(_ pickerView: UIPickerView,
+                    numberOfRowsInComponent component: Int) -> Int { PrefecturesData.Prefectures.allCases.count }
 }
 
+// MARK: - UIPickerViewDelegate
 extension PrefecturesViewController: UIPickerViewDelegate {
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return Prefectures.allCases[row].text
-    }
+    func pickerView(_ pickerView: UIPickerView,
+                    titleForRow row: Int,
+                    forComponent component: Int) -> String? { Prefectures.allCases[row].text }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.text = Prefectures.allCases[row].rawValue
-    }
+    func pickerView(_ pickerView: UIPickerView,
+                    didSelectRow row: Int,
+                    inComponent component: Int) { self.text = Prefectures.allCases[row].rawValue }
 }

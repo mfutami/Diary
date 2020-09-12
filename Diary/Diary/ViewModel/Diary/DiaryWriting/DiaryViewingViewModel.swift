@@ -9,23 +9,18 @@
 import UIKit
 
 class DiaryViewingViewModel {
+    enum Section {
+        case title([ViewingTitleHeader.Title])
+    }
+    private var setSection: [Section] { [.title(ViewingTitleHeader.items())] }
+    
     var title: String?
     var text: String?
     var section: [Section] = []
     
-    enum Section {
-        case title([ViewingTitleHeader.Title])
-    }
-    
     init(title: String? = nil, text: String? = nil) {
-        self.section = self.setSection()
+        self.section = self.setSection
         self.title = title
         self.text = text
-    }
-    
-    private func setSection() -> [Section] {
-        var section: [Section] = []
-        section.append(.title(ViewingTitleHeader.items()))
-        return section
     }
 }

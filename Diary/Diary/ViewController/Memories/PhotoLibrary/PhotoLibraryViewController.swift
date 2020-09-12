@@ -119,14 +119,13 @@ class PhotoLibraryViewController: UIViewController {
 }
 
 extension PhotoLibraryViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("\(self.dataManagement.photoImageArreData.count)")
-        return self.dataManagement.photoImageArreData.count
-    }
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int { self.dataManagement.photoImageArreData.count }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell = UICollectionViewCell()
-        cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoImageCollectionViewCell.identifier, for: indexPath)
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoImageCollectionViewCell.identifier,
+                                                      for: indexPath)
         if let photoImageCollectionViewCell = cell as? PhotoImageCollectionViewCell {
             photoImageCollectionViewCell.setup(data: self.dataManagement.photoImageArreData[indexPath.row])
             self.photoImage.append(photoImageCollectionViewCell.photoImageView)
