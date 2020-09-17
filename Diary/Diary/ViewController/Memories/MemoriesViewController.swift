@@ -29,12 +29,12 @@ class MemoriesViewController: UIViewController {
     static var slideView: SlideView?
     
     private var getSlideView: UIView? {
-        MemoriesViewController.slideView = SlideView(frame: CGRect(x: self.baseView.bounds.origin.x + 20,
+        Self.slideView = SlideView(frame: CGRect(x: self.baseView.bounds.origin.x + 20,
                                                                    y: self.baseView.bounds.origin.y + 10,
                                                                    width: self.baseView.bounds.size.width,
                                                                    height: 40))
-        MemoriesViewController.slideView?.delegate = self
-        return MemoriesViewController.slideView
+        Self.slideView?.delegate = self
+        return Self.slideView
     }
     
     override func viewDidLoad() {
@@ -238,7 +238,7 @@ extension MemoriesViewController: AVCapturePhotoCaptureDelegate {
             self.photoImageView.image = image
             // 写真ライブラリに画像を保存
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-            DataManagement().addPhotoImage(data: imageData)
+            DataManagement.shared.addPhotoImage(data: imageData)
         }
     }
 }

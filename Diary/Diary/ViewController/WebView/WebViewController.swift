@@ -25,6 +25,7 @@ class WebViewController: UIViewController {
         self.setupWebView()
         self.setupProgressView()
         self.showWebView(self.urlString)
+        self.wkWebView.navigationDelegate = self
     }
     
     override func observeValue(forKeyPath keyPath: String?,
@@ -90,5 +91,13 @@ private extension WebViewController {
     
     @objc func closeButtonAction() {
         self.dismiss(animated: true)
+    }
+}
+
+extension WebViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView,
+                 didFailProvisionalNavigation navigation: WKNavigation!,
+                 withError error: Error) {
+        
     }
 }

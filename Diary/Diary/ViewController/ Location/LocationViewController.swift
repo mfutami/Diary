@@ -18,7 +18,6 @@ class LocationViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var errorTextLabel: UILabel!
     
-    private let dataManagement = DataManagement()
     private var location = CLLocationManager()
     private var region = MKCoordinateRegion()
     /// ジオコーディング, 逆ジオコーディング提供インスタンス
@@ -35,7 +34,7 @@ class LocationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupNavigation(.location)
-        self.dataManagement.readInformation()
+        DataManagement.shared.readInformation()
         self.setupTableView()
     }
     
@@ -191,7 +190,7 @@ private extension LocationViewController {
         let notRemove = UIAlertAction(title: self.viewModel.textString(.noText), style: .cancel)
         let remove = UIAlertAction(title: self.viewModel.textString(.yesText), style: .default) { [unowned self] _ in
             self.viewModel.deleteRegistrationPoint()
-            self.dataManagement.removeLocationData()
+            DataManagement.shared.removeLocationData()
             self.tableView.reloadData()
             self.errorDisplayIfThereIsNoInformation()
         }
@@ -211,8 +210,8 @@ private extension LocationViewController {
     
     func errorDisplayIfThereIsNoInformation() {
         // 保持データが空の場合 - エラー画面表示
-        guard !self.dataManagement.streetAddressData.isEmpty,
-            !self.dataManagement.distanceData.isEmpty else {
+        guard !DataManagement.shared.streetAddressData.isEmpty,
+            !DataManagement.shared.distanceData.isEmpty else {
                 self.setupErrorTextLabel()
                 return
         }
@@ -259,8 +258,8 @@ private extension LocationViewController {
             // 四捨五入
             var getFloor = distance.binade
             getFloor.round(.up)
-            self.dataManagement.addLocationData(address: self.streetAddress, distance: getFloor.description)
-            self.dataManagement.readInformation()
+            DataManagement.shared.addLocationData(address: self.streetAddress, distance: getFloor.description)
+            DataManagement.shared.readInformation()
             self.tableView.reloadData()
         }
     }
@@ -327,14 +326,14 @@ extension LocationViewController {
 // MARK: - UITableViewDataSource
 extension LocationViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
-                   numberOfRowsInSection section: Int) -> Int { self.dataManagement.streetAddressData.count }
+                   numberOfRowsInSection section: Int) -> Int { DataManagement.shared.streetAddressData.count }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: LocationDataCell.identifier,
                                                  for: indexPath)
         cell.selectionStyle = .none
-        (cell as? LocationDataCell)?.setup(presentLocation: self.dataManagement.streetAddressData[indexPath.row],
-                                           distanceString: self.dataManagement.distanceData[indexPath.row],
+        (cell as? LocationDataCell)?.setup(presentLocation: DataManagement.shared.streetAddressData[indexPath.row],
+                                           distanceString: DataManagement.shared.distanceData[indexPath.row],
                                            registrationPoint: self.viewModel.registrationPoint?[indexPath.row] ?? .empty)
         return cell
     }

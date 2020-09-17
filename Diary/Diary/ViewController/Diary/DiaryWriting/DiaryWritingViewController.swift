@@ -15,8 +15,6 @@ class DiaryWritingViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var cancelBaseView: UIView!
     
-    private let dataManagement = DataManagement()
-    
     var viewModel = DiaryWritingViewModel()
     var indexPath: Int?
     var isEdit = false
@@ -121,11 +119,11 @@ private extension DiaryWritingViewController {
         }
         if self.isEdit {
             self.isEdit = false
-            self.dataManagement.editDate(indexPath: self.indexPath)
+            DataManagement.shared.editDate(indexPath: self.indexPath)
         } else {
             // 記入したデータを保存
-            self.dataManagement.addDate()
-            self.dataManagement.getdate()
+            DataManagement.shared.addDate()
+            DataManagement.shared.getdate()
         }
         self.indexPath = nil
         self.dismiss(animated: false)

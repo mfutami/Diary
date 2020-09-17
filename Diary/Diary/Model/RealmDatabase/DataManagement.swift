@@ -10,13 +10,17 @@ import UIKit
 import RealmSwift
 
 class DataManagement {
-    
     var streetAddressData = [String]()
     var distanceData = [String]()
     
     var photoImageArreData = [Data]()
     
     var diaryDate = [String: Any]()
+    
+    // MARK: - singleton
+    
+    static let shared = DataManagement()
+    private init() {}
     
     // 現在位置情報保存
     func addLocationData(address: String?, distance: String) {

@@ -18,7 +18,6 @@ class DiaryViewController: UIViewController {
     @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var plusButton: UIButton!
     
-    private let dataManagement = DataManagement()
     private var viewModel = DiaryViewModel()
     
     static var date: String?
@@ -38,8 +37,8 @@ class DiaryViewController: UIViewController {
         self.setupBaseView()
         self.setupButton()
         // 現在日時を保持
-        DiaryViewController.date = self.dateToShow
-        self.dataManagement.getdate()
+        Self.date = self.dateToShow
+        DataManagement.shared.getdate()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -111,7 +110,7 @@ private extension DiaryViewController {
         }
         // 削除ボタン
         let deleteButton = UIAlertAction(title: self.viewModel.textString(.delete), style: .default) { [unowned self] _ in
-            self.dataManagement.removeDate(indexPath: indexPath)
+            DataManagement.shared.removeDate(indexPath: indexPath)
             self.tableView.reloadData()
         }
         // キャンセルボタン
@@ -137,8 +136,8 @@ extension DiaryViewController: JBDatePickerViewDelegate {
         guard let dayView = dayView.date else { return }
         print("day selected:\(self.viewModel.dateFormatter.string(from: dayView))")
         // 選択した日時を保持
-        DiaryViewController.date = self.viewModel.dateFormatter.string(from: dayView)
-        self.dataManagement.getdate()
+        Self.date = self.viewModel.dateFormatter.string(from: dayView)
+        DataManagement.shared.getdate()
         self.tableView.reloadData()
     }
     // 今日以外の選択中のボタンの色
@@ -151,21 +150,21 @@ extension DiaryViewController: JBDatePickerViewDelegate {
 
 extension DiaryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
-                   numberOfRowsInSection section: Int) -> Int { DiaryViewController.title.count }
+                   numberOfRowsInSection section: Int) -> Int { Self.title.count }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DiaryCell.identifier, for: indexPath)
         cell.selectionStyle = .none
         
-        (cell as? DiaryCell)?.setup(title: DiaryViewController.title[indexPath.row])
+        (cell as? DiaryCell)?.setup(title: Self.title[indexPath.row])
         return cell
     }
 }
 
 extension DiaryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.editOrBrowseDialog(title: DiaryViewController.title[indexPath.row],
-                                text: DiaryViewController.text[indexPath.row],
+        self.editOrBrowseDialog(title: Self.title[indexPath.row],
+                                text: Self.text[indexPath.row],
                                 indexPath: indexPath.row)
     }
 }

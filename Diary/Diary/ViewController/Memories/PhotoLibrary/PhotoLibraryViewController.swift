@@ -19,8 +19,6 @@ class PhotoLibraryViewController: UIViewController {
     
     weak var deletePhotoDelegate: DeletePhotoDelegate?
     
-    private let dataManagement = DataManagement()
-    
     private var photoImage = [UIImageView]()
     
     private var selectCount: Int?
@@ -30,11 +28,12 @@ class PhotoLibraryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupNavigation()
-        self.dataManagement.readPhotoImage()
+        DataManagement.shared.readPhotoImage()
         self.setupCollectionView()
     }
     
-    // Navugation Bar
+    // MARK: - Navugation Bar
+    
     func setupNavigation() {
         self.navigationController?.navigationItem(title: "フォトライブラリ",
                                                   viewController: self)
@@ -120,14 +119,14 @@ class PhotoLibraryViewController: UIViewController {
 
 extension PhotoLibraryViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
-                        numberOfItemsInSection section: Int) -> Int { self.dataManagement.photoImageArreData.count }
+                        numberOfItemsInSection section: Int) -> Int { DataManagement.shared.photoImageArreData.count }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoImageCollectionViewCell.identifier,
                                                       for: indexPath)
         if let photoImageCollectionViewCell = cell as? PhotoImageCollectionViewCell {
-            photoImageCollectionViewCell.setup(data: self.dataManagement.photoImageArreData[indexPath.row])
+            photoImageCollectionViewCell.setup(data: DataManagement.shared.photoImageArreData[indexPath.row])
             self.photoImage.append(photoImageCollectionViewCell.photoImageView)
         }
         return cell

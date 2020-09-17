@@ -107,6 +107,7 @@
 		1BBD6D5F24BC98380037FD94 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBD6D5D24BC98380037FD94 /* WebViewController.swift */; };
 		1BBD6D6024BC98380037FD94 /* WebView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BBD6D5E24BC98380037FD94 /* WebView.storyboard */; };
 		1BC88DB8236EE69B00C63F30 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC88DB7236EE69B00C63F30 /* NewsViewModel.swift */; };
+		1BCA4BA8250C5BF900206905 /* NetWorkErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCA4BA7250C5BF900206905 /* NetWorkErrorView.swift */; };
 		1BD25F4A24C97B2800A60F2C /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD25F4924C97B2800A60F2C /* HomeViewModel.swift */; };
 		1BD25F4D24C97FF400A60F2C /* DiaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD25F4C24C97FF400A60F2C /* DiaryViewModel.swift */; };
 		1BD71D3024684A280092206E /* DataManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD71D2F24684A280092206E /* DataManagement.swift */; };
@@ -249,6 +250,7 @@
 		1BBD6D5D24BC98380037FD94 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		1BBD6D5E24BC98380037FD94 /* WebView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WebView.storyboard; sourceTree = "<group>"; };
 		1BC88DB7236EE69B00C63F30 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
+		1BCA4BA7250C5BF900206905 /* NetWorkErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorkErrorView.swift; sourceTree = "<group>"; };
 		1BD25F4924C97B2800A60F2C /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		1BD25F4C24C97FF400A60F2C /* DiaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewModel.swift; sourceTree = "<group>"; };
 		1BD71D2F24684A280092206E /* DataManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagement.swift; sourceTree = "<group>"; };
@@ -461,6 +463,7 @@
 		1B2FE995236C6BED00677ACA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1BCA4BA6250C5BBD00206905 /* NetWorkErrorView */,
 				1B4C29BB24C95ABE00F8367A /* Diary */,
 				1B4C29B924C95A9000F8367A /* Indicator */,
 				1B4C29B824C95A7900F8367A /* News */,
@@ -732,6 +735,14 @@
 				1BDDD43F250BB07400B39B0A /* News.strings */,
 			);
 			path = News;
+			sourceTree = "<group>";
+		};
+		1BCA4BA6250C5BBD00206905 /* NetWorkErrorView */ = {
+			isa = PBXGroup;
+			children = (
+				1BCA4BA7250C5BF900206905 /* NetWorkErrorView.swift */,
+			);
+			path = NetWorkErrorView;
 			sourceTree = "<group>";
 		};
 		1BD25F4824C97B1300A60F2C /* HOME */ = {
@@ -1064,6 +1075,7 @@
 				1B2B939C2322AEED0015CB8A /* Strings.swift in Sources */,
 				1B50AFFB24910B71002E439C /* DiaryCell.swift in Sources */,
 				1B4CB86B2487D7CF004E78A5 /* PhotoImageCollectionViewCell.swift in Sources */,
+				1BCA4BA8250C5BF900206905 /* NetWorkErrorView.swift in Sources */,
 				1B4C9A4024A3376200F27273 /* ViewingTextCell.swift in Sources */,
 				1BC88DB8236EE69B00C63F30 /* NewsViewModel.swift in Sources */,
 				1B1054D7231EA6660067E7AF /* TabBer.swift in Sources */,
