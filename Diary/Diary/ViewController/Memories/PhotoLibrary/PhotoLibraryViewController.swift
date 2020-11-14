@@ -136,14 +136,15 @@ extension PhotoLibraryViewController: UICollectionViewDataSource {
 extension PhotoLibraryViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if self.deleteMode {
+            let count = (self.selectCount ?? .zero) + 1
+            self.deletePhotoDelegate?.selectView(count: count)
+            // TODO: deleteModeをfalseに戻す処理を後日追加
+        } else {
             let imageView = PhotoView(frame: self.view.frame)
             imageView.setupImageView(imageView: self.photoImage[indexPath.row])
             imageView.photoDelegate = self
             self.setupNavigationLeftItem(photoView: imageView)
             self.view.addSubview(imageView)
-        } else {
-            let count = (self.selectCount ?? .zero) + 1
-            self.deletePhotoDelegate?.selectView(count: count)
         }
     }
 }

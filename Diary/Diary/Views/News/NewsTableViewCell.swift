@@ -16,7 +16,7 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet weak var baseView: UIView!
     
     func setupCell(title: String, imageUrl: String) {
-        ImageItems.getImageByUrl(url: imageUrl) { [weak self] image in
+        ImageItems.getImageByUrl(urlString: imageUrl) { [weak self] image in
             DispatchQueue.main.async {
                 self?.newsImage.image = image
             }

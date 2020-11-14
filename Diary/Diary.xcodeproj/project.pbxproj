@@ -87,6 +87,7 @@
 		1B5A258D2470204400485B56 /* remove@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B5A258C2470204400485B56 /* remove@2x.png */; };
 		1B5C12022503B0990039F55F /* Diary.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B5C12012503B0990039F55F /* Diary.strings */; };
 		1B6219BE24FA7A9E00CF0894 /* DeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6219BD24FA7A9E00CF0894 /* DeleteView.swift */; };
+		1B62E74B25138B8B00E96ED0 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B62E74A25138B8B00E96ED0 /* FileManager.swift */; };
 		1B73AA7D2430300B008C02A4 /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B73AA7B2430300B008C02A4 /* NewsCollectionViewCell.swift */; };
 		1B73AA7E2430300B008C02A4 /* NewsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B73AA7C2430300B008C02A4 /* NewsCollectionViewCell.xib */; };
 		1B87B771244C264300488631 /* JBDatePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87B770244C264300488631 /* JBDatePicker.framework */; };
@@ -234,6 +235,7 @@
 		1B5A258C2470204400485B56 /* remove@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "remove@2x.png"; sourceTree = "<group>"; };
 		1B5C12012503B0990039F55F /* Diary.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Diary.strings; sourceTree = "<group>"; };
 		1B6219BD24FA7A9E00CF0894 /* DeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteView.swift; sourceTree = "<group>"; };
+		1B62E74A25138B8B00E96ED0 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		1B73AA7B2430300B008C02A4 /* NewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCell.swift; sourceTree = "<group>"; };
 		1B73AA7C2430300B008C02A4 /* NewsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCollectionViewCell.xib; sourceTree = "<group>"; };
 		1B87B770244C264300488631 /* JBDatePicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JBDatePicker.framework; path = Carthage/Build/iOS/JBDatePicker.framework; sourceTree = "<group>"; };
@@ -340,6 +342,7 @@
 				1B4C29BF24C95DBC00F8367A /* Splash */,
 				1B2894EC232535460090A221 /* TabBar */,
 				1B4C29BE24C95DAA00F8367A /* WebView */,
+				1B62E74A25138B8B00E96ED0 /* FileManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1039,6 +1042,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B62E74B25138B8B00E96ED0 /* FileManager.swift in Sources */,
 				1B915EFA24C5D2DC00EBC51B /* Navigation.swift in Sources */,
 				1B1054AA231D51E20067E7AF /* DiaryViewController.swift in Sources */,
 				1BAF7B4C23A3DDF6003C8A59 /* WebView.swift in Sources */,
@@ -1278,7 +1282,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.sample.futami.Diary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1304,7 +1308,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.sample.futami.Diary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

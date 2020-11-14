@@ -16,7 +16,7 @@ class NewsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var baseView: UIView!
     
     func setup(image: String, text: String) {
-        ImageItems.getImageByUrl(url: image) { [weak self] image in
+        ImageItems.getImageByUrl(urlString: image) { [weak self] image in
             DispatchQueue.main.async {
                 self?.newsImage.image = image
             }
